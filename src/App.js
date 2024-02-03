@@ -1,23 +1,40 @@
-import './App.css';
+// import './App.css';
+import { fetchAllAlbums } from './api/api';
+
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+
+import RootLayout from './layouts/RootLayout';
+import Albums from "./pages/Albums";
+import Error404 from './pages/Error404';
+import ErrorGeneric from './pages/ErrorGeneric';
+
+const appRouter = createBrowserRouter(
+  createRoutesFromElements(
+    <Route
+      // path="/"
+      element={<RootLayout />}
+      errorElement={<ErrorGeneric />} >
+
+      {/* Everything is nested in RootLayout comp */}
+      {/* <Route index element={<Home />} /> */}
+
+      <Route path="albums"
+        element={<Albums />}
+        loader={fetchAllAlbums}
+      />
+
+      <Route path="*" element={<Error404 />} />
+
+    </Route >)
+);
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <RouterProvider router={appRouter} />
+    </>
   );
 }
 

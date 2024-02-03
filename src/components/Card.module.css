@@ -1,0 +1,120 @@
+.cardContainer {
+    /* Only to put button at the bottom of whole thingie*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: var(--columbia-blue);
+    border: 8px solid var(--platinum);
+    border-radius: 11px;
+    color: var(--rich-black);
+    padding: 16px;
+    box-shadow: 0px 0px 8px 8px var(--powder-blue);
+    text-align: left;
+
+    grid-column: span 4;
+}
+
+
+.cardContainer:hover {
+    background-color: var(--powder-blue);
+    border-color: var(--columbia-blue);
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card .textCardContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 50;
+}
+
+.cardTopSection {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardTopSection>.cardIcons>img {
+    width: 26px;
+    margin-right: 11px;
+}
+
+.card .cardTitle {
+    color: var(--rich-black);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin: 11px 0 17px;
+}
+
+.card .cardInfo {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    margin-left: 11px;
+    font-size: 1.1rem;
+}
+
+.card svg {
+    /*icons */
+    line-height: 1;
+    background-color: var(--rich-black);
+    color: var(--columbia-blue);
+    font-size: 1.1rem;
+    height: 24px;
+    width: 24px;
+}
+
+.card .cardInfo>span {
+    font-size: 1.1rem;
+    color: var(--glaucous);
+}
+
+.card .cardText {
+    margin-top: 17px;
+    color: (--rich-black);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.mediaCardContent {
+    margin-left: 1%;
+    max-width: 44%;
+    object-fit: contain;
+    object-position: 50% 0%;
+    /* 50% 50% is centered */
+}
+
+/*
+.linkToPost {
+    background-color: var(--glaucous);
+    color: var(--rich_black);
+    font-family: var(--font-display);
+    font-size: 1em;
+    padding: 8px 19px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    width: fit-content;
+    height: fit-content;
+    align-self: flex-end;
+    margin-top: 22px;
+}
+
+.linkToPost:hover {
+    background-color: var(--rich-black);
+    color: var(--glaucous);
+}
+*/
+
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}

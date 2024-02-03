@@ -1,9 +1,7 @@
-import { encode as base64_encode } from 'base-64';
-
-const ROOT_ENDPOINT = "https://vynyl-shop.onrender.com/api/v1"
+const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1"
 
 
-export async function fetchSearchResult() {
+export async function fetchAllAlbums() {
     try {
         const response = await fetch(`${ROOT_ENDPOINT}/albums`)
 
@@ -11,6 +9,7 @@ export async function fetchSearchResult() {
             throw new Error(`${response.statusText} - ${response.status}`);
         }   // if ok
         const json = await response.json();
+        console.log(json);
         return json
     } catch (error) {
         // will catch errors from if (!response.ok) too 

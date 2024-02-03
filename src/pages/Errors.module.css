@@ -1,0 +1,87 @@
+.errorDiv {
+    min-height: 35vh;
+    text-align: center
+}
+
+.errorTitle {
+    margin: 11px auto 22px;
+    font-size: 1.9rem;
+    font-family: var(--font-display);
+    color: var(--glaucous);
+    font-weight: 400;
+}
+
+.errorSubtitle {
+    font-family: var(--font-main);
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.errorSubtitle a {
+    text-decoration: underline;
+}
+
+.errorSubtitle a:visited {
+    color: var(--glaucous);
+}
+
+
+/* mediaqueries */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .errorTitle {
+        margin: 0 0 8px 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+
+    .errorSubtitle {
+        margin-bottom: 8px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 601px and up) */
+@media only screen and (min-width: 601px) and (max-width: 821px) {
+    .errorTitle {
+        margin: 0 0 8px 0;
+        font-size: 1.7rem;
+        font-weight: 300;
+    }
+
+    .errorSubtitle {
+        margin-bottom: 8px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 822px and up) */
+@media only screen and (min-width: 822px) and (max-width: 991px) {
+    .errorTitle {
+        margin: 0 0 8px 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+
+    .errorSubtitle {
+        margin-bottom: 17px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .errorTitle {
+        font-size: 1.7rem;
+        font-weight: 300;
+    }
+
+    .errorSubtitle {
+        margin-bottom: 17px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
