@@ -11,12 +11,20 @@
 .card .square {
     aspect-ratio: 1 / 1;
     width: 44%;
-    background-color: aqua;
     margin: 4px;
 }
 
-.card .coverImage img {
+.card img {
     object-fit: fill
+}
+
+.card .noImage {
+    background-color: var(--cool-gray);
+    color: black;
+    text-align: center;
+    height: 100%;
+    padding-top: 50%;
+    font-family: var(--font-display);
 }
 
 .card .cardText {
@@ -24,8 +32,6 @@
     flex-direction: column;
     max-width: 53%;
 }
-
-
 
 
 /* Responsive columns - one column layout (vertical) on small screens */

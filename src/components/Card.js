@@ -3,13 +3,21 @@ import { Link } from "react-router-dom"
 
 
 export default function Card({ album }) {
+
+    console.log((album.cover));
     return (
-        <Link to={`/KUR/${album.id.toString()}`} className={styles.card}>
-            <img
-                className={styles.square}
-                src={album.cover}
-                alt={`${album.name}by${album.band_name}`}
-            />
+        <Link to={`/NISHTO_ZASEGA/${album.id.toString()}`} className={styles.card}>
+            {(album.cover).includes("http")
+                ?
+                <img
+                    className={styles.square}
+                    src={album.cover}
+                    alt={`${album.name}by${album.band_name}`}
+                />
+                :
+                <div className={styles.square}><p className={styles.noImage}>No Image</p>
+                </div>
+            }
             <div className={styles.cardText}>
                 <p> {album.id} </p>
                 <p> {album.name} </p>
