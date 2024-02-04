@@ -1,17 +1,15 @@
+@import '../index.css';
+
 .mainContainer {
     min-height: 50vh;
     text-align: left;
     margin: 11px 44px 44px;
     padding: 22px;
-
     display: flex;
     /* row-gap: 22px; */
     flex-direction: column;
 
-    background-color: var(--columbia-blue);
-    border: 8px solid var(--platinum);
     border-radius: 11px;
-    color: var(--rich-black);
     box-shadow: 0px 0px 8px 8px var(--powder-blue);
 }
 

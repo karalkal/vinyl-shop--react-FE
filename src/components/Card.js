@@ -13,10 +13,5 @@ export default function Card({ album }) {
             <p> {album.id} </p>
             <p> {album.price} </p>
             <p> {album.release_year} </p>
-
-
-
-
         </Link>)
-
 }

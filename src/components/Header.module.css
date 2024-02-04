@@ -1,184 +1,24 @@
 @import '../index.css';
 
 #header {
-    background-color: var(--powder-blue);
-    padding: 22px 44px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 11px;
-}
-
-#header>a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 44px;
-}
-
-#header>a>.logo {
-    height: 88px;
-}
-
-#header>a>h1 {
+    background-color: var(--space-cadet);
     font-family: var(--font-display);
-    color: var(--glaucous);
-    font-size: 3.5rem;
-    text-shadow: 2px 2px var(--rich-black);
+    padding: 22px;
 }
-
-#header>nav {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 11px 17px;
-    width: 53%;
+#header>h1 {
+    color: var(--cool-gray);
+    font-size: 2em;
 }
-
-.menuButtonsRow a,
-.menuButtonsRow button,
-.menuSearchRow button {
-    background-color: var(--glaucous);
-    color: var(--rich-black);
-    font-weight: 600;
-    font-size: .91rem;
-    padding: 6px 11px;
-    border-radius: 4px;
-    width: 100%;
-    text-transform: uppercase;
-    box-shadow: none;
-    border: none;
-    cursor: pointer;
-}
-
-.menuButtonsRow a:hover,
-.menuButtonsRow button:hover,
-.menuSearchRow button:hover {
-    background-color: var(--rich-black);
-    color: var(--glaucous);
-}
-
-.navLink:active {
-    background-color: var(--platinum);
-    color: var(--powder-blue);
-}
-
-.menuSearchRow {
-    grid-column: span 12;
-    /* get all 12 colums from parent grid... */
-}
-
-.menuButtonsRow {
-    grid-column: span 12;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 17px;
-}
-
-#aboutBtn {
-    background-color: var(--rich-black);
-    color: var(--glaucous);
-}
-
 
 /* mediaqueries */
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    #header {
-        padding: 8px 22px;
-        display: block;
-        margin-bottom: 11px;
-    }
-
-    #header>a>.logo {
-        height: 3.5rem;
-    }
-
-    #header>a>h1 {
-        font-size: 2.2rem;
-    }
-
-    #header>nav {
-        width: 100%;
-    }
-
-    .menuSearchRow {
-        margin: 22px 0 11px;
-    }
-
-    .menuButtonsRow {
-        grid-column: span 12;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 17px;
-    }
-}
+@media only screen and (max-width: 600px) {}
 
 /* Small devices (portrait tablets and large phones, 601px and up) */
-@media only screen and (min-width: 601px) and (max-width: 821px) {
-    #header {
-        padding: 8px 22px;
-        display: block;
-        margin-bottom: 11px;
-    }
-
-    #header>a>.logo {
-        height: 4rem;
-    }
-
-    #header>a>h1 {
-        font-size: 2.6rem;
-    }
-
-    #header>nav {
-        width: 100%;
-    }
-
-    .menuSearchRow {
-        margin: 22px 0;
-    }
-
-    .menuButtonsRow {
-        grid-column: span 12;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 17px;
-    }
-}
+@media only screen and (min-width: 601px) and (max-width: 821px) {}
 
 /* Medium devices (landscape tablets, 822px and up) */
-@media only screen and (min-width: 822px) and (max-width: 991px) {
-    #header {
-        padding: 8px 22px;
-        margin-bottom: 11px;
-    }
-
-    #header>a {
-        gap: 22px;
-        width: 20%;
-    }
-
-    #header>a>.logo {
-        height: 4rem;
-    }
-
-    #header>a>h1 {
-        font-size: 2.4rem;
-        font-weight: 500;
-    }
-
-    #header>nav {
-        width: 70%;
-    }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    #header>a>h1 {
-        font-size: 2.6rem;
-        font-weight: 700;
-    }
-}
+@media only screen and (min-width: 822px) and (max-width: 991px) {}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {}

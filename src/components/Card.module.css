@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    background-color: var(--columbia-blue);
+    background-color: var(--white);
     border: 8px solid var(--platinum);
     border-radius: 11px;
     color: var(--rich-black);
@@ -87,27 +87,6 @@
     object-position: 50% 0%;
     /* 50% 50% is centered */
 }
-
-/*
-.linkToPost {
-    background-color: var(--glaucous);
-    color: var(--rich_black);
-    font-family: var(--font-display);
-    font-size: 1em;
-    padding: 8px 19px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    width: fit-content;
-    height: fit-content;
-    align-self: flex-end;
-    margin-top: 22px;
-}
-
-.linkToPost:hover {
-    background-color: var(--rich-black);
-    color: var(--glaucous);
-}
-*/
 
 
 /* Responsive columns - one column layout (vertical) on small screens */
