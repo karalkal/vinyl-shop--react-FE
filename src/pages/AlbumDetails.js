@@ -23,9 +23,9 @@ const AlbumDetails = () => {
                 <div className={styles.square}><p className={styles.noImage}>No Image Available</p>
                 </div>
             }
-            <div>
-                <h1>id: {albumData.id}</h1>
-                <h1>{albumData.name}</h1>
+            <div className={styles.textPrimary}>
+                <h1>cat.ID: {albumData.id}</h1>
+                <h1 className={styles.albumTitle }>{albumData.name}</h1>
                 <h1>By: {albumData.band_name}</h1>
                 <h1>Released: {albumData.release_year}</h1>
                 <h1>Label: {albumData.label_name}</h1>
@@ -33,12 +33,11 @@ const AlbumDetails = () => {
                 <h1>Duration: {albumData.duration}</h1>
                 <h1>Format:  {albumData.format}</h1>
                 <h1>Price: {albumData.price}</h1>
-            </div>
-            <div>
                 <h1>Genres: {(albumData.genre_array).join("; ")}</h1>
                 <h1>Summary: {albumData.summary}</h1>
                 <h1>Quantity available: {albumData.quantity}</h1>
             </div>
+            <button className={styles.addBtn}>Add to Cart</button>
         </div>
     )
 

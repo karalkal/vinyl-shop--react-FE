@@ -1,24 +1,34 @@
 .detailsContainer {
-    display: flex;
+    background-color: var(--cool-gray);
+    position: relative;
+    /* just for the button */
+    padding: 11px;
+    display: grid;
+    grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+    grid-template-areas:
+        'image image image primary primary primary primary primary'
+        'image image image empty empty empty addBtn addBtn';
     text-align: left;
-    flex-direction: row;
-    gap: 11px;
     justify-content: left;
-    align-items: center;
-    background-color: var(--white);
+    align-items: top;
+    border: 4px solid var(--white);
+}
+
+.detailsContainer * {
+    overflow: hidden;
 }
 
 .detailsContainer .square {
+    grid-area: image;
     aspect-ratio: 1 / 1;
-    width: 22%;
-    margin: 4px;
+    width: 100%;
 }
 
 .detailsContainer img {
     object-fit: fill
 }
 
-.detailsContainer .noImage {
+.detailsContainer p.noImage {
     background-color: var(--cool-gray);
     color: black;
     text-align: center;
@@ -27,12 +37,34 @@
     font-family: var(--font-display);
 }
 
-.card .cardText {
-    color: black;
-    display: flex;
-    flex-direction: column;
-    max-width: 53%;
+.detailsContainer .textPrimary {
+    grid-area: primary;
+    text-align: left;
+    padding: 0 26px 26px 26px;
 }
+
+.detailsContainer .textPrimary .albumTitle {
+    font-weight: 800;
+    font-size: 2em;
+}
+
+.detailsContainer .cardSecondary {
+    grid-area: secondary;
+}
+
+.detailsContainer .addBtn {
+    grid-area: addBtn;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--space-cadet);
+    color: var(--aureolin);
+    font-family: var(--font-display);
+    outline: none;
+    border: 2px solid var(--black);
+}
+
 
 
 /* Responsive columns - one column layout (vertical) on small screens */

@@ -19,6 +19,7 @@
   margin: 0;
   font-family: var(--font-main);
   font-size: 16px;
+  font-weight: 400;
 }
 
 html {
