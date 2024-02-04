@@ -2,10 +2,10 @@
 
 #header {
     background-color: var(--space-cadet);
-    font-family: var(--font-display);
     padding: 22px;
 }
 #header>h1 {
+    font-family: var(--font-display);
     color: var(--cool-gray);
     font-size: 2em;
 }

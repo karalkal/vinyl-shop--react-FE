@@ -17,7 +17,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: var(--cool-gray);
+  font-family: var(--font-main);
   font-size: 16px;
 }
 

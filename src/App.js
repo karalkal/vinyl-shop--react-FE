@@ -1,5 +1,5 @@
 // import './App.css';
-import { fetchAllAlbums } from './api/api';
+import { fetchAllAlbums, fetchAlbumById } from './api/api';
 
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import RootLayout from './layouts/RootLayout';
 import Albums from "./pages/Albums";
 import Error404 from './pages/Error404';
 import ErrorGeneric from './pages/ErrorGeneric';
+import AlbumDetails from './pages/AlbumDetails';
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,10 @@ const appRouter = createBrowserRouter(
       <Route path="albums"
         element={<Albums />}
         loader={fetchAllAlbums}
+      />
+      <Route path="album/:id"
+        element={<AlbumDetails />}
+        loader={({ params }) => fetchAlbumById(params.id)}
       />
 
       <Route path="*" element={<Error404 />} />

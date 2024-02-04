@@ -1,4 +1,4 @@
-.card {
+.detailsContainer {
     display: flex;
     text-align: left;
     flex-direction: row;
@@ -8,17 +8,17 @@
     background-color: var(--white);
 }
 
-.card .square {
+.detailsContainer .square {
     aspect-ratio: 1 / 1;
-    width: 44%;
+    width: 22%;
     margin: 4px;
 }
 
-.card img {
+.detailsContainer img {
     object-fit: fill
 }
 
-.card .noImage {
+.detailsContainer .noImage {
     background-color: var(--cool-gray);
     color: black;
     text-align: center;

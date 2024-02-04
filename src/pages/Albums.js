@@ -5,7 +5,6 @@ import { useLoaderData } from "react-router-dom";
 
 const Albums = () => {
     const albumsArray = useLoaderData();
-    console.log(albumsArray);
 
     if (!albumsArray) {
         console.log("Nada!")
