@@ -1,3 +1,5 @@
+import axios, { AxiosError } from "axios";
+
 const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1"
 
 
@@ -30,6 +32,21 @@ export async function fetchAlbumById(albumId) {
         throw new Error(error.message);
     }
 };
+
+export async function logIn(formData) {
+    try {
+        const response = await axios.post(`${ROOT_ENDPOINT}/auth/login/`, formData);
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError)
+            throw new Error(`${AxiosError.code} - ${AxiosError.message}`);
+        else {
+            throw new Error(err.message);
+        }
+    }
+}
+
 
 
 
