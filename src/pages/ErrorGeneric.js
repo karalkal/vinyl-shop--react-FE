@@ -1,3 +1,18 @@
+
+export default function ErrorGeneric({ error, resetErrorBoundary }) {
+
+    console.log("ErrorGeneric")
+    return (
+        <div role="alert">
+            <p>Something went wrong:</p>
+            {/* <pre>{error.message}</pre> */}
+            <button onClick={resetErrorBoundary}>Try again</button>
+        </div>
+    )
+}
+
+/*
+
 import { Link, useRouteError } from "react-router-dom";
 import Header from "../components/Header";
 import styles from "./Errors.module.css"
@@ -31,3 +46,4 @@ export default function ErrorGeneric() {
     );
 };
 
+*/

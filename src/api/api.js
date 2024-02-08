@@ -5,8 +5,7 @@ const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1"
 
 export async function fetchAllAlbums() {
     try {
-        const response = await fetch(`${ROOT_ENDPOINT}/albums`)
-
+        const response = await fetch(`${ROOT_ENDPOINT}/albums`);
         if (!response.ok) {
             throw new Error(`${response.statusText} - ${response.status}`);
         }   // if ok
@@ -39,9 +38,12 @@ export async function logIn(formData) {
         return response
     }
     catch (err) {
-        if (err && err instanceof AxiosError)
-            throw new Error(`${AxiosError.code} - ${AxiosError.message}`);
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
         else {
+            console.log("other error")
             throw new Error(err.message);
         }
     }

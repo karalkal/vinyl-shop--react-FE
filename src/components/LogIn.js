@@ -21,7 +21,8 @@ const SignInComponent = () => {
         authState: { email: formData.email },
       });
     } catch (err) {
-      console.log("Error: ", err);
+      console.log("Error: ", err.message);
+      throw new Error()
     }
   };
 

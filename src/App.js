@@ -1,5 +1,7 @@
-import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+"use client";
 
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary'
 
 // import './App.css';
 import { fetchAllAlbums, fetchAlbumById } from './api/api';
@@ -39,7 +41,13 @@ const appRouter = createBrowserRouter(
 function App() {
   return (
     <>
-      <RouterProvider router={appRouter} />
+      <ErrorBoundary
+        fallbackRender={ErrorGeneric}
+        onReset={(details) => {
+          // Reset the state of your app so the error doesn't happen again
+        }}>
+        <RouterProvider router={appRouter} />
+      </ErrorBoundary>
     </>
   );
 }
