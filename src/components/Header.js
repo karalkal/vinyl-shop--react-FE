@@ -1,15 +1,16 @@
 import styles from './Header.module.css';
 import { SignInComponent } from './LogIn';
 import siteLogo from '../assets/vinyl-record-small.jpg'
+import { Link } from 'react-router-dom';
 
 
 export default function Header() {
     return (
         <header id={styles.header}>
-            <div className={styles.headerLeft}>
+            <Link to="/" className={styles.headerLeft}>
                 <img src={siteLogo} alt="site logo" />
                 <h1>THE VINYLARIUM</h1>
-            </div>
+            </Link>
             <div className={styles.headerCentre}>
                 <div>
                     <p>SEARCH</p>

@@ -1,3 +1,4 @@
+import { Button } from "../components/Button";
 import styles from "./AlbumDetails.module.css"
 import { useLoaderData } from "react-router-dom";
 
@@ -25,7 +26,7 @@ const AlbumDetails = () => {
             }
             <div className={styles.textPrimary}>
                 <h1>cat.ID: {albumData.id}</h1>
-                <h1 className={styles.albumTitle }>{albumData.name}</h1>
+                <h1 className={styles.albumTitle}>{albumData.name}</h1>
                 <h1>By: {albumData.band_name}</h1>
                 <h1>Released: {albumData.release_year}</h1>
                 <h1>Label: {albumData.label_name}</h1>
@@ -37,7 +38,7 @@ const AlbumDetails = () => {
                 <h1>Summary: {albumData.summary}</h1>
                 <h1>Quantity available: {albumData.quantity}</h1>
             </div>
-            <button className={styles.addBtn}>Add to Cart</button>
+            <Button style={{ gridArea: 'addBtn', width: '100%' }}>Add to Cart</Button>
         </div>
     )
 
