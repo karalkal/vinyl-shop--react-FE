@@ -1,14 +1,36 @@
 @import '../index.css';
 
 #header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     background-color: var(--space-cadet);
     padding: 22px;
 }
-#header>h1 {
+
+.headerLeft{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.headerLeft>h1 {
     font-family: var(--font-display);
     color: var(--cool-gray);
-    font-size: 2em;
+    font-size: 1.5em;
 }
+
+.headerLeft>img {
+    height: 53px;
+}
+
+.headerCentre{
+
+}
+#headerRight{
+
+}
+
 
 /* mediaqueries */
 /* Extra small devices (phones, 600px and down) */

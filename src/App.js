@@ -6,21 +6,17 @@ import { ErrorBoundary } from 'react-error-boundary'
 // import './App.css';
 import { fetchAllAlbums, fetchAlbumById } from './api/api';
 
-import RootLayout from './layouts/RootLayout';
 import Albums from "./pages/Albums";
 import Error404 from './pages/Error404';
 import ErrorGeneric from './pages/ErrorGeneric';
 import AlbumDetails from './pages/AlbumDetails';
+import Header from './components/Header';
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route
-      // path="/"
-      element={<RootLayout />}
+      element={<Header />}
       errorElement={<ErrorGeneric />} >
-
-      {/* Everything is nested in RootLayout comp */}
-      {/* <Route index element={<Home />} /> */}
 
       <Route index
         element={<Albums />}

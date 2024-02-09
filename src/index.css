@@ -6,7 +6,7 @@
 
   /* CSS HSL */
   --space-cadet: hsla(235, 21%, 21%, 1);
-  --cool-gray: hsla(218, 17%, 62%, 1);
+  --cool-gray: hsla(218, 17%, 62%, 1);    /* 8e9aaf */  
   --aureolin: hsla(59, 94%, 57%, 1);
   --white: hsla(0, 0%, 100%, 1);
   --black: hsla(0, 0%, 0%, 1);
@@ -25,6 +25,7 @@
 html {
   text-align: center;
   background-color: var(--space-cadet);
+  margin: 53px 71px;
 }
 
 
