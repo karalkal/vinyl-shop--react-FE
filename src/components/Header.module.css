@@ -3,16 +3,27 @@
 #header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-end;
     background-color: var(--space-cadet);
     margin-bottom: 44px;
+    border-bottom: 2px solid var(--cool-gray);
+    padding-bottom: 44px;
 }
 
 .headerLeft,
-.headerCentre{
+.headerCentre,
+.headerRight {
     display: flex;
-    align-items: baseline;
-    gap: 10px;
+    align-items: flex-end;
+}
+
+.headerLeft,
+.headerCentre {
+    gap: 11px;
+}
+
+.headerRight {
+    gap: 22px;
 }
 
 .headerLeft>h1 {
@@ -25,7 +36,9 @@
     height: 53px;
 }
 
-.headerCentre>input{
+.headerCentre {}
+
+.headerCentre>input {
     margin-right: 11px;
     width: 100%;
     padding-left: 8px;
@@ -36,10 +49,21 @@
     border-radius: 8px;
 }
 
-#headerRight{
-
+.headerRight div {
+    background-color: var(--cool-gray);
+    padding: 8px;
+    border-radius: 44px;
+    /* icons to be centered vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: last baseline;
 }
 
+.reactIcons {
+    fill: black;
+    height: 31px;
+    width: 31px;
+}
 
 /* mediaqueries */
 /* Extra small devices (phones, 600px and down) */

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Kablammo&display=swap');
+
+:root {
+    --font-main: 'Inter', sans-serif;
+    --font-funky: 'Kablammo', cursive;
+    /* CSS HSL */
+    --c1: rgb(8, 0, 22);
+    --c2: rgb(11, 0, 31);
+    --c3: rgb(11, 0, 44);
+    --c4: rgb(11, 0, 62);
+    --c5: rgb(22, 0, 62);
+    --french-violet: hsla(272, 63%, 46%, 1);
+    --amethyst: hsla(273, 68%, 59%, 1);
+    --mauve: hsla(278, 100%, 83%, 1);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-main);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modalMain {
+    position: fixed;
+    background-color: var(--mauve);
+    width: 62%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 22px;
+}
+
+.modalMain>p {
+    margin-bottom: 22px;
+}
+
+#modalBtn {
+    background-color: var(--c4);
+    color: var(--mauve);
+}
+
+.displayBlock {
+    display: block;
+}
+
+.displayNone {
+    display: none;
+}
