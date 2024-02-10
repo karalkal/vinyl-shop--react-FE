@@ -1,15 +1,14 @@
 
 button {
-  height: 40px;
-  bottom: 0;
-  background-color: var(--space-cadet);
+  height: 35px;
+  width: 170px;
+  font-weight: 600;
   color: var(--white);
+  background-color: var(--space-cadet);
   outline: none;
   border: 1px solid var(--white);
-  font-weight: 600;
   border-radius: 8px;
   margin-right: 22px;
-  width: 170px;
 }
 
 button:last-child {

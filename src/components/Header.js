@@ -11,11 +11,10 @@ export default function Header() {
                 <img src={siteLogo} alt="site logo" />
                 <h1>THE VINYLARIUM</h1>
             </Link>
-            <div className={styles.headerCentre}>
-                <div>
-                    <p>SEARCH</p>
-                </div>
-            </div>
+            <form className={styles.headerCentre}>
+                <input type="text" id="searchTerm" name="searchTerm" />
+                <button>search</button>
+            </form>
             <div className={styles.headerRight}>
                 <button>Log In/Register</button>
                 <button>Cart</button>
