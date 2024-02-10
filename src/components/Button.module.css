@@ -1,5 +1,5 @@
 
-button {
+.btnGeneric {
   height: 35px;
   width: 170px;
   font-weight: 600;
@@ -9,17 +9,15 @@ button {
   border: 1px solid var(--white);
   border-radius: 8px;
   margin-right: 22px;
+  cursor: pointer;
 }
 
-button:last-child {
+.btnGeneric:last-child {
   margin-right: 0;
 }
 
-button:hover {
+.btnGeneric:hover {
   background-color: var(--black);
   color: var(--aureolin);
-  outline: none;
   border: 1px solid var(--aureolin);
-  font-weight: 600;
-  border-radius: 8px;
 }

@@ -52,6 +52,7 @@
 .headerRight div {
     background-color: var(--cool-gray);
     padding: 8px;
+    border: 1px solid var(--white);
     border-radius: 44px;
     /* icons to be centered vertically and horizontally */
     display: flex;
@@ -59,10 +60,20 @@
     align-items: last baseline;
 }
 
+.headerRight div:hover {
+    background-color: var(--black);
+    color: var(--aureolin);
+    border: 1px solid var(--aureolin);
+}
+
 .reactIcons {
     fill: black;
     height: 31px;
     width: 31px;
+}
+
+.reactIcons:hover {
+    fill: var(--aureolin);
 }
 
 /* mediaqueries */

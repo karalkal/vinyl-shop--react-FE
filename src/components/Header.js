@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { RiAccountCircleLine } from "react-icons/ri";
+import { Button } from './Button';
 
 
 export default function Header() {
@@ -17,7 +18,7 @@ export default function Header() {
             <div>
                 <form className={styles.headerCentre}>
                     <input type="text" id="searchTerm" name="searchTerm" />
-                    <button>search</button>
+                    <Button title="search our database">search</Button>
                 </form>
             </div>
             <div className={styles.headerRight}>
