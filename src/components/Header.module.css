@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    gap: 44px;
     background-color: var(--space-cadet);
     margin-bottom: 44px;
     border-bottom: 2px solid var(--cool-gray);
@@ -15,6 +16,7 @@
 .headerRight {
     display: flex;
     align-items: flex-end;
+    flex: 0 0 1;
 }
 
 .headerLeft,
@@ -29,17 +31,19 @@
 .headerLeft>h1 {
     font-family: var(--font-display);
     color: var(--cool-gray);
-    font-size: 1.5em;
+    font-size: 1.7em;
 }
 
 .headerLeft>img {
-    height: 53px;
+    height: 62px;
 }
 
-.headerCentre {}
+.headerCentre {
+    align-content: center;
+}
 
 .headerCentre>input {
-    margin-right: 11px;
+    /* margin-right: 11px; */
     width: 100%;
     padding-left: 8px;
     background-color: var(--cool-gray);
@@ -48,6 +52,7 @@
     border: 1px solid var(--white);
     border-radius: 8px;
 }
+
 
 .headerRight .btnRight {
     background-color: var(--cool-gray);
@@ -75,6 +80,39 @@
 .reactIcons:hover {
     fill: var(--aureolin);
 }
+
+.userDiv {
+    display: flex;
+    justify-content: space-between;
+    gap: 11px
+}
+
+#userHello {
+    background-color: var(--cool-gray);
+    height: 35px;
+    min-width: 110px;
+    border-radius: 8px;
+    padding: 4px;
+    text-align: center;
+    position: relative;}
+
+#userHello p {
+    font-size: .8em;
+    font-weight: 400;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: .9;
+}
+
+#userHello span {
+    font-size: 1.3em;
+    font-weight: 600;
+    overflow: hidden;
+}
+
+
 
 /* mediaqueries */
 /* Extra small devices (phones, 600px and down) */

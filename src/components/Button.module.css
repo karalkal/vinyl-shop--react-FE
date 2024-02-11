@@ -1,19 +1,14 @@
 
 .btnGeneric {
   height: 35px;
-  width: 170px;
+  min-width: 110px;
   font-weight: 600;
   color: var(--white);
   background-color: var(--space-cadet);
   outline: none;
   border: 1px solid var(--white);
   border-radius: 8px;
-  margin-right: 22px;
   cursor: pointer;
-}
-
-.btnGeneric:last-child {
-  margin-right: 0;
 }
 
 .btnGeneric:hover {

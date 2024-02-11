@@ -11,8 +11,8 @@ import Albums from "./pages/Albums";
 import Error404 from './pages/Error404';
 import ErrorGeneric from './pages/ErrorGeneric';
 import AlbumDetails from './pages/AlbumDetails';
-import Header from './components/Header';
-import { LogIn } from './components/LogIn';
+import { LogIn } from './pages/LogIn';
+import { Register } from './pages/Register';
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +30,7 @@ const appRouter = createBrowserRouter(
         loader={({ params }) => fetchAlbumById(params.id)}
       />
       <Route path='LOGIN' element={<LogIn />}></Route>
+      <Route path='REGISTER' element={<Register />}></Route>
       <Route path="*" element={<Error404 />} />
 
     </Route >)

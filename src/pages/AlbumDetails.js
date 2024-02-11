@@ -38,7 +38,7 @@ const AlbumDetails = () => {
                 <h1>Summary: {albumData.summary}</h1>
                 <h1>Quantity available: {albumData.quantity}</h1>
             </div>
-            <Button style={{ gridArea: 'addBtn', width: '100%', bottom: '0', position: 'absolute' }}>add to cart</Button>
+            <Button style={{ gridArea: 'addBtn', width: '100%', bottom: '0', position: 'absolute' }}>Add to Cart</Button>
         </div>
     )
 

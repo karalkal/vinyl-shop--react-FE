@@ -9,37 +9,53 @@ const AuthContext = createContext({
 
 // We can manage the whole auth functionality here, return wrapper which is context provider and then wrap the App component in it
 export const AuthContextProvider = (props) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [userModalVisible, setUserModalVisible] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loggedInUserData, setLoggedInUserData] = useState({})
+    const [userModalVisible, setUserModalVisible] = useState(false);
 
     const showUserModalHandler = () => {
-      setUserModalVisible(true)
+        setUserModalVisible(true)
     }
     const hideUserModalHandler = () => {
-      setUserModalVisible(false)
+        setUserModalVisible(false)
     }
-  
-    // check localStorage for logged in user
+
+    // check localStorage for logged in user, if logged in - change state
+    // if not logged in/logs out and logs in again, LogIn comp will set new values in localStorage,
+    // will update state of isLoggedIn and effect will run again
     useEffect(() => {
+        console.log("EFFECT!!")
         const auth_token = localStorage.getItem('auth_token')
-        if (auth_token) {
-            setIsLoggedIn(true)
+        const email = localStorage.getItem('email')
+        const first_name = localStorage.getItem('first_name')
+        const last_name = localStorage.getItem('last_name')
+        if (auth_token && email && first_name && last_name) {
+            setIsLoggedIn(true);
+            setLoggedInUserData({ auth_token, email, first_name, last_name })
         }
-    }, [])     // no dependency, i.e. check only at first render cycle
+    }, []);     // will run only at initial render
 
     const logoutHandler = () => {
-        localStorage.removeItem("isLoggedIn");
-        setIsLoggedIn(false)
+        localStorage.clear();
+        setIsLoggedIn(false);
     }
 
-    const loginHandler = () => {
-        localStorage.setItem("isLoggedIn", "Y");
-        setIsLoggedIn(true)
+    const loginHandler = (data) => {
+        const { token, email, first_name, last_name } = data
+        localStorage.clear();
+        localStorage.setItem("auth_token", data.token);
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("first_name", data.first_name);
+        localStorage.setItem("last_name", data.last_name);
+
+        setIsLoggedIn(true);
+        setLoggedInUserData({ token, email, first_name, last_name });
     }
 
     return (
         <AuthContext.Provider value={{
             isLoggedIn: isLoggedIn,
+            loggedInUserData: loggedInUserData,
             onLogout: logoutHandler,
             onLogin: loginHandler
         }}>
