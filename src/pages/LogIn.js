@@ -1,7 +1,11 @@
 import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { logIn } from '../api/api';
 import AuthContext from '../context/auth-context';
-import { useNavigate } from 'react-router-dom';
+import Modal from '../UI/Modal';
+import { Button } from '../components/Button';
+import classes from './LogIn.module.css';
+
 
 export const LogIn = () => {
   const ctx = useContext(AuthContext);
@@ -29,22 +33,24 @@ export const LogIn = () => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        placeholder="Email"
-        onChange={handleChange}
-        name="email"
-        value={formData.email}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={handleChange}
-        name="password"
-        value={formData.password}
-      />
-      <button>Submit</button>
-    </form>
+    <Modal>
+      <form onSubmit={handleSubmit} className={classes.logInForm}>
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+          name="email"
+          value={formData.email}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+          name="password"
+          value={formData.password}
+        />
+        <Button>Submit</Button>
+      </form>
+    </Modal>
   )
 }
