@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 import siteLogo from '../assets/vinyl-record-small.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { RiAccountCircleLine } from "react-icons/ri";
@@ -12,6 +12,12 @@ import AuthContext from '../context/auth-context';
 export default function Header() {
     const ctx = useContext(AuthContext);
     const { isLoggedIn, loggedInUserData, onLogout } = ctx
+    const navigate = useNavigate()
+    const handleLogOut = () => {
+        // after re-setting state and localStorage navigate to "/"
+        onLogout();
+        navigate('/');
+    }
 
     return (
         <header id={styles.header}>
@@ -34,9 +40,9 @@ export default function Header() {
                     ?
                     <div className={styles.userDiv}>
                         <div id={styles.userHello}>
-                            <p>Welcome, <span>{loggedInUserData.first_name}</span> </p>
+                            <p>Logged as <span>{loggedInUserData.first_name}</span> </p>
                         </div>
-                        <Button onClick={onLogout}>Log Out</Button>
+                        <Button onClick={handleLogOut}>Log Out</Button>
                     </div>
                     :
                     <div className={styles.userDiv}>

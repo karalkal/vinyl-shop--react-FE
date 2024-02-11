@@ -1,10 +1,12 @@
 import { useContext, useState } from 'react'
 import { logIn } from '../api/api';
 import AuthContext from '../context/auth-context';
+import { useNavigate } from 'react-router-dom';
 
 export const LogIn = () => {
   const ctx = useContext(AuthContext);
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -21,6 +23,8 @@ export const LogIn = () => {
     const response = await logIn(userInput);
 
     ctx.onLogin(response.data);
+    // after setting state and localStorage navigate to previous page
+    navigate(-1);
   };
 
 

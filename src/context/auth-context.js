@@ -7,6 +7,7 @@ const AuthContext = createContext({
     onLogin: (email, pw) => { }
 })
 
+
 // We can manage the whole auth functionality here, return wrapper which is context provider and then wrap the App component in it
 export const AuthContextProvider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,7 +25,6 @@ export const AuthContextProvider = (props) => {
     // if not logged in/logs out and logs in again, LogIn comp will set new values in localStorage,
     // will update state of isLoggedIn and effect will run again
     useEffect(() => {
-        console.log("EFFECT!!")
         const auth_token = localStorage.getItem('auth_token')
         const email = localStorage.getItem('email')
         const first_name = localStorage.getItem('first_name')
@@ -34,6 +34,8 @@ export const AuthContextProvider = (props) => {
             setLoggedInUserData({ auth_token, email, first_name, last_name })
         }
     }, []);     // will run only at initial render
+
+
 
     const logoutHandler = () => {
         localStorage.clear();

@@ -97,8 +97,8 @@
     position: relative;}
 
 #userHello p {
-    font-size: .8em;
-    font-weight: 400;
+    font-size: .6em;
+    font-weight: 500;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -107,7 +107,7 @@
 }
 
 #userHello span {
-    font-size: 1.3em;
+    font-size: 1.7em;
     font-weight: 600;
     overflow: hidden;
 }
