@@ -1,39 +1,57 @@
-import React, { useState } from 'react';
-import { useSignIn } from "react-auth-kit";
-
-import Modal from '../UI/Modal';
+import React from 'react'
 import { logIn } from '../api/api';
 
-const SignInComponent = () => {
-  const signIn = useSignIn()
-  const [formData, setFormData] = React.useState({ email: '', password: '' })
+export const LogIn = () => {
 
-  const onSubmit = async (e) => {
+  const [formData, setFormData] = React.useState({ email: '', password: '' });
+
+
+  function handleChange(event) {
+    const { name, value } = event.target
+
+    setFormData(prevFormData => {
+      return { ...prevFormData, [name]: value }
+    })
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     try {
-      const response = await logIn(formData)
-      console.log(response.data)
-      signIn({
-        token: response.data.token,
-        expiresIn: 3600,
-        tokenType: "Bearer",
-        authState: { email: formData.email },
-      });
+      const response = await logIn(formData);
+      console.log(response.data);
+      localStorage.clear();
+      localStorage.setItem("auth_token", response.data.token)
+      localStorage.setItem("email", response.data.email)
+      localStorage.setItem("first_name", response.data.first_name)
+      localStorage.setItem("last_name", response.data.last_name)
+      setFormData({ email: '', password: '' })
+
     } catch (err) {
       console.log("Error: ", err.message);
       throw new Error()
     }
   };
 
-  return (
-    <form onSubmit={onSubmit}>
-      <input type={"email"} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
-      <input type={"password"} onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
 
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={handleChange}
+        name="email"
+        value={formData.email}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={handleChange}
+        name="password"
+        value={formData.password}
+      />
       <button>Submit</button>
     </form>
   )
 }
-
-export { SignInComponent }

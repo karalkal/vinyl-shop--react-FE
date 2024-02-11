@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 import { ErrorBoundary } from 'react-error-boundary'
 
 // import './App.css';
-import { fetchAllAlbums, fetchAlbumById } from './api/api';
+import { fetchAllAlbums, fetchAlbumById, logIn } from './api/api';
 
 import RootLayout from './layouts/RootLayout';
 import Albums from "./pages/Albums";
@@ -12,6 +12,7 @@ import Error404 from './pages/Error404';
 import ErrorGeneric from './pages/ErrorGeneric';
 import AlbumDetails from './pages/AlbumDetails';
 import Header from './components/Header';
+import { LogIn } from './components/LogIn';
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const appRouter = createBrowserRouter(
         element={<AlbumDetails />}
         loader={({ params }) => fetchAlbumById(params.id)}
       />
+      <Route path='LOGIN' element={<LogIn />}></Route>
       <Route path="*" element={<Error404 />} />
 
     </Route >)
@@ -35,6 +37,9 @@ const appRouter = createBrowserRouter(
 
 
 function App() {
+
+
+
   return (
     <>
       <ErrorBoundary

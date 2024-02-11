@@ -18,13 +18,13 @@ export default function Header() {
             <div>
                 <form className={styles.headerCentre}>
                     <input type="text" id="searchTerm" name="searchTerm" />
-                    <Button title="search our database">search</Button>
+                    <Button>search</Button>
                 </form>
             </div>
             <div className={styles.headerRight}>
                 <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                    <div> <RiShoppingCartLine /></div>
-                    <div> <RiAccountCircleLine /></div>
+                    <Link to="LOGIN" className={styles.btnRight}> <RiShoppingCartLine /></Link>
+                    <Link to="LOGIN" className={styles.btnRight}> <RiAccountCircleLine /></Link>
                 </IconContext.Provider>
 
             </div>
