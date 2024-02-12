@@ -3,16 +3,13 @@
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary'
 
-// import './App.css';
-import { fetchAllAlbums, fetchAlbumById, logIn } from './api/api';
+import { fetchAllAlbums, fetchAlbumById } from './api/api';
 
 import RootLayout from './layouts/RootLayout';
 import Albums from "./pages/Albums";
 import Error404 from './pages/Error404';
 import ErrorGeneric from './pages/ErrorGeneric';
 import AlbumDetails from './pages/AlbumDetails';
-import { LogIn } from './pages/LogIn';
-import { Register } from './pages/Register';
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(

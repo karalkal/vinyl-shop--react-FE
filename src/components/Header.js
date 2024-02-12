@@ -1,18 +1,19 @@
-import styles from './Header.module.css';
-import siteLogo from '../assets/vinyl-record-small.jpg'
-import { Link, useNavigate } from 'react-router-dom';
-import { IconContext } from "react-icons";
-import { RiShoppingCartLine } from "react-icons/ri";
-import { RiAccountCircleLine } from "react-icons/ri";
-import { Button } from './Button';
 import { useContext } from 'react';
 import AuthContext from '../context/auth-context';
-import { LogIn } from '../pages/LogIn';
+
+import { Link, useNavigate } from 'react-router-dom';
+
+import { IconContext } from "react-icons";
+import { RiShoppingCartLine } from "react-icons/ri";
+
+import styles from './Header.module.css';
+import siteLogo from '../assets/vinyl-record-small.jpg'
+import { Button } from './Button';
 
 
 export default function Header() {
     const ctx = useContext(AuthContext);
-    const { isLoggedIn, loggedInUserData, logoutHandler, loginModalVisible, setLoginModalVisible } = ctx
+    const { isLoggedIn, loggedInUserData, logoutHandler, setLoginModalVisible, setRegisterModalVisible } = ctx
     const navigate = useNavigate()
     const handleLogOut = () => {
         // after re-setting state and localStorage navigate to "/"
@@ -20,9 +21,6 @@ export default function Header() {
         navigate('/');
     }
 
-    function showLogInForm() {
-        ctx.onShowUserModal();
-    }
 
     return (
         <header id={styles.header}>
@@ -52,7 +50,7 @@ export default function Header() {
                     :
                     <div className={styles.userDiv}>
                         <Button onClick={() => setLoginModalVisible(true)}>Log In</Button>
-                        <Link to="REGISTER"><Button>Register</Button></Link>
+                        <Button onClick={() => setRegisterModalVisible(true)}>Register</Button>
                     </div>}
             </div>
 

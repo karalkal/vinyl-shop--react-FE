@@ -49,6 +49,23 @@ export async function logIn(formData) {
     }
 }
 
+export async function register(formData) {
+    try {
+        const response = await axios.post(`${ROOT_ENDPOINT}/auth/login/`, formData);
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
+        else {
+            console.log("other error")
+            throw new Error(err.message);
+        }
+    }
+}
+
 
 
 

@@ -7,9 +7,17 @@ import AuthContext from '../context/auth-context';
 
 // darken content below the modal, if clicked outside of modal, hide it
 const Backdrop = (props) => {
-  const { setLoginModalVisible } = useContext(AuthContext)
+  const { setLoginModalVisible, setRegisterModalVisible } = useContext(AuthContext);
 
-  return <div className={classes.backdrop} onClick={() => setLoginModalVisible(false)} />;
+  // TODO: not very intelligent solution
+  function clearAllModals() {
+    console.log("clicked backdrop")
+    setLoginModalVisible(false);
+    setRegisterModalVisible(false)
+  }
+
+
+  return <div className={classes.backdrop} onClick={clearAllModals} />;
 };
 
 const ModalOverlay = (props) => {

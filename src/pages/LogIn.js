@@ -3,7 +3,7 @@ import { logIn } from '../api/api';
 import AuthContext from '../context/auth-context';
 import Modal from '../UI/Modal';
 import { Button } from '../components/Button';
-import classes from './LogIn.module.css';
+import classes from './LogInRegisterModal.module.css';
 
 
 export const LogIn = () => {

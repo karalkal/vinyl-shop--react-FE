@@ -13,6 +13,7 @@ export const AuthContextProvider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loggedInUserData, setLoggedInUserData] = useState({})
     const [loginModalVisible, setLoginModalVisible] = useState(false);
+    const [registerModalVisible, setRegisterModalVisible] = useState(false);
 
     // check localStorage for logged in user, if logged in - change state
     // if not logged in/logs out and logs in again, LogIn comp will set new values in localStorage,
@@ -34,6 +35,7 @@ export const AuthContextProvider = (props) => {
         setIsLoggedIn(false);
     }
 
+    // Also when registering... log in and hide Modal(s)
     const loginHandler = (data) => {
         const { token, email, first_name, last_name } = data
         localStorage.clear();
@@ -44,9 +46,11 @@ export const AuthContextProvider = (props) => {
 
         setLoggedInUserData({ token, email, first_name, last_name });
         setIsLoggedIn(true);
-        setLoginModalVisible(false);             // hide modal once user is logged in
+        setLoginModalVisible(false);             // hide modals once user is logged in
+        setRegisterModalVisible(false);
     }
 
+  
     return (
         <AuthContext.Provider value={{
             isLoggedIn: isLoggedIn,
@@ -54,7 +58,9 @@ export const AuthContextProvider = (props) => {
             logoutHandler: logoutHandler,
             loginHandler: loginHandler,
             loginModalVisible: loginModalVisible,
-            setLoginModalVisible: setLoginModalVisible
+            setLoginModalVisible: setLoginModalVisible,
+            registerModalVisible: registerModalVisible, 
+            setRegisterModalVisible: setRegisterModalVisible
         }}>
             {props.children}
         </AuthContext.Provider>)
