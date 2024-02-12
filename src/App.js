@@ -29,8 +29,6 @@ const appRouter = createBrowserRouter(
         element={<AlbumDetails />}
         loader={({ params }) => fetchAlbumById(params.id)}
       />
-      <Route path='LOGIN' element={<LogIn />}></Route>
-      <Route path='REGISTER' element={<Register />}></Route>
       <Route path="*" element={<Error404 />} />
 
     </Route >)
@@ -38,9 +36,6 @@ const appRouter = createBrowserRouter(
 
 
 function App() {
-
-
-
   return (
     <>
       <ErrorBoundary

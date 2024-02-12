@@ -3,8 +3,8 @@ import { createContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext({
     isLoggedIn: false,
-    onLogout: () => { },            // dummy function, to help with autocompletion, and maintain data persistency
-    onLogin: (email, pw) => { }
+    logoutHandler: () => { },            // dummy function, to help with autocompletion, and maintain data persistency
+    loginHandler: (email, pw) => { }
 })
 
 
@@ -12,14 +12,7 @@ const AuthContext = createContext({
 export const AuthContextProvider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loggedInUserData, setLoggedInUserData] = useState({})
-    const [userModalVisible, setUserModalVisible] = useState(false);
-
-    const showUserModalHandler = () => {
-        setUserModalVisible(true)
-    }
-    const hideUserModalHandler = () => {
-        setUserModalVisible(false)
-    }
+    const [loginModalVisible, setLoginModalVisible] = useState(false);
 
     // check localStorage for logged in user, if logged in - change state
     // if not logged in/logs out and logs in again, LogIn comp will set new values in localStorage,
@@ -36,7 +29,6 @@ export const AuthContextProvider = (props) => {
     }, []);     // will run only at initial render
 
 
-
     const logoutHandler = () => {
         localStorage.clear();
         setIsLoggedIn(false);
@@ -50,16 +42,19 @@ export const AuthContextProvider = (props) => {
         localStorage.setItem("first_name", data.first_name);
         localStorage.setItem("last_name", data.last_name);
 
-        setIsLoggedIn(true);
         setLoggedInUserData({ token, email, first_name, last_name });
+        setIsLoggedIn(true);
+        setLoginModalVisible(false);             // hide modal once user is logged in
     }
 
     return (
         <AuthContext.Provider value={{
             isLoggedIn: isLoggedIn,
             loggedInUserData: loggedInUserData,
-            onLogout: logoutHandler,
-            onLogin: loginHandler
+            logoutHandler: logoutHandler,
+            loginHandler: loginHandler,
+            loginModalVisible: loginModalVisible,
+            setLoginModalVisible: setLoginModalVisible
         }}>
             {props.children}
         </AuthContext.Provider>)

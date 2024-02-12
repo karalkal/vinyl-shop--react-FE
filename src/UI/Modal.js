@@ -1,12 +1,15 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import ReactDOM from 'react-dom';
 
 import classes from './Modal.module.css';
+import AuthContext from '../context/auth-context';
 
 
-// darken content below the modal
+// darken content below the modal, if clicked outside of modal, hide it
 const Backdrop = (props) => {
-  return <div className={classes.backdrop} onClick={props.onHideCart} />;
+  const { setLoginModalVisible } = useContext(AuthContext)
+
+  return <div className={classes.backdrop} onClick={() => setLoginModalVisible(false)} />;
 };
 
 const ModalOverlay = (props) => {

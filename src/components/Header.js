@@ -7,16 +7,21 @@ import { RiAccountCircleLine } from "react-icons/ri";
 import { Button } from './Button';
 import { useContext } from 'react';
 import AuthContext from '../context/auth-context';
+import { LogIn } from '../pages/LogIn';
 
 
 export default function Header() {
     const ctx = useContext(AuthContext);
-    const { isLoggedIn, loggedInUserData, onLogout } = ctx
+    const { isLoggedIn, loggedInUserData, logoutHandler, loginModalVisible, setLoginModalVisible } = ctx
     const navigate = useNavigate()
     const handleLogOut = () => {
         // after re-setting state and localStorage navigate to "/"
-        onLogout();
+        logoutHandler();
         navigate('/');
+    }
+
+    function showLogInForm() {
+        ctx.onShowUserModal();
     }
 
     return (
@@ -33,7 +38,7 @@ export default function Header() {
             </div>
             <div className={styles.headerRight}>
                 <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                    <Link to="LOGIN" className={styles.btnRight}> <RiShoppingCartLine /></Link>
+                    <Link to="cart" className={styles.btnRight}> <RiShoppingCartLine /></Link>
                 </IconContext.Provider>
 
                 {isLoggedIn
@@ -46,9 +51,8 @@ export default function Header() {
                     </div>
                     :
                     <div className={styles.userDiv}>
-                        <Link to="LOGIN"><Button>Log In</Button></Link>
+                        <Button onClick={() => setLoginModalVisible(true)}>Log In</Button>
                         <Link to="REGISTER"><Button>Register</Button></Link>
-
                     </div>}
             </div>
 
