@@ -43,15 +43,31 @@
     padding: 0 26px 26px 26px;
 }
 
-.detailsContainer p,
-.detailsContainer h1 {
+.detailsContainer p {
     margin-bottom: 8px;
+    margin-top: 8px;
 }
 
-.detailsContainer .textPrimary .albumTitle {
+.detailsContainer p:first-child {
+    margin-top: 0px;
+}
+
+.detailsContainer p:last-child {
+    margin-bottom: 0px;
+}
+.detailsContainer .albumTitle {
     font-weight: 800;
     font-size: 2em;
     font-weight: 800;
+}
+
+.albumData {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 2px solid var(--space-cadet);
+    border-bottom: 2px solid var(--space-cadet);
+}
+.itemId {
 }
 
 .bandName {
@@ -59,11 +75,16 @@
     font-weight: 600;
 }
 
-.releaseYear, .labelName {
+.albumDataLabel span{
     font-size: 1.1em;
     font-weight: 600;
-
 }
+
+.albumDataLabel {
+    float: right;
+}
+
+
 
 
 /* Responsive columns - one column layout (vertical) on small screens */
