@@ -43,13 +43,26 @@
     padding: 0 26px 26px 26px;
 }
 
+.detailsContainer p,
+.detailsContainer h1 {
+    margin-bottom: 8px;
+}
+
 .detailsContainer .textPrimary .albumTitle {
     font-weight: 800;
     font-size: 2em;
+    font-weight: 800;
 }
 
-.detailsContainer .cardSecondary {
-    grid-area: secondary;
+.bandName {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.releaseYear, .labelName {
+    font-size: 1.1em;
+    font-weight: 600;
+
 }
 
 

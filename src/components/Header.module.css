@@ -65,20 +65,23 @@
     align-items: last baseline;
 }
 
-.headerRight .btnRight:hover {
+.headerRight .btnRight:hover{
+    border: 1px solid var(--aureolin);
+}
+
+.headerRight .btnRight:hover,
+.headerRight .btnRight:hover .reactIcons{
     background-color: var(--black);
     color: var(--aureolin);
-    border: 1px solid var(--aureolin);
+    /* border: 1px solid var(--aureolin); */
+    fill: var(--aureolin);
+
 }
 
 .reactIcons {
     fill: black;
     height: 31px;
     width: 31px;
-}
-
-.reactIcons:hover {
-    fill: var(--aureolin);
 }
 
 .userDiv {

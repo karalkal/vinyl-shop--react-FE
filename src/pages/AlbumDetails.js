@@ -25,18 +25,18 @@ const AlbumDetails = () => {
                 </div>
             }
             <div className={styles.textPrimary}>
-                <h1>cat.ID: {albumData.id}</h1>
+                <p>cat.ID: {albumData.id}</p>
                 <h1 className={styles.albumTitle}>{albumData.name}</h1>
-                <h1>By: {albumData.band_name}</h1>
-                <h1>Released: {albumData.release_year}</h1>
-                <h1>Label: {albumData.label_name}</h1>
-                <h1>Colour: {albumData.color}</h1>
-                <h1>Duration: {albumData.duration}</h1>
-                <h1>Format:  {albumData.format}</h1>
-                <h1>Price: {albumData.price}</h1>
-                <h1>Genres: {(albumData.genre_array).join("; ")}</h1>
-                <h1>Summary: {albumData.summary}</h1>
-                <h1>Quantity available: {albumData.quantity}</h1>
+                <p>By<span className={styles.bandName}>&nbsp;{albumData.band_name}</span></p>
+                <p>Released<span className={styles.releaseYear}>&nbsp;{albumData.release_year}</span></p>
+                <p>Label<span className={styles.labelName}> {albumData.label_name}</span></p>
+                <p>Colour: {albumData.color}</p>
+                <p>Duration: {albumData.duration}</p>
+                <p>Format:  {albumData.format}</p>
+                <p>Price: {albumData.price}</p>
+                <p>Genres: {(albumData.genre_array).join("; ")}</p>
+                <p>Summary: {albumData.summary}</p>
+                <p>Quantity available: {albumData.quantity}</p>
             </div>
             <Button style={{ gridArea: 'addBtn', width: '100%', bottom: '0', position: 'absolute' }}>Add to Cart</Button>
         </div>
