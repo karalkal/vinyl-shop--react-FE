@@ -5,8 +5,8 @@ import { useLoaderData } from "react-router-dom";
 
 const AlbumDetails = () => {
     const albumData = useLoaderData();
-    // name, band_name, label_name, cover, release_year, // => MUST HAVE
-    // colour, summary, duration, format, quantity, price  // => OPTIONAL
+    // name, band_name, label_name, cover, release_year, price      // => MUST HAVE
+    // colour, summary, duration, format, quantity                  // => OPTIONAL
     if (!albumData) {
         console.log("Nada!")
         return

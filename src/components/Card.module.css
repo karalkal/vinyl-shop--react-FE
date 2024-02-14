@@ -3,6 +3,7 @@
     text-align: left;
     flex-direction: row;
     gap: 11px;
+    padding: 4px;
     justify-content: left;
     align-items: center;
     background-color: var(--white);
@@ -11,7 +12,7 @@
 .card .square {
     aspect-ratio: 1 / 1;
     width: 44%;
-    margin: 4px;
+    padding: 4px
 }
 
 .card img {
@@ -29,10 +30,36 @@
 
 .card .cardText {
     color: black;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
     max-width: 53%;
+    width: 100%;
 }
+
+.card .cardText p>span {
+    font-weight: 700;
+}
+
+hr {
+    width: 96%;
+    margin: 4px 0;
+    border: 1px solid var(--cool-gray);
+}
+
+.card .cardText p:nth-child(1) {
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.card .cardText div:last-child {
+    align-self: flex-end;
+    text-align: right;
+}
+
+
 
 
 /* Responsive columns - one column layout (vertical) on small screens */

@@ -17,12 +17,17 @@ export default function Card({ album }) {
                 </div>
             }
             <div className={styles.cardText}>
-                <p> {album.id} </p>
-                <p> {album.name} </p>
-                <p> {album.band_name} </p>
-                <p> {album.colour} </p>
-                <p> {album.price} </p>
-                <p> {album.release_year} </p>
+                <div>
+                    <p>{album.name}</p>
+                    <hr></hr>
+                    <p>by <span>{album.band_name}</span></p>
+                    <p>year <span>{album.release_year}</span></p>
+                    <hr></hr>
+                    <p><span>{album.colour}</span> vinyl</p>
+                </div>
+                <div>
+                    <p><span>£{album.price}</span></p>
+                </div>
             </div>
         </Link>
     )
