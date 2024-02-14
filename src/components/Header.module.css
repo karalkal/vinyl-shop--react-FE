@@ -31,11 +31,11 @@
 .headerLeft>h1 {
     font-family: var(--font-display);
     color: var(--cool-gray);
-    font-size: 1.7em;
+    font-size: 1.6em;
 }
 
 .headerLeft>img {
-    height: 62px;
+    height: 53px;
 }
 
 .headerCentre {

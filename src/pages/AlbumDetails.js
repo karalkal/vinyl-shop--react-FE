@@ -28,19 +28,36 @@ const AlbumDetails = () => {
             <div className={styles.textPrimary}>
                 <p className={styles.itemId}>item ID: {albumData.id}</p>
                 <p className={styles.albumTitle}>{albumData.name}</p>
-                <p >By<span className={styles.bandName}>&nbsp;{albumData.band_name}</span></p>
-                <div className={styles.albumData}>
-                    <p className={styles.albumDataLabel}>Released:<span>&nbsp;{albumData.release_year}</span></p>
-                    <p className={styles.albumDataLabel}>Label:<span>&nbsp;{albumData.label_name}</span></p>
-                    <p className={styles.albumDataLabel}>Colour:<span>&nbsp;{albumData.color || 'N.A.'}</span></p>
-                    <p className={styles.albumDataLabel}>Duration:<span>&nbsp;{albumData.duration || 'N.A.'}</span></p>
-                    <p className={styles.albumDataLabel}>Format:<span>&nbsp;{albumData.format || 'N.A.'}</span></p>
-                    <p className={styles.albumDataLabel}>Price:<span>&nbsp;{albumData.price || 'N.A.'}</span></p>
-                </div>
-                <p>Genres: {(albumData.genre_array).join("; ") || 'N.A.'}</p>
-                <p>Quantity available: {albumData.quantity || 'N.A.'}</p>
+                <p>By<span className={styles.bandName}>&nbsp;&nbsp;{albumData.band_name}</span></p>
+                <div className={styles.albumDataDiv}>
+                    <p className={styles.albumDataDivLabel}>released:&nbsp;</p>
+                    <p className={styles.albumDataDivValue}>{albumData.release_year}</p>
+                    <p></p>
+                    <p className={styles.albumDataDivLabel}>label:&nbsp;</p>
+                    <p className={styles.albumDataDivValue}>{albumData.label_name}</p>
 
-                <p>Summary: {albumData.summary || 'N.A.'}</p>
+                    <p className={styles.albumDataDivLabel}>colour:&nbsp;</p>
+                    <p className={styles.albumDataDivValue}>{albumData.color || 'unknown/black'}</p>
+                    <p></p>
+                    <p className={styles.albumDataDivLabel}>duration:&nbsp;</p>
+                    <p className={styles.albumDataDivValue}>{albumData.duration || 'unknown'}</p>
+                    
+                    <p className={styles.albumDataDivLabel}>format:&nbsp;</p>
+                    <p className={styles.albumDataDivValue}>{albumData.format || 'unknown'}</p>
+                    <p></p>
+                    <p className={styles.albumDataDivLabel}>price:&nbsp;</p>
+                    <p className={styles.albumDataDivValue}>{`£${albumData.price}` || 'unknown'}</p>
+                </div>
+                <div className={styles.genreSummary}>
+                    <p className={styles.genreSummaryLabel}>genre:&nbsp;</p>
+                    <p>{(albumData.genre_array).join("; ") || 'unknown'}</p>
+
+                    <p className={styles.genreSummaryLabel}>summary:&nbsp;</p>
+                    <p>{albumData.summary || 'unknown'}</p>
+
+                    <p className={styles.genreSummaryLabel}>in stock:&nbsp;</p>
+                    <p> {albumData.quantity || 'unknown'}</p>
+                </div>
             </div>
             <Button style={{ gridArea: 'addBtn', width: '100%', bottom: '0', position: 'absolute' }}>Add to Cart</Button>
         </div>
