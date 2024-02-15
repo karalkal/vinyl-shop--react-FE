@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 44px;
     background-color: var(--space-cadet);
     margin-bottom: 44px;
     border-bottom: 2px solid var(--cool-gray);
@@ -20,12 +19,9 @@
 }
 
 .headerLeft,
-.headerCentre {
-    gap: 11px;
-}
-
+.headerCentre,
 .headerRight {
-    gap: 22px;
+    gap: 11px;
 }
 
 .headerLeft>h1 {
@@ -40,10 +36,10 @@
 
 .headerCentre {
     align-content: center;
+    min-width: 35%;
 }
 
-.headerCentre>input {
-    /* margin-right: 11px; */
+.headerCentre input {
     width: 100%;
     padding-left: 8px;
     background-color: var(--cool-gray);
@@ -65,12 +61,12 @@
     align-items: last baseline;
 }
 
-.headerRight .btnRight:hover{
+.headerRight .btnRight:hover {
     border: 1px solid var(--aureolin);
 }
 
 .headerRight .btnRight:hover,
-.headerRight .btnRight:hover .reactIcons{
+.headerRight .btnRight:hover .reactIcons {
     background-color: var(--black);
     color: var(--aureolin);
     /* border: 1px solid var(--aureolin); */
@@ -97,7 +93,8 @@
     border-radius: 8px;
     padding: 4px;
     text-align: center;
-    position: relative;}
+    position: relative;
+}
 
 #userHello p {
     font-size: .6em;
@@ -116,16 +113,36 @@
 }
 
 
+/**** Media Queries ****/
 
-/* mediaqueries */
-/* Extra small devices (phones, 600px and down) */
+/* Large Desktop And Above */
+@media only screen and (min-width: 1441px) {}
+
+/* Standard Desktop and Laptop */
+@media only screen and (min-width: 1101px) and (max-width: 1440px) {
+    .reactIcons {
+        height: 26px;
+        width: 26px;
+    }
+
+    .headerCentre>input {
+        height: 31px;
+    }
+}
+
+/* Tablet Landscape */
+@media only screen and (min-width: 981px) and (max-width: 1100px) {
+    .headerLeft>h1 {
+        font-size: 1.3em;
+    }
+
+    .headerLeft>img {
+        height: 40px;
+    }
+}
+
+/* Tablet Portrait and Large Smartphone */
+@media only screen and (min-width: 601px) and (max-width: 980px) {}
+
+/* Smartphone Portrait */
 @media only screen and (max-width: 600px) {}
-
-/* Small devices (portrait tablets and large phones, 601px and up) */
-@media only screen and (min-width: 601px) and (max-width: 821px) {}
-
-/* Medium devices (landscape tablets, 822px and up) */
-@media only screen and (min-width: 822px) and (max-width: 991px) {}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}

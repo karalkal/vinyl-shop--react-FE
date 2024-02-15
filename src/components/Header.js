@@ -28,17 +28,11 @@ export default function Header() {
                 <img src={siteLogo} alt="site logo" />
                 <h1>THE VINYLARIUM</h1>
             </Link>
-            <div>
-                <form className={styles.headerCentre}>
+            <form  className={styles.headerCentre}>
                     <input type="text" id="searchTerm" name="searchTerm" />
                     <Button>Search</Button>
                 </form>
-            </div>
             <div className={styles.headerRight}>
-                <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                    <Link to="cart" className={styles.btnRight}> <RiShoppingCartLine /></Link>
-                </IconContext.Provider>
-
                 {isLoggedIn
                     ?
                     <div className={styles.userDiv}>
@@ -52,6 +46,9 @@ export default function Header() {
                         <Button onClick={() => setLoginModalVisible(true)}>Log In</Button>
                         <Button onClick={() => setRegisterModalVisible(true)}>Register</Button>
                     </div>}
+                <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
+                    <Link to="cart" className={styles.btnRight}> <RiShoppingCartLine /></Link>
+                </IconContext.Provider>
             </div>
 
         </header >)
