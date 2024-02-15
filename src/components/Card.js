@@ -23,10 +23,10 @@ export default function Card({ album }) {
                     <p>by <span>{album.band_name}</span></p>
                     <p>year <span>{album.release_year}</span></p>
                     <hr></hr>
-                    <p><span>{album.colour}</span> vinyl</p>
                 </div>
-                <div>
-                    <p><span>£{album.price}</span></p>
+                <div className={styles.cardTextBottom}>
+                    <p><i>{album.colour} vinyl</i></p>
+                    <p className={styles.price}>£{album.price}</p>
                 </div>
             </div>
         </Link>

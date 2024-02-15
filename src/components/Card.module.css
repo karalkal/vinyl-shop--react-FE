@@ -34,7 +34,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 4px;
     max-width: 53%;
     width: 100%;
 }
@@ -45,19 +44,26 @@
 
 hr {
     width: 96%;
-    margin: 4px 0;
+    margin: 12px 0;
     border: 1px solid var(--cool-gray);
 }
 
-.card .cardText p:nth-child(1) {
+.card .cardText p:nth-child(1),
+.price {
     font-size: 1.3em;
     font-weight: 700;
 }
 
-.card .cardText div:last-child {
-    align-self: flex-end;
+.cardTextBottom {
     text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+.price {}
+
+
 
 
 
