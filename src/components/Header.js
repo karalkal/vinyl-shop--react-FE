@@ -37,7 +37,7 @@ export default function Header() {
                     ?
                     <div className={styles.userDiv}>
                         <div id={styles.userHello}>
-                            <p>Logged as <span>{loggedInUserData.first_name}</span> </p>
+                            <p>User: <span>{loggedInUserData.first_name}</span> </p>
                         </div>
                         <Button onClick={handleLogOut}>Log Out</Button>
                     </div>

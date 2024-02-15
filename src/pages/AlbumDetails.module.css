@@ -76,8 +76,8 @@
     padding: 11px 0;
 }
 
-
-.albumDataDivLabel {
+.albumDataDivLabel,
+.genreSummaryLabel {
     font-weight: 700;
     color: var(--space-cadet);
 }
@@ -87,20 +87,104 @@
     grid-template-columns: 13% 87%;
     grid-gap: 6px;
     padding: 11px 0;
-
 }
 
-.genreSummaryLabel{
-    font-weight: 700;
-    color: var(--space-cadet);
+/**** Media Queries ****/
+
+/* Large Desktop And Above */
+@media only screen and (min-width: 1441px) {}
+
+/* Standard Desktop and Laptop */
+@media only screen and (min-width: 1201px) and (max-width: 1440px) {
+    .detailsContainer {
+        padding: 26px;
+        border: 3px solid var(--white);
+    }
+
+    .detailsContainer .textPrimary {
+        grid-area: primary;
+        padding: 0 19px 35px 31px;
+    }
 }
 
+/* Tablet Landscape */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .detailsContainer {
+        padding: 17px;
+        border: 2px solid var(--white);
+    }
 
+    .detailsContainer .textPrimary {
+        grid-area: primary;
+        padding: 0 22px 44px 19px;
+    }
 
+    .albumDataDivLabel,
+    .genreSummaryLabel {
+        font-weight: 500;
+        font-size: 1em;
+        color: var(--black);
+    }
+}
 
+/* Tablet Portrait and Large Smartphone */
+@media only screen and (min-width: 854px) and (max-width: 991px) {
+    .detailsContainer {
+        padding: 11px;
+        border: 1px solid var(--white);
+    }
 
+    .detailsContainer .textPrimary {
+        grid-area: primary;
+        padding: 0 11px 31px 15px;
+    }
 
+    .albumDataDiv {
+        grid-template-columns: 13% 35% 4% 13% 35%;
+        grid-gap: 4px;
+        padding: 8px 0;
+    }
 
+    .genreSummary {
+        display: inline-block;
+    }
 
-/* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 600px) {}
+    .genreSummaryLabel {
+        padding-top: 4px;
+    }
+}
+
+/* Smartphone Portrait or Smaller */
+@media only screen and (max-width: 853px) {
+    .detailsContainer {
+        padding: 11px;
+        display: grid;
+        grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+        grid-template-areas:
+            'image image image primary primary primary primary primary'
+            'image image image empty empty empty addBtn addBtn';
+        text-align: left;
+        justify-content: left;
+        align-items: top;
+        border: 1px solid var(--white);
+    }
+
+    .detailsContainer .textPrimary {
+        grid-area: primary;
+        padding: 0 8px 31px 15px;
+    }
+
+    .albumDataDiv {
+        grid-template-columns: 13% 35% 4% 13% 35%;
+        grid-gap: 4px;
+        padding: 8px 0;
+    }
+
+    .genreSummary {
+        display: inline-block;
+    }
+
+    .genreSummaryLabel {
+        padding-top: 4px;
+    }
+}
