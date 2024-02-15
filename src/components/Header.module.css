@@ -121,9 +121,9 @@
 
 /* Standard Desktop and Laptop */
 @media only screen and (min-width: 1201px) and (max-width: 1440px) {
-    #header{
-        margin-bottom: 35px;
-        padding-bottom: 35px;
+    #header {
+        margin-bottom: 31px;
+        padding-bottom: 31px;
     }
 
     .reactIcons {
@@ -138,10 +138,10 @@
 }
 
 /* Tablet Landscape */
-@media only screen and (min-width: 981px) and (max-width: 1200px) {
-    #header{
-        margin-bottom: 31px;
-        padding-bottom: 31px;
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    #header {
+        margin-bottom: 26px;
+        padding-bottom: 26px;
     }
 
     .headerLeft>h1 {
@@ -164,19 +164,50 @@
 }
 
 /* Tablet Portrait and Large Smartphone */
-@media only screen and (min-width: 854px) and (max-width: 980px) {
-    #header{
-        margin-bottom: 26px;
-        padding-bottom: 26px;
+@media only screen and (min-width: 854px) and (max-width: 991px) {
+    #header {
+        margin-bottom: 22px;
+        padding-bottom: 22px;
         border-bottom: 1px solid var(--cool-gray);
     }
 
     .headerLeft>h1 {
-        font-size: 1.2em;
+        font-size: 1.5em;
     }
 
     .headerLeft>img {
         height: 35px;
+    }
+
+    .reactIcons {
+        height: 24px;
+        width: 24px;
+    }
+
+    .headerCentre>input,
+    #userHello {
+        height: 29px;
+    }
+
+    #userHello {
+        min-width: 80px;
+    }
+}
+
+/* Smartphone Portrait or Smaller */
+@media only screen and (max-width: 853px) {
+    #header {
+        margin-bottom: 17px;
+        padding-bottom: 17px;
+        border-bottom: 1px solid var(--cool-gray);
+    }
+
+    .headerLeft>h1 {
+        display: none;
+    }
+
+    .headerLeft>img {
+        height: 44px;
     }
 
     .reactIcons {
@@ -188,17 +219,8 @@
     #userHello {
         height: 29px;
     }
-}
 
-/* Smartphone Portrait or Smaller */
-@media only screen and (max-width: 853px) {
-    #header{
-        margin-bottom: 22px;
-        padding-bottom: 22px;
-        border-bottom: 1px solid var(--cool-gray);
-    }
-
-    .headerLeft h1 {
+    #userHello {
         display: none;
     }
 }

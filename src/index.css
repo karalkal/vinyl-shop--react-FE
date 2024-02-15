@@ -43,30 +43,42 @@ a {
   * {
     font-size: 14px;
   }
+
+  html{
+    margin: 31px 40px;
+  }
 }
 
 /* Tablet Landscape */
-@media only screen and (min-width: 981px) and (max-width: 1200px) {
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
   * {
     font-size: 13px;
+  }
+
+  html{
+    margin: 19px 19px;
   }
 }
 
 /* Tablet Portrait and Large Smartphone */
-@media only screen and (min-width: 854px) and (max-width: 980px) {
+@media only screen and (min-width: 854px) and (max-width: 991px) {
   * {
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  html{
+    margin: 17px 17px;
   }
 }
 
 /* Smartphone Portrait or Smaller */
 @media only screen and (max-width: 853px) {
   * {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   html{
-    margin: 22px 22px;
+    margin: 11px 11px;
   }
 
 }

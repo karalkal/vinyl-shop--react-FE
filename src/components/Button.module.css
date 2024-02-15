@@ -30,18 +30,24 @@
 }
 
 /* Tablet Landscape */
-@media only screen and (min-width: 981px) and (max-width: 1200px) {
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
   .btnGeneric {
     height: 29px;
   }
 }
 
 /* Tablet Portrait and Large Smartphone */
-@media only screen and (min-width: 854px) and (max-width: 980px) {
+@media only screen and (min-width: 854px) and (max-width: 991px) {
   .btnGeneric {
     height: 29px;
+    min-width: 80px;
   }
 }
 
 /* Smartphone Portrait or Smaller */
-@media only screen and (max-width: 853px) {}
+@media only screen and (max-width: 853px) {
+  .btnGeneric {
+    height: 29px;
+    min-width: 62px;
+  }
+}
