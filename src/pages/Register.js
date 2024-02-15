@@ -19,11 +19,14 @@ export const Register = () => {
     })
   }
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.rePass) {
       throw new Error("Password entries don't match.");
+      // also BE expects password.length 4 - 35 and names 1 - 44
+
     }
 
     const userInput = formData;  // reset form state before sending the request    
@@ -45,7 +48,7 @@ export const Register = () => {
           <input
             type="text"
             required
-            placeholder="First Name"
+            placeholder="First Name (1-44 characters)"
             onChange={handleChange}
             name="f_name"
             value={formData.f_name}
@@ -53,7 +56,7 @@ export const Register = () => {
           <input
             required
             type="text"
-            placeholder="Last Name"
+            placeholder="Last Name (1-44 characters)"
             onChange={handleChange}
             name="l_name"
             value={formData.l_name}
@@ -69,7 +72,7 @@ export const Register = () => {
           <input
             required
             type="password"
-            placeholder="Password"
+            placeholder="Password (4-35 characters)"
             onChange={handleChange}
             name="password"
             value={formData.password}

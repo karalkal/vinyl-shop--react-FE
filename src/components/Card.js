@@ -18,14 +18,16 @@ export default function Card({ album }) {
             }
             <div className={styles.cardText}>
                 <div>
-                    <p>{album.name}</p>
+                    <hr></hr>
+                    <p className={styles.albumName}>{album.name}</p>
                     <hr></hr>
                     <p>by <span>{album.band_name}</span></p>
                     <p>year <span>{album.release_year}</span></p>
                     <hr></hr>
                 </div>
                 <div className={styles.cardTextBottom}>
-                    <p><i>{album.colour} vinyl</i></p>
+                    {/* don't know why but without the class colour is misaligned */}
+                    <p className={styles.price}><i>{album.colour} vinyl</i></p>
                     <p className={styles.price}>£{album.price}</p>
                 </div>
             </div>

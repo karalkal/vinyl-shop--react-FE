@@ -38,35 +38,49 @@
     width: 100%;
 }
 
+/* fix issues with very long album and band names */
+.card .cardText p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* album names 3 row max */
+.card .albumName {
+    max-height: 80px;
+}
+
+/* band names 1 row max */
+.card .cardText p:nth-child(4) {
+    max-height: 19px;
+}
+
+/* bold text of band name and year */
 .card .cardText p>span {
     font-weight: 700;
 }
 
 hr {
     width: 96%;
-    margin: 12px 0;
+    margin: 8px 0;
     border: 1px solid var(--cool-gray);
 }
 
-.card .cardText p:nth-child(1),
-.price {
+/* align top to img */
+hr:first-child {
+    margin-top: 4px;
+}
+
+.card .albumName,
+.card .price {
     font-size: 1.3em;
     font-weight: 700;
 }
 
 .cardTextBottom {
-    text-align: right;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-
-.price {}
-
-
-
-
-
 
 /* Responsive columns - one column layout (vertical) on small screens */
 @media screen and (max-width: 600px) {}
