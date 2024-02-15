@@ -43,15 +43,15 @@ export async function logIn(formData) {
             throw new Error(`${err.code} - ${err.message}`);
         }
         else {
-            console.log("other error")
+            console.log("other error", err.response)
             throw new Error(err.message);
         }
     }
 }
 
-export async function register(formData) {
+export async function register(userInput) {
     try {
-        const response = await axios.post(`${ROOT_ENDPOINT}/auth/login/`, formData);
+        const response = await axios.post(`${ROOT_ENDPOINT}/auth/register/`, userInput);
         return response
     }
     catch (err) {
