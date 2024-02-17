@@ -2,7 +2,7 @@ import { Fragment, useContext } from 'react';
 import ReactDOM from 'react-dom';
 
 import classes from './Modal.module.css';
-import AuthContext from '../context/auth-context';
+import AuthContext from '../context/AuthContextProvider';
 
 
 // darken content below the modal, if clicked outside of modal, hide it

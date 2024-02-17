@@ -2,7 +2,7 @@ import React, { Suspense, useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Header from '../components/Header'
-import AuthContext from '../context/auth-context';
+import AuthContext from '../context/AuthContextProvider';
 import { LogIn } from '../UI/LogInModal';
 import { Register } from '../UI/RegisterModal';
 import { SuspenseSpinner } from '../UI/SuspenseSpinner';

@@ -1,0 +1,223 @@
+@import '../index.css';
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: var(--space-cadet);
+    margin-bottom: 44px;
+    border-bottom: 2px solid var(--cool-gray);
+    padding-bottom: 44px;
+    gap: 11px;
+}
+
+.headerLeft,
+.headerCentre,
+.headerRight {
+    display: flex;
+    align-items: flex-end;
+    flex: 0 0 1;
+}
+
+.headerLeft,
+.headerCentre,
+.headerRight {
+    gap: 11px;
+}
+
+.headerLeft>h1 {
+    font-family: var(--font-display);
+    color: var(--cool-gray);
+    font-size: 1.6em;
+    line-height: 1;
+}
+
+.headerLeft>img {
+    height: 53px;
+}
+
+.headerCentre {
+    align-content: center;
+    min-width: 35%;
+}
+
+.headerCentre input {
+    width: 100%;
+    padding-left: 8px;
+    background-color: var(--cool-gray);
+    border: none;
+    height: 35px;
+    border: 1px solid var(--white);
+    border-radius: 8px;
+}
+
+
+.headerRight .btnRight {
+    background-color: var(--cool-gray);
+    padding: 8px;
+    border: 1px solid var(--white);
+    border-radius: 44px;
+    /* icons to be centered vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: last baseline;
+}
+
+.headerRight .btnRight:hover {
+    border: 1px solid var(--aureolin);
+}
+
+.headerRight .btnRight:hover,
+.headerRight .btnRight:hover .reactIcons {
+    background-color: var(--black);
+    color: var(--aureolin);
+    /* border: 1px solid var(--aureolin); */
+    fill: var(--aureolin);
+
+}
+
+.reactIcons {
+    fill: black;
+    height: 31px;
+    width: 31px;
+}
+
+.userDiv {
+    display: flex;
+    justify-content: space-between;
+    gap: 11px
+}
+
+#userHello {
+    background-color: var(--cool-gray);
+    height: 35px;
+    min-width: 110px;
+    border-radius: 8px;
+    padding: 4px;
+    text-align: center;
+    position: relative;
+}
+
+#userHello p {
+    font-size: .6em;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: .9;
+}
+
+#userHello span {
+    font-size: 1.7em;
+    font-weight: 600;
+    overflow: hidden;
+}
+
+
+/**** Media Queries ****/
+
+/* Large Desktop And Above */
+@media only screen and (min-width: 1441px) {}
+
+/* Standard Desktop and Laptop */
+@media only screen and (min-width: 1201px) and (max-width: 1440px) {
+    #header {
+        margin-bottom: 31px;
+        padding-bottom: 31px;
+    }
+
+    .reactIcons {
+        height: 26px;
+        width: 26px;
+    }
+
+    .headerCentre>input,
+    #userHello {
+        height: 31px;
+    }
+}
+
+/* Tablet Landscape */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    #header {
+        margin-bottom: 26px;
+        padding-bottom: 26px;
+    }
+
+    .headerLeft>img {
+        height: 42px;
+    }
+
+    .reactIcons {
+        height: 22px;
+        width: 22px;
+    }
+
+    .headerCentre>input,
+    #userHello {
+        height: 29px;
+    }
+}
+
+/* Tablet Portrait and Large Smartphone */
+@media only screen and (min-width: 854px) and (max-width: 991px) {
+    #header {
+        margin-bottom: 22px;
+        padding-bottom: 22px;
+        border-bottom: 1px solid var(--cool-gray);
+    }
+
+    .headerLeft>h1 {
+        font-size: 1.35em;
+    }
+
+    .headerLeft>img {
+        height: 35px;
+    }
+
+    .reactIcons {
+        height: 24px;
+        width: 24px;
+    }
+
+    .headerCentre>input,
+    #userHello {
+        height: 29px;
+    }
+
+    #userHello {
+        min-width: 80px;
+    }
+}
+
+/* Smartphone Portrait or Smaller */
+@media only screen and (max-width: 853px) {
+    #header {
+        margin-bottom: 17px;
+        padding-bottom: 17px;
+        border-bottom: 1px solid var(--cool-gray);
+    }
+
+    .headerLeft>h1 {
+        display: none;
+    }
+
+    .headerLeft>img {
+        height: 44px;
+    }
+
+    .reactIcons {
+        height: 22px;
+        width: 22px;
+    }
+
+    .headerCentre>input,
+    #userHello {
+        height: 29px;
+    }
+
+    #userHello {
+        display: none;
+    }
+}

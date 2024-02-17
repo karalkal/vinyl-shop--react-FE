@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { register } from '../api/api';
-import AuthContext from '../context/auth-context';
+import AuthContext from '../context/AuthContextProvider';
 import Modal from './Modal';
 import { Button } from '../components/Button';
 import classes from './LogInRegisterModal.module.css';
