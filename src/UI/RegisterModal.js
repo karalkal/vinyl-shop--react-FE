@@ -44,7 +44,7 @@ export const Register = () => {
       <Modal>
         <form onSubmit={handleSubmit} className={classes.logInForm}>
           {/* f_name, l_name, email, password, house_number, street_name, city, country */}
-          <p>Required Data</p>
+          <p className={classes.formInputsHeading}>Required Data</p>
           <input
             type="text"
             required
@@ -85,7 +85,7 @@ export const Register = () => {
             name="rePass"
             value={formData.rePass}
           />
-          <p>Address (optional)</p>
+          <p className={classes.formInputsHeading}>Address (optional)</p>
           <input
             type="text"
             placeholder="House No."

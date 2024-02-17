@@ -1,7 +1,14 @@
-.logInForm{
+.logInForm {
     display: flex;
     flex-direction: column;
     gap: 22px;
+}
+
+.logInForm .formInputsHeading {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--space-cadet);
+    text-align: center;
 }
 
 .logInForm>input {
