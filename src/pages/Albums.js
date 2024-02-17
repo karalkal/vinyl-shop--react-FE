@@ -1,31 +1,22 @@
-import React from 'react';
 import Card from '../components/Card';
 import styles from "./Albums.module.css"
 import { useLoaderData } from "react-router-dom";
-import { SuspenseModal } from '../UI/SuspenseModal';
+import ErrorGeneric from './ErrorGeneric';
 
 
 const Albums = () => {
     const albumsArray = useLoaderData();
 
     if (!albumsArray) {
-        console.log("Nada!")
-        return
+        return <ErrorGeneric errMessage="No results found." />
     }
-
-    else{console.log("albums found");}
     return (
-        
-                    <React.Suspense fallback={<SuspenseModal />}>
+        <div className={styles.galleryContainer}>
+            {albumsArray.map(album =>
+                <Card album={album} key={album.id} />
+            )}
 
-            <div className={styles.galleryContainer}>
-                {albumsArray.map(album =>
-                    <Card album={album} key={album.id} />
-                )}
-
-            </div>
-            </React.Suspense>
-        
+        </div>
     );
 };
 

@@ -1,14 +1,22 @@
+import { Link } from "react-router-dom";
+import styles from "./Errors.module.css"
 
-export default function ErrorGeneric({ error, resetErrorBoundary }) {
+export default function ErrorGeneric(props) {
 
     console.log("ErrorGeneric")
     return (
-        <div role="alert">
-            <p>Something went wrong:</p>
-            {/* <pre>{error.message}</pre> */}
-            <button onClick={resetErrorBoundary}>Try again</button>
+        <div className={styles.errorDiv}>
+            {props.errMessage
+                ? <h1 className={styles.errorTitle}>
+                    {props.errMessage}</h1>
+                : <h1 className={styles.errorTitle}>
+                    Something went wrong.</h1>
+            }
+            <h2 className={styles.errorSubtitle}>
+                <Link to="/"
+                    className={styles.errorSubtitle}>Return to Homepage</Link></h2>
         </div>
-    )
+    );
 }
 
 /*

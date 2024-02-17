@@ -16,7 +16,7 @@ const appRouter = createBrowserRouter(
     // Everything is nested in RootLayout comp
     < Route
       element={< RootLayout />}
-      errorElement={< ErrorGeneric />}
+      
     >
       <Route index
         element={<Albums />}

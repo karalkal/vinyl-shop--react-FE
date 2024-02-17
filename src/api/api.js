@@ -1,6 +1,8 @@
 import axios, { AxiosError } from "axios";
 
-const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1"
+const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1";
+// delay api calls for testing
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 
 export async function fetchAllAlbums() {
@@ -10,6 +12,9 @@ export async function fetchAllAlbums() {
             throw new Error(`${response.statusText} - ${response.status}`);
         }   // if ok
         const json = await response.json();
+        console.log("waiting...")
+        await delay(4000);
+        console.log("stopped waiting")
         return json
     } catch (error) {
         // will catch errors from if (!response.ok) too 
