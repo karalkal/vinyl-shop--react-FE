@@ -1,23 +1,45 @@
+import React from 'react';
 import Card from '../components/Card';
 import styles from "./Albums.module.css"
-import { useLoaderData } from "react-router-dom";
 import ErrorGeneric from './ErrorGeneric';
-
+import { Await, defer, useLoaderData } from "react-router-dom";
+import { SuspenseSpinner } from '../UI/SuspenseSpinner';
 
 const Albums = () => {
-    const albumsArray = useLoaderData();
+    const data = useLoaderData();
 
-    if (!albumsArray) {
-        return <ErrorGeneric errMessage="No results found." />
-    }
-    console.log("found albums")
     return (
-        <div className={styles.galleryContainer}>
-            {albumsArray.map(album =>
-                <Card album={album} key={album.id} />
-            )}
-        </div>
+        <main>
+            <React.Suspense
+                fallback={<SuspenseSpinner />}
+            >
+                <Await
+                    resolve={data.albums}
+                    errorElement={
+                        <ErrorGeneric errMessage="No results" />
+                    }
+                >
+                    {(albumsArray) => (
+                        <div className={styles.galleryContainer}>
+                            {albumsArray.map(album =>
+                                <Card album={album} key={album.id} />
+                            )}
+                        </div>
+                    )}
+                </Await>
+            </React.Suspense>
+        </main>
     );
-};
+}
+
+
+// return (
+//     <div className={styles.galleryContainer}>
+//         {albumsArray.map(album =>
+//             <Card album={album} key={album.id} />
+//         )}
+//     </div>
+// );
+// };
 
 export default Albums;
