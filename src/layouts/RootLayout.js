@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom';
 
 import Header from '../components/Header'
 import AuthContext from '../context/auth-context';
-import { LogIn } from '../pages/LogIn';
-import { Register } from '../pages/Register';
+import { LogIn } from '../UI/LogInModal';
+import { Register } from '../UI/RegisterModal';
 
 const RootLayout = () => {
 
