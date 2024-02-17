@@ -10,13 +10,12 @@
 
 
 .suspenseDiv {
-    /* copied from modal.css */
     position: fixed;
-    top: 20vh;
-    left: 5%;
-    width: 90%;
+    top: 35vh;
+    left: 25%;
+    width: 50%;
     background-color: white;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 14px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 30;
@@ -27,13 +26,10 @@
     align-items: center;
 }
 
-.spinner {
-    color: var(--cool-gray);
-}
-
 .suspenseDiv p {
     color: var(--space-cadet);
     font-family: var(--font-display);
+    text-align: center;
 }
 
 @media (min-width: 768px) {

@@ -6,7 +6,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 
 export async function fetchAllAlbums() {
-    await sleep(2000);
+    // await sleep(20000);
     try {
         const response = await fetch(`${ROOT_ENDPOINT}/albums`);
         if (!response.ok) {

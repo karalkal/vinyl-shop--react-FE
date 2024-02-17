@@ -11,7 +11,7 @@ export const SuspenseSpinner = () => {
                 <ClipLoader color="var(--cool-gray)" />
                 <p>DB spins up, please wait.</p>
                 <ClipLoader color="var(--cool-gray)" />
-            </div >
-        // </div>
+            </div>
+        </div>
     )
 }
