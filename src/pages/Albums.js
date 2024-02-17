@@ -10,12 +10,12 @@ const Albums = () => {
     if (!albumsArray) {
         return <ErrorGeneric errMessage="No results found." />
     }
+    console.log("found albums")
     return (
         <div className={styles.galleryContainer}>
             {albumsArray.map(album =>
                 <Card album={album} key={album.id} />
             )}
-
         </div>
     );
 };

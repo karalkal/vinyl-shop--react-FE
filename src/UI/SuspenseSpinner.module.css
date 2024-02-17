@@ -1,0 +1,13 @@
+.suspenseDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.spinner {
+    color: var(--cool-gray);
+}
+.suspenseDiv p {
+    color: var(--space-cadet);
+    font-family: var(--font-display);
+}
