@@ -1,12 +1,16 @@
+import { useContext } from "react";
 import { Button } from "../components/Button";
 import styles from "./AlbumDetails.module.css"
 import { useLoaderData } from "react-router-dom";
+import CartContext from "../context/CartContextProvider";
 
 
 const AlbumDetails = () => {
     const albumData = useLoaderData();
     // name, band_name, label_name, cover, release_year, price      // => MUST HAVE
     // colour, summary, duration, format, quantity                  // => OPTIONAL
+    const ctx = useContext(CartContext)
+
     if (!albumData) {
         console.log("Nada!")
         return
@@ -41,7 +45,7 @@ const AlbumDetails = () => {
                     <p></p>
                     <p className={styles.albumDataDivLabel}>duration:&nbsp;</p>
                     <p className={styles.albumDataDivValue}>{albumData.duration || 'unknown'}</p>
-                    
+
                     <p className={styles.albumDataDivLabel}>format:&nbsp;</p>
                     <p className={styles.albumDataDivValue}>{albumData.format || 'unknown'}</p>
                     <p></p>
@@ -59,7 +63,11 @@ const AlbumDetails = () => {
                     <p> {albumData.quantity || 'unknown'}</p>
                 </div>
             </div>
-            <Button style={{ gridArea: 'addBtn', width: '100%', bottom: '0', position: 'absolute' }}>Add to Cart</Button>
+            <Button
+                style={{ gridArea: 'addBtn', width: '100%', bottom: '0', position: 'absolute' }}
+                onClick={() => ctx.addItem(albumData)}
+            >Add to Cart
+            </Button>
         </div>
     )
 

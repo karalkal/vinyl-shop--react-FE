@@ -98,7 +98,7 @@ function cartReducer(state, action) {
 export function CartContextProvider(props) {
 
     const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
-    const [cartModalVisible, setCartModalVisible] = useState(true);
+    const [cartModalVisible, setCartModalVisible] = useState(false);
 
 
     // ctx functions
