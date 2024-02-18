@@ -24,7 +24,6 @@ const Albums = () => {
                             {albumsArray.map(album => {
                                 // overwrite price of albums to be Numeric, not best place to do it
                                 album.price = Number(album.price);
-                                console.log(typeof album.price)
                                 return <Card album={album} key={album.id} />
                             }
                             )}

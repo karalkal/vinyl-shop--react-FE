@@ -33,6 +33,7 @@ export const AuthContextProvider = (props) => {
     const logoutHandler = () => {
         localStorage.clear();
         setIsLoggedIn(false);
+        setLoggedInUserData({});
     }
 
     // Also when registering... log in and hide Modal(s)

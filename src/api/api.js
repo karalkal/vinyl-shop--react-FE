@@ -21,7 +21,7 @@ export async function fetchAllAlbums() {
 };
 
 export async function fetchAlbumById(albumId) {
-    await sleep(2000);
+    // await sleep(2000);
     try {
         const response = await fetch(`${ROOT_ENDPOINT}/albums/${albumId}`)
 

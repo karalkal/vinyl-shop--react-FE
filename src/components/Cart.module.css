@@ -1,5 +1,20 @@
 @import '../index.css';
 
+.cartContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.cartContainer h1{
+    font-family: var(--font-display);
+    color: var(--space-cadet);
+    /* --cool-gray; */
+    font-weight: 700;
+    font-size: 1.34em;
+}
+
 
 
 
