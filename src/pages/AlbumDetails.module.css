@@ -15,7 +15,7 @@
 }
 
 .detailsContainer * {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .detailsContainer .square {

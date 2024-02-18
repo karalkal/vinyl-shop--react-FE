@@ -52,7 +52,7 @@ const AlbumDetails = () => {
                     <p className={styles.albumDataDivLabel}>format:&nbsp;</p>
                     <p className={styles.albumDataDivValue}>{albumData.format || 'unknown'}</p>
                     <p></p>
-                    <p className={styles.albumDataDivLabel}>in stock:&nbsp;;</p>
+                    <p className={styles.albumDataDivLabel}>in stock:&nbsp;</p>
                     <p className={styles.albumDataDivValue}>{albumData.quantity || 'unknown'}</p>
                 </div>
                 <div className={styles.genreSummary}>
