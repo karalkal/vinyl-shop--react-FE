@@ -80,13 +80,26 @@
 .genreSummaryLabel {
     font-weight: 700;
     color: var(--space-cadet);
+
 }
 
-.genreSummary {
+.genreSummary,
+.priceSection {
     display: grid;
     grid-template-columns: 13% 87%;
     grid-gap: 6px;
     padding: 11px 0;
+}
+
+.priceSection {
+    border-top: 1px solid var(--space-cadet);
+    align-items: flex-end;
+    margin-bottom: 1em;
+}
+
+.price {
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
 /**** Media Queries ****/

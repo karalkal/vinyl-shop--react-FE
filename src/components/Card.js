@@ -28,7 +28,7 @@ export default function Card({ album }) {
                 <div className={styles.cardTextBottom}>
                     {/* don't know why but without the class colour is misaligned */}
                     <p className={styles.price}><i>{album.colour} vinyl</i></p>
-                    <p className={styles.price}>£{album.price}</p>
+                    <p className={styles.price}>£{(album.price).toFixed(2)}</p>
                 </div>
             </div>
         </Link>

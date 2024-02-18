@@ -14,7 +14,7 @@ export const CartItem = (props) => {
                 <h2>{name}</h2>
                 <h2>{band_name}</h2>
                 <div className={classes.summary}>
-                    {/* <span className={classes.price}>${props.item.price.toFixed(2)}</span> */}
+                    <span className={classes.price}>£{price.toFixed(2)}</span>
                     <span className={classes.amount}>x {props.item.amount}</span>
                 </div>
             </div>

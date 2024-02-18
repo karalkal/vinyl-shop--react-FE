@@ -11,10 +11,13 @@ const AlbumDetails = () => {
     // colour, summary, duration, format, quantity                  // => OPTIONAL
     const ctx = useContext(CartContext)
 
+
     if (!albumData) {
         console.log("Nada!")
         return
     }
+
+    albumData.price = Number(albumData.price)
     return (
         <div className={styles.detailsContainer}>
             {/* all albums will have an image in DB but if not in correct format, i.e. not an URL, display message */}
@@ -49,8 +52,8 @@ const AlbumDetails = () => {
                     <p className={styles.albumDataDivLabel}>format:&nbsp;</p>
                     <p className={styles.albumDataDivValue}>{albumData.format || 'unknown'}</p>
                     <p></p>
-                    <p className={styles.albumDataDivLabel}>price:&nbsp;</p>
-                    <p className={styles.albumDataDivValue}>{`£${albumData.price}` || 'unknown'}</p>
+                    <p className={styles.albumDataDivLabel}>in stock:&nbsp;;</p>
+                    <p className={styles.albumDataDivValue}>{albumData.quantity || 'unknown'}</p>
                 </div>
                 <div className={styles.genreSummary}>
                     <p className={styles.genreSummaryLabel}>genre:&nbsp;</p>
@@ -58,9 +61,10 @@ const AlbumDetails = () => {
 
                     <p className={styles.genreSummaryLabel}>summary:&nbsp;</p>
                     <p>{albumData.summary || 'unknown'}</p>
-
-                    <p className={styles.genreSummaryLabel}>in stock:&nbsp;</p>
-                    <p> {albumData.quantity || 'unknown'}</p>
+                </div>
+                <div className={styles.priceSection}>
+                    <p className={styles.genreSummaryLabel}>price:&nbsp;</p>
+                    <p className={styles.price}>{`£${(albumData.price).toFixed(2)}` || 'unknown'}</p>
                 </div>
             </div>
             <Button
