@@ -15,11 +15,21 @@ import { SuspenseSpinner } from './UI/SuspenseSpinner';
 
 
 
-async function allAlbumsLoader({ params }) {
+async function allAlbumsLoader() {
   const allAlbumsPromise = fetchAllAlbums();
 
   return defer({
     albums: allAlbumsPromise,
+  });
+}
+
+
+async function albumDetailsLoader(params) {
+  const albumId = params.id
+  const albumDataPromise = fetchAlbumById(albumId);
+
+  return defer({
+    albumData: albumDataPromise,
   });
 }
 
@@ -37,7 +47,7 @@ const appRouter = createBrowserRouter(
       />
       <Route path="album/:id"
         element={<AlbumDetails />}
-        loader={({ params }) => fetchAlbumById(params.id)}
+        loader={({ params }) => albumDetailsLoader(params)}
       />
       <Route path="test" element={<SuspenseSpinner />} />
       <Route path="*" element={<Error404 />} />
