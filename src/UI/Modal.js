@@ -2,18 +2,21 @@ import { Fragment, useContext } from 'react';
 import ReactDOM from 'react-dom';
 
 import classes from './Modal.module.css';
-import AuthContext from '../context/AuthContextProvider';
+import AuthContext from '../context/AuthContextProvider'; 
+import CartContext from '../context/CartContextProvider';
 
 
 // darken content below the modal, if clicked outside of modal, hide it
 const Backdrop = (props) => {
   const { setLoginModalVisible, setRegisterModalVisible } = useContext(AuthContext);
+  const { setCartModalVisible} = useContext(CartContext)
 
   // TODO: not very intelligent solution
   function clearAllModals() {
     console.log("clicked backdrop")
     setLoginModalVisible(false);
     setRegisterModalVisible(false)
+    setCartModalVisible(false)
   }
 
 

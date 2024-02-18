@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContextProvider';
+import CartContext from '../context/CartContextProvider';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -12,8 +13,8 @@ import { Button } from './Button';
 
 
 export default function Header() {
-    const ctx = useContext(AuthContext);
-    const { isLoggedIn, loggedInUserData, logoutHandler, setLoginModalVisible, setRegisterModalVisible } = ctx
+    const { isLoggedIn, loggedInUserData, logoutHandler, setLoginModalVisible, setRegisterModalVisible } = useContext(AuthContext);
+    const { setCartModalVisible } = useContext(CartContext)
     const navigate = useNavigate()
     const handleLogOut = () => {
         // after re-setting state and localStorage navigate to "/"
@@ -28,10 +29,10 @@ export default function Header() {
                 <img src={siteLogo} alt="site logo" />
                 <h1>THE VINYLARIUM</h1>
             </Link>
-            <form  className={styles.headerCentre}>
-                    <input type="text" id="searchTerm" name="searchTerm" />
-                    <Button>Search</Button>
-                </form>
+            <form className={styles.headerCentre}>
+                <input type="text" id="searchTerm" name="searchTerm" />
+                <Button>Search</Button>
+            </form>
             <div className={styles.headerRight}>
                 {isLoggedIn
                     ?
@@ -47,7 +48,7 @@ export default function Header() {
                         <Button onClick={() => setRegisterModalVisible(true)}>Register</Button>
                     </div>}
                 <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                    <Link to="cart" className={styles.btnRight}> <RiShoppingCartLine /></Link>
+                    <button className={styles.btnRight} onClick={() => setCartModalVisible(true)}> <RiShoppingCartLine /></button>
                 </IconContext.Provider>
             </div>
 
