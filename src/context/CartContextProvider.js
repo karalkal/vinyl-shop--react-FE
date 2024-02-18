@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
 
 const CartContext = React.createContext({
@@ -95,9 +95,11 @@ function cartReducer(state, action) {
 }
 
 
-export default function CartContextProvider(props) {
+export function CartContextProvider(props) {
 
-    const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState)
+    const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
+    const [cartModalVisible, setCartModalVisible] = useState(true);
+
 
     // ctx functions
     function addItemToCartHandler(item) {
@@ -127,12 +129,19 @@ export default function CartContextProvider(props) {
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler,
         decrementItem: decrementItemInCartHandler,
+        cartModalVisible: cartModalVisible,
+        setCartModalVisible: setCartModalVisible
     }
 
+    // whole context but also modal props separately to make it consistent with other modals
     return (
-        <CartContext.Provider value={cartContext}>
+        <CartContext.Provider
+            value={cartContext}
+        >
             {props.children}
         </CartContext.Provider>
     )
 }
+
+export default CartContext
 

@@ -8,7 +8,7 @@ import classes from './LogInRegisterModal.module.css';
 // f_name, l_name, email, password, house_number, street_name, city, country - FIRST FOUR REQUIRED
 // DB constraints - pass between 4 and 35, names between 3 and 44
 // Sending password unencrypted is OK: The client would just sent the clear text password over a secure connection (HTTPS) to the server.
-export const Register = () => {
+export const RegisterModal = () => {
   const [formData, setFormData] = useState({ f_name: '', l_name: '', email: '', password: '', rePass: '', house_number: '', street_name: '', city: '', country: '' });
   const ctx = useContext(AuthContext);
 

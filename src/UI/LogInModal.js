@@ -6,7 +6,7 @@ import { Button } from '../components/Button';
 import classes from './LogInRegisterModal.module.css';
 
 
-export const LogIn = () => {
+export const LogInModal = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const ctx = useContext(AuthContext);
 
