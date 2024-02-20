@@ -1,15 +1,5 @@
 /* N.B. on smaller screen */
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 20;
-  background-color: rgba(0, 0, 0, 0.75);
-}
-/* N.B. on smaller screen */
-.modal {
+.cartModal {
   position: fixed;
   top: 20vh;
   left: 5%;
@@ -25,9 +15,9 @@
 
 /* N.B. on larger screen */
 @media (min-width: 768px) {
-  .modal {
-    width: 40rem;
-    left: calc(50% - 20rem);
+  .cartModal {
+    width: 80rem;
+    left: calc(20% - 10rem);
   }
 }
 

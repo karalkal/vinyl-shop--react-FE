@@ -7,7 +7,8 @@ import CartContext from '../context/CartContextProvider';
 
 
 // darken content below the modal, if clicked outside of modal, hide it
-const Backdrop = (props) => {
+// will reuse this in CartModal
+export const Backdrop = (props) => {
   const { setLoginModalVisible, setRegisterModalVisible } = useContext(AuthContext);
   const { setCartModalVisible} = useContext(CartContext)
 
@@ -26,7 +27,7 @@ const Backdrop = (props) => {
 const ModalOverlay = (props) => {
   return (
     <div className={classes.modal}>
-      <div className={classes.content}>{props.children}</div>
+      {props.children}
     </div>
   );
 };

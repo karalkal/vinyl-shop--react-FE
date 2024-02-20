@@ -4,14 +4,12 @@ import CartContext from '../context/CartContextProvider';
 import AuthContext from '../context/AuthContextProvider';
 
 import classes from './Cart.module.css';
-import Modal from '../UI/Modal';
+import CartModal from '../UI/CartModal';
 import { CartItem } from './CartItem'
 
 export const Cart = (props) => {
-
     const cartCtx = React.useContext(CartContext);
     const userCtx = React.useContext(AuthContext);
-    console.log(userCtx)
     // utilize function addItem in context by passing object with same id and amount of 1
     function incrementItemHandler(item) {
         const incrementedMeal = {
@@ -49,18 +47,16 @@ export const Cart = (props) => {
             </ul>
         );
 
-
     return (
-        <Modal onHideCart={props.onHideCart}>
+        <CartModal>
             <div className={classes.cartContainer}>
-            {userCtx.loggedInUserData.first_name
-                ? <h1>User {userCtx.loggedInUserData.first_name}'s cart</h1>
-                : <h1>Your cart</h1>
-            }
+                {userCtx.loggedInUserData.first_name
+                    ? <h1>User {userCtx.loggedInUserData.first_name}'s cart</h1>
+                    : <h1>Your cart</h1>}
 
-            {cartItems}
+                {cartItems}
             </div>
-        </Modal>
+        </CartModal>
     );
 };
 
