@@ -1,7 +1,8 @@
 /* N.B. on smaller screen */
 .cartModal {
-  position: fixed;
-  top: 10vh;
+  overflow-y: scroll;
+  position: absolute;
+  top: 4%;
   left: 5%;
   width: 90%;
   background-color: white;
