@@ -9,6 +9,7 @@ import { CartItem } from './CartItem'
 
 export const Cart = (props) => {
     const cartCtx = React.useContext(CartContext);
+    console.log(cartCtx);
     const userCtx = React.useContext(AuthContext);
     // utilize function addItem in context by passing object with same id and amount of 1
     function incrementItemHandler(item) {

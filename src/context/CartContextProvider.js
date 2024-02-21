@@ -20,7 +20,7 @@ export function CartContextProvider(props) {
         initializer);
 
     const [cartModalVisible, setCartModalVisible] = useState(false);
-    
+
     // Cart updated, persisting to local storage
     useEffect(() => {
         console.log("Cart updated, persisting to local storage", cartState);
@@ -64,12 +64,7 @@ export function CartContextProvider(props) {
     // whole context but also modal props separately to make it consistent with other modals
     return (
         <CartContext.Provider
-            value={{
-                cartContext,
-                dispatchCartAction,
-                setCartModalVisible,
-                cartModalVisible
-            }}
+            value={cartContext}
         >
             {props.children}
         </CartContext.Provider>
