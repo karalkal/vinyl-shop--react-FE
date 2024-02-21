@@ -35,9 +35,6 @@ export const Cart = (props) => {
                 {cartCtx.items.map((item) => (
                     <CartItem
                         key={item.id}
-                        // name={item.name}
-                        // price={item.price}
-                        // amount={item.amount}
                         item={item}       // pass whole obj as prop so we can increment/decrement amount easier from child
                         onIncrement={incrementItemHandler}
                         onDecrement={decrementItemHandler}

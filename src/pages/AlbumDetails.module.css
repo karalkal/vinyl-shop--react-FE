@@ -46,7 +46,9 @@
 .detailsContainer .textPrimary>p {
     margin-bottom: 8px;
     margin-top: 8px;
-}
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;}
 
 .detailsContainer p:first-child {
     margin-top: 0px;

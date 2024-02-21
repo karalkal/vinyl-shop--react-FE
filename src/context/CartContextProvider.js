@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
 
 const CartContext = React.createContext({
@@ -7,7 +7,6 @@ const CartContext = React.createContext({
     addItem: (item) => { },
     removeItem: (itemId) => { },
 });
-
 
 
 // default cart state
