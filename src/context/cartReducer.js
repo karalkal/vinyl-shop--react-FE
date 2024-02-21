@@ -1,8 +1,10 @@
 const defaultCartState = { items: [], totalAmount: 0, }
 
-export const initializer = (initialValue = defaultCartState) =>
-    JSON.parse(localStorage.getItem("localCart")) || initialValue;
-console.log(initializer);
+export function initializer (initialValue = defaultCartState) {
+    console.log(initialValue);
+    return JSON.parse(localStorage.getItem("localCart")) || initialValue;
+}
+
 // reducer - change state based on action.type
 export function cartReducer(state, action) {
     if (action.type === 'ADD_ITEM') {       // Add item to cart, or if existing calculate new amount (works for incrementing in cart too)

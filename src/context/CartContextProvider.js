@@ -11,8 +11,16 @@ const CartContext = createContext({
 
 
 export function CartContextProvider(props) {
-    const [cartState, dispatchCartAction] = useReducer(cartReducer, [], initializer);
+    const [cartState, dispatchCartAction] = useReducer(
+        cartReducer,
+        {
+            items: [],
+            totalAmount: 0
+        },
+        initializer);
+
     const [cartModalVisible, setCartModalVisible] = useState(false);
+    
     // Cart updated, persisting to local storage
     useEffect(() => {
         console.log("Cart updated, persisting to local storage", cartState);
@@ -52,12 +60,16 @@ export function CartContextProvider(props) {
         setCartModalVisible: setCartModalVisible
     }
 
-    console.log(cartContext)
 
     // whole context but also modal props separately to make it consistent with other modals
     return (
         <CartContext.Provider
-            value={cartContext}
+            value={{
+                cartContext,
+                dispatchCartAction,
+                setCartModalVisible,
+                cartModalVisible
+            }}
         >
             {props.children}
         </CartContext.Provider>
