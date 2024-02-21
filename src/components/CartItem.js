@@ -24,26 +24,26 @@ export const CartItem = (props) => {
 
             <div className={classes.details}>
                 <p className={classes['album-name']}>{name}</p>
-                <p className={classes['band-name']}>by {band_name}</p>
+                <p>by <span className={classes['band-name']}>{band_name}</span></p>
                 <p className={classes['release-year']}>{release_year}</p>
                 <p className={classes.price}>£{price.toFixed(2)}</p>
                 {/* <p className={classes.amount}>x {props.item.amount}</p> */}
             </div>
             <div className={classes.actions}>
                 <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
-                    <button className={classes.btnRight}
+                    <button
                         onClick={() => onIncrement(id)}> <FaCirclePlus />
                     </button>
                 </IconContext.Provider>
 
                 <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
-                    <button className={classes.btnRight}
+                    <button
                         onClick={() => onDecrement(id)}> <FaCircleMinus />
                     </button>
                 </IconContext.Provider>
 
                 <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
-                    <button className={classes.btnRight}
+                    <button
                         onClick={() => onRemove(id)}> <RiDeleteBin3Line />
                     </button>
                 </IconContext.Provider>

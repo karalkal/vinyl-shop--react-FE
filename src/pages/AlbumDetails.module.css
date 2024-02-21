@@ -14,10 +14,6 @@
     border: 4px solid var(--white);
 }
 
-.detailsContainer * {
-    /* overflow: hidden; */
-}
-
 .detailsContainer .square {
     grid-area: image;
     aspect-ratio: 1 / 1;
@@ -48,7 +44,8 @@
     margin-top: 8px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;}
+    text-overflow: ellipsis;
+}
 
 .detailsContainer p:first-child {
     margin-top: 0px;
