@@ -1,36 +1,43 @@
 const defaultCartState = { items: [], totalAmount: 0, }
 
-export function initializer (initialValue = defaultCartState) {
-    console.log(initialValue);
+export function initializer(initialValue = defaultCartState) {
     return JSON.parse(localStorage.getItem("localCart")) || initialValue;
 }
 
 // reducer - change state based on action.type
+
+// Add item to cart, or if existing increment; calculate new total
 export function cartReducer(state, action) {
-    if (action.type === 'ADD_ITEM') {       // Add item to cart, or if existing calculate new amount (works for incrementing in cart too)
+    if (action.type === 'ADD_ITEM') {
         let updatedItems = []
-        let itemAlreadyInCart = state.items.find(item => item.id === action.item.id)
+        let newItem = state.items.find(item => item.id === action.item.id);
+        console.log(action)
 
         // IF FOUND: increment amount of found item
         // NB - ERROR when incrementing in place itemAlreadyInCart.amount += action.item.amount, therefore create new obj instead...
-        if (itemAlreadyInCart !== undefined) {
-            let foundIdx = state.items.indexOf(itemAlreadyInCart)
+        if (newItem !== undefined) {
+            let foundIdx = state.items.indexOf(newItem)
             let updatedCartItem = {
-                ...itemAlreadyInCart,
-                amount: itemAlreadyInCart.amount + action.item.amount
+                ...newItem,
+                amount: newItem.amount + 1
             }
-
             // ... and create new array from old one with non-destructive splicing, i.e. [...slice1, replace, ...slice2]
             updatedItems = [
                 ...state.items.slice(0, foundIdx),
                 updatedCartItem,
                 ...state.items.slice(foundIdx + 1)]
         }
-        else {              // IF NOT, itemAlreadyInCart === undefined just unshift (in non-destructive manner) item to array, i.e. put first / top of list
+
+        // IF NOT, itemAlreadyInCart === undefined just unshift (in non-destructive manner) item to array, 
+        // i.e. put first / top of list
+        else {
+            newItem = action.item;
+            newItem.amount = 1;
             updatedItems = [action.item, ...state.items]
         }
 
-        const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount   // expect item to have price and amount props
+        const updatedTotalAmount = state.totalAmount + newItem.price * newItem.amount
+        // expect item to have price and amount props
         // either way return new object with items and updated total
         return {
             items: updatedItems,
@@ -85,22 +92,3 @@ export function cartReducer(state, action) {
 
     return defaultCartState;
 }
-
-export const addToCart = (item) => ({
-    type: "ADD_TO_CART",
-    item
-});
-
-export const decrementItemQuantity = (item) => ({
-    type: "DECREMENT_QUANTITY",
-    item
-});
-
-export const removeFromCart = (item) => ({
-    type: "REMOVE_FROM_CART",
-    item
-});
-
-export const clearCart = () => ({
-    type: "CLEAR_CART"
-});

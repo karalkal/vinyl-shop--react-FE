@@ -12,6 +12,8 @@ export const CartItem = (props) => {
     console.log(props);
     const { id, name, band_name, colour,
         cover, price, release_year,
+        amount,         // quantity REQUESTED
+        quantity,       // quantity AVAILABLE
         onDecrement,
         onIncrement,
         onRemove } = props.item
@@ -21,12 +23,14 @@ export const CartItem = (props) => {
         <li className={classes['cart-item']}>
             <img className={classes['cover-image']} src={cover} alt={`cover of ${name} by ${band_name}`} />
             <div className={classes.details}>
-                <p className={classes['album-name']}>{name}</p>
-                <p>by <span className={classes['band-name']}>{band_name}</span></p>
-                <p className={classes['release-year']}>{release_year}</p>
-                <p>{colour} colour</p>
-                <p className={classes.price}>£{price.toFixed(2)}</p>
-                {/* <p className={classes.amount}>x {props.item.amount}</p> */}
+                <div>
+                    <p className={classes['album-name']}>{name}</p>
+                    <p className={classes['band-name']}>by <span >{band_name}</span></p>
+                    <p className={classes['year-color']}>{release_year}&nbsp;&nbsp;&#9899;&nbsp;&nbsp;{colour} vinyl</p>
+                </div>
+                <div>
+                    <p className={classes.price}>{amount} &#215; £{price.toFixed(2)}</p>
+                </div>
             </div>
             <div className={classes.actions}>
                 <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>

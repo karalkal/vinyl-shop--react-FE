@@ -39,13 +39,28 @@
 .cart-item .album-name {
     border-top: 1px solid var(--space-cadet);
     padding-top: .5em;
-    font-size: 1.2em;
+    padding-bottom: .2em;
+    font-size: 1.4em;
     font-weight: 700;
+    color: var(--space-cadet);
 }
 
-.cart-item .band-name {}
+.cart-item .band-name {
+    padding-bottom: .4em;
+    color: var(--space-cadet);
 
-.cart-item .release-year {}
+}
+
+.cart-item .band-name>span {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.cart-item .year-color {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--space-cadet);
+}
 
 .price {
     font-weight: 700;
