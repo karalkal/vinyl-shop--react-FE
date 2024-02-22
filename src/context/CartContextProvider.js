@@ -1,23 +1,28 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 import { cartReducer, initializer } from "./cartReducer";
 
+// credit to Drew Reese:
+// https://stackoverflow.com/questions/64547044/persist-localstorage-with-usereducer
 
-const CartContext = createContext({
-    items: [],
-    totalAmount: 0,
-    addItem: (item) => { },
-    removeItem: (itemId) => { },
-});
+const CartContext = createContext({});
 
+/*
+Parameters
+    reducer: The reducer function that specifies how the state gets updated. 
+It must be pure, should take the state and action as arguments, and should return the next state. 
+State and action can be of any types.
+    initialArg: The value from which the initial state is calculated. It can be a value of any type. 
+How the initial state is calculated from it depends on the next init argument.
+    optional init: The initializer function that should return the initial state. 
+If it’s not specified, the initial state is set to initialArg. Otherwise, the initial state is set to the result of calling init(initialArg).
+*/
 
+// Meaning that IMO the below is same as 
+// const [cartState, dispatchCartAction] = useReducer(cartReducer, {}, initializer)
 export function CartContextProvider(props) {
     const [cartState, dispatchCartAction] = useReducer(
         cartReducer,
-        {
-            items: [],
-            totalAmount: 0
-        },
-        initializer);
+        initializer());
 
     const [cartModalVisible, setCartModalVisible] = useState(false);
 
@@ -61,7 +66,6 @@ export function CartContextProvider(props) {
     }
 
 
-    // whole context but also modal props separately to make it consistent with other modals
     return (
         <CartContext.Provider
             value={cartContext}
