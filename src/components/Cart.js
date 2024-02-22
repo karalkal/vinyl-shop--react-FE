@@ -9,25 +9,7 @@ import { CartItem } from './CartItem'
 
 export const Cart = (props) => {
     const cartCtx = React.useContext(CartContext);
-    console.log(cartCtx);
     const userCtx = React.useContext(AuthContext);
-    // utilize function addItem in context by passing object with same id and amount of 1
-    function incrementItemHandler(item) {
-        const incrementedMeal = {
-            ...item,
-            amount: 1
-        }
-        cartCtx.addItem(incrementedMeal)
-    }
-
-
-    function decrementItemHandler(itemID) {
-        cartCtx.decrementItem(itemID)
-    }
-
-    function removeItemHandler(itemID) {
-        cartCtx.removeItem(itemID)
-    }
 
     const cartItems = cartCtx.items.length === 0
         ? <h1> is empty</h1>
@@ -37,9 +19,6 @@ export const Cart = (props) => {
                     <CartItem
                         key={item.id}
                         item={item}       // pass whole obj as prop so we can increment/decrement amount easier from child
-                        onIncrement={incrementItemHandler}
-                        onDecrement={decrementItemHandler}
-                        onRemove={removeItemHandler}
                     />
                 ))}
             </ul>

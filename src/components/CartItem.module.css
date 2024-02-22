@@ -46,20 +46,17 @@
 }
 
 .cart-item .band-name {
-    padding-bottom: .4em;
-    color: var(--space-cadet);
-
+    padding-bottom: .5em;
 }
 
 .cart-item .band-name>span {
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: 600;
 }
 
 .cart-item .year-color {
     font-size: 1.1em;
     font-weight: 600;
-    color: var(--space-cadet);
 }
 
 .price {

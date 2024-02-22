@@ -6,17 +6,22 @@ import { RiDeleteBin3Line } from "react-icons/ri";
 
 
 import classes from './CartItem.module.css';
+import CartContext from '../context/CartContextProvider';
 
 
 export const CartItem = (props) => {
+    const { addItem, decrementItem, removeItem } = React.useContext(CartContext);
+
     console.log(props);
+    // destructure props
+    const { item } = props
+    // then destructure item
     const { id, name, band_name, colour,
         cover, price, release_year,
         amount,         // quantity REQUESTED
         quantity,       // quantity AVAILABLE
-        onDecrement,
-        onIncrement,
-        onRemove } = props.item
+    } = item
+
 
     // in this version I pass whole item obj as props so we can manipulate amount from this component
     return (
@@ -25,7 +30,7 @@ export const CartItem = (props) => {
             <div className={classes.details}>
                 <div>
                     <p className={classes['album-name']}>{name}</p>
-                    <p className={classes['band-name']}>by <span >{band_name}</span></p>
+                    <p className={classes['band-name']}>by&nbsp;&nbsp;<span>{band_name}</span></p>
                     <p className={classes['year-color']}>{release_year}&nbsp;&nbsp;&#9899;&nbsp;&nbsp;{colour} vinyl</p>
                 </div>
                 <div>
@@ -35,19 +40,19 @@ export const CartItem = (props) => {
             <div className={classes.actions}>
                 <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
                     <button
-                        onClick={() => onIncrement(id)}> <FaCirclePlus />
+                        onClick={() => addItem(item)}> <FaCirclePlus />
                     </button>
                 </IconContext.Provider>
 
                 <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
                     <button
-                        onClick={() => onDecrement(id)}> <FaCircleMinus />
+                        onClick={() => decrementItem(id)}> <FaCircleMinus />
                     </button>
                 </IconContext.Provider>
 
                 <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
                     <button
-                        onClick={() => onRemove(id)}> <RiDeleteBin3Line />
+                        onClick={() => removeItem(id)}> <RiDeleteBin3Line />
                     </button>
                 </IconContext.Provider>
 
