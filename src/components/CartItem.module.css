@@ -81,13 +81,18 @@
 
 /* A bit unusual maybe but icon is actually wrapper of the button */
 .cart-item .actions .reactIcons {
-    width: 2em;
-    height: 2em;
+    width: 1.6em;
+    height: 1.6em;
 }
 
 .cart-item .actions button {
-    height: 3em;
-    width: 3em;
+    /* center icons - this is actually the parent element*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 2.7em;
+    width: 2.7em;
     font-weight: 600;
     color: var(--white);
     background-color: var(--space-cadet);
