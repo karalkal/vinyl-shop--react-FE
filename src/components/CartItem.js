@@ -18,12 +18,12 @@ export const CartItem = (props) => {
     // then destructure item
     const { id, name, band_name, colour,
         cover, price, release_year,
-        amount,         // quantity REQUESTED
+        amountRequested,         // quantity REQUESTED
         quantity,       // quantity AVAILABLE
     } = item
 
 
-    // in this version I pass whole item obj as props so we can manipulate amount from this component
+    // in this version I pass whole item obj as props so we can manipulate amountRequested from this component
     return (
         <li className={classes['cart-item']}>
             <img className={classes['cover-image']} src={cover} alt={`cover of ${name} by ${band_name}`} />
@@ -34,7 +34,7 @@ export const CartItem = (props) => {
                     <p className={classes['year-color']}>{release_year}&nbsp;&nbsp;&#9899;&nbsp;&nbsp;{colour} vinyl</p>
                 </div>
                 <div>
-                    <p className={classes.price}>{amount} &#215; £{price.toFixed(2)}</p>
+                    <p className={classes.price}>{amountRequested} &#215; £{price.toFixed(2)}</p>
                 </div>
             </div>
             <div className={classes.actions}>

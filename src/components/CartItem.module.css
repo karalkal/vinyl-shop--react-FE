@@ -17,10 +17,6 @@
     text-overflow: ellipsis;
 }
 
-.cart-item:first-child {
-    margin-top: 2em;
-}
-
 .cart-item .cover-image {
     grid-area: image;
     aspect-ratio: 1 / 1;
@@ -68,7 +64,7 @@
 
 }
 
-.amount {
+.amountRequested {
     font-weight: bold;
     border: 1px solid #ccc;
     padding: 0.25rem 0.75rem;

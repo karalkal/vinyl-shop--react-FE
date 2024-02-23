@@ -13,13 +13,13 @@ export function cartReducer(state, action) {
         let newItem = state.items.find(item => item.id === action.item.id);
         console.log(action)
 
-        // IF FOUND: increment amount of found item
-        // NB - ERROR when incrementing in place itemAlreadyInCart.amount += action.item.amount, therefore create new obj instead...
+        // IF FOUND: increment amountRequested of found item
+        // NB - ERROR when incrementing in place itemAlreadyInCart.amountRequested += action.item.amountRequested, therefore create new obj instead...
         if (newItem !== undefined) {
             let foundIdx = state.items.indexOf(newItem)
             let updatedCartItem = {
                 ...newItem,
-                amount: newItem.amount + 1
+                amountRequested: newItem.amountRequested + 1
             }
             // ... and create new array from old one with non-destructive splicing, i.e. [...slice1, replace, ...slice2]
             updatedItems = [
@@ -32,12 +32,12 @@ export function cartReducer(state, action) {
         // i.e. put first / top of list
         else {
             newItem = action.item;
-            newItem.amount = 1;
+            newItem.amountRequested = 1;
             updatedItems = [action.item, ...state.items]
         }
 
-        const updatedTotalAmount = state.totalAmount + newItem.price * newItem.amount
-        // expect item to have price and amount props
+        const updatedTotalAmount = state.totalAmount + newItem.price
+        // expect item to have price and amountRequested props
         // either way return new object with items and updated total
         return {
             items: updatedItems,
@@ -46,11 +46,11 @@ export function cartReducer(state, action) {
     };
 
     if (action.type === 'REMOVE_ITEM_BY_ID') {          // Remove item with given altogether from cart
-        const foundItem = state.items.find(thingie => thingie.id === action.id);
+        const foundItem = state.items.find(item => item.id === action.id);
         if (!foundItem) return;      // just in case
 
         const updatedItems = state.items.filter(thingie => thingie.id !== foundItem.id);
-        const updatedTotalAmount = state.totalAmount - foundItem.price * foundItem.amount;   // expect item to have price and amount props
+        const updatedTotalAmount = state.totalAmount - foundItem.price * foundItem.amountRequested;   // expect item to have price and amountRequested props
         return {
             items: updatedItems,
             totalAmount: updatedTotalAmount,
@@ -60,20 +60,20 @@ export function cartReducer(state, action) {
     if (action.type === 'DECREMENT_ITEM_BY_ID') {
         let updatedItems = []
 
-        const foundItem = state.items.find(thingie => thingie.id === action.id);
+        const foundItem = state.items.find(item => item.id === action.id);
         if (!foundItem) return;      // just in case
 
         let foundIdx = state.items.indexOf(foundItem)
 
-        if (foundItem.amount === 1) {       // if only one remaining -1 must delete it altogether
+        if (foundItem.amountRequested === 1) {       // if only one remaining -1 must delete it altogether
             updatedItems = [
                 ...state.items.slice(0, foundIdx),
                 ...state.items.slice(foundIdx + 1)]
         }
-        else {      // if not create copy of found obj by destructuring, overwrite amount with value - 1            
+        else {      // if not create copy of found obj by destructuring, overwrite amountRequested with value - 1            
             let updatedCartItem = {
                 ...foundItem,
-                amount: foundItem.amount - 1
+                amountRequested: foundItem.amountRequested - 1
             }
             // ... and create new array from old one with non-destructive splicing, i.e. [...slice1, replace, ...slice2]
             updatedItems = [
