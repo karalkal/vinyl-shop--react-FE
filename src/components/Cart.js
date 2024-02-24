@@ -45,7 +45,7 @@ export const Cart = (props) => {
                     <div className={classes['total-orderBtn']}>
                         <div style={{ width: "30%" }}></div>
                         <h2> Total: <span>£{(cartCtx.totalAmount).toFixed(2)}</span></h2>
-                        <Link to="payment" style={{ width: "30%" }}>
+                        <Link to="payment" style={{ width: "30%" }} onClick={() => cartCtx.setCartModalVisible(false)}>
                             <Button style={{ width: "100%" }}>Proceed to Order</Button>
                         </Link>
                     </div>
