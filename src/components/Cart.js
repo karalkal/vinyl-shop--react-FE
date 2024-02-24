@@ -7,6 +7,7 @@ import classes from './Cart.module.css';
 import CartModal from '../UI/CartModal';
 import { CartItem } from './CartItem';
 import { Button } from '../components/Button'
+import { Link } from 'react-router-dom';
 
 export const Cart = (props) => {
     const cartCtx = React.useContext(CartContext);
@@ -44,7 +45,9 @@ export const Cart = (props) => {
                     <div className={classes['total-orderBtn']}>
                         <div style={{ width: "30%" }}></div>
                         <h2> Total: <span>£{(cartCtx.totalAmount).toFixed(2)}</span></h2>
-                        <Button style={{ width: "30%" }}>Proceed to Order</Button>
+                        <Link to="payment" style={{ width: "30%" }}>
+                            <Button style={{ width: "100%" }}>Proceed to Order</Button>
+                        </Link>
                     </div>
                 }
                 {cartItems}

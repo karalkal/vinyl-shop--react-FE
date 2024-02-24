@@ -1,0 +1,23 @@
+.paymentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.paymentForm .formInputsHeading {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--space-cadet);
+    text-align: center;
+}
+
+.paymentForm>input {
+    /* margin-right: 11px; */
+    width: 100%;
+    padding-left: 8px;
+    background-color: var(--cool-gray);
+    border: none;
+    height: 35px;
+    border: 1px solid var(--white);
+    border-radius: 8px;
+}

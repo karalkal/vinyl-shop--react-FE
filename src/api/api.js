@@ -70,6 +70,23 @@ export async function register(userInput) {
     }
 }
 
+export async function placeOrder(userInput) {
+    try {
+        const response = await axios.post(`${ROOT_ENDPOINT}/orders/`, userInput);
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
+        else {
+            console.log("other error")
+            throw new Error(err.message);
+        }
+    }
+}
+
 
 
 

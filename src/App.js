@@ -12,6 +12,7 @@ import AlbumDetails from './pages/AlbumDetails';
 import Error404 from './pages/Error404';
 import ErrorGeneric from './pages/ErrorGeneric';
 import { SuspenseSpinner } from './UI/SuspenseSpinner';
+import { Payment } from './pages/Payment';
 
 
 
@@ -49,6 +50,7 @@ const appRouter = createBrowserRouter(
         element={<AlbumDetails />}
         loader={({ params }) => albumDetailsLoader(params)}
       />
+      <Route path="payment" element={<Payment />} />
       <Route path="test" element={<SuspenseSpinner />} />
       <Route path="*" element={<Error404 />} />
 

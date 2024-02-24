@@ -4,7 +4,6 @@ import { IconContext } from "react-icons";
 import { FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
 import { RiDeleteBin3Line } from "react-icons/ri";
 
-
 import classes from './CartItem.module.css';
 import CartContext from '../context/CartContextProvider';
 
