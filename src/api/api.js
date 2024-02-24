@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 
-const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1";
+// const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1";
+const ROOT_ENDPOINT = "http://localhost:3000/api/v1";
 // delay api calls for testing
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -71,8 +72,10 @@ export async function register(userInput) {
 }
 
 export async function placeOrder(userInput) {
+    console.log(userInput);
     try {
         const response = await axios.post(`${ROOT_ENDPOINT}/orders/`, userInput);
+        console.log(response)
         return response
     }
     catch (err) {

@@ -5,13 +5,14 @@ import CartContext from '../context/CartContextProvider';
 
 import { Button } from '../components/Button';
 import classes from './Payment.module.css';
+import { placeOrder } from '../api/api';
 
 
 export const Payment = () => {
   const [formData, setFormData] = useState({ credit_card_no: '' });
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
-  // if not logged in display error or redirect to login/register
+  // TODO if not logged in display error or redirect to login/register
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -34,14 +35,30 @@ export const Payment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setFormData({ credit_card_no: '' });
+
+    const requestBody = {}
+
     if (!validCreditCardData()) {
       throw new Error("Payment data invalid");
     }
+    else {
+      requestBody.paymentSuccessful = true
+    }
 
-    setFormData({ credit_card_no: '' });
-    console.log(cartCtx, authCtx)
-    // const response = await register(userInput);
-    // trigger auth context handler
+    const albumsOrdered = cartCtx.items.map(item => {
+      return {
+        id: item.id, amountRequested: item.amountRequested,
+        name: item.name, price: item.price
+      }
+    })
+
+    requestBody.albumsOrdered = albumsOrdered;
+    requestBody.totalFromFE = cartCtx.totalAmount;
+    requestBody.loggedInUserData = authCtx.loggedInUserData
+    console.log(requestBody);
+    const response = await placeOrder(requestBody);
+    console.log(response.data)
   };
 
 

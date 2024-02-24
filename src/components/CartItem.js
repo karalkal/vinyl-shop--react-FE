@@ -10,8 +10,6 @@ import CartContext from '../context/CartContextProvider';
 
 export const CartItem = (props) => {
     const { addItem, decrementItem, removeItem } = React.useContext(CartContext);
-
-    console.log(props);
     // destructure props
     const { item } = props
     // then destructure item
