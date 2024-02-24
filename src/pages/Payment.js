@@ -55,9 +55,10 @@ export const Payment = () => {
 
     requestBody.albumsOrdered = albumsOrdered;
     requestBody.totalFromFE = cartCtx.totalAmount;
-    requestBody.loggedInUserData = authCtx.loggedInUserData
-    console.log(requestBody);
-    const response = await placeOrder(requestBody);
+    requestBody.userEmail = authCtx.loggedInUserData.email
+    const response = await placeOrder(
+      requestBody,
+      authCtx.loggedInUserData.auth_token);
     console.log(response.data)
   };
 

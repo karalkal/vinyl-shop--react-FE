@@ -71,10 +71,14 @@ export async function register(userInput) {
     }
 }
 
-export async function placeOrder(userInput) {
-    console.log(userInput);
+export async function placeOrder(orderBody, authToken) {
+    console.log(orderBody);
     try {
-        const response = await axios.post(`${ROOT_ENDPOINT}/orders/`, userInput);
+        const response = await axios.post(`${ROOT_ENDPOINT}/orders/`, 
+        orderBody,
+        {
+            headers: { Authorization: `Bearer ${authToken}` }
+        });
         console.log(response)
         return response
     }
