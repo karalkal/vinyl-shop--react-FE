@@ -1,23 +1,36 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import AuthContext from '../context/AuthContextProvider';
-import CartContext from '../context/CartContextProvider';
 
-import { Button } from '../components/Button';
-import classes from './Payment.module.css';
-import { fetchAllOrders, placeOrder } from '../api/api';
+import { fetchAllOrders } from '../api/api';
+import OrderDetails from './OrderDetails';
 
 
-export const Orders = async () => {
+export const Orders = () => {
     const authCtx = useContext(AuthContext);
-    console.log(authCtx);
+    const token = authCtx.loggedInUserData.auth_token
+    const [orders, setOrders] = useState({});
 
-    const response = await fetchAllOrders(authCtx.loggedInUserData.auth_token);
-    const orders = response.data;
+    useEffect(() => {
+        async function getAllOrders() {
+            const response = await fetchAllOrders(token);
+
+            setOrders(response.data);
+        }
+
+        getAllOrders();
+    }, [token]);
+
     console.log(orders)
-
     return (
-        <h1>Nishto</h1>
+        <main>
+            {orders.length > 0 && { token } && <div>
+                {orders.map(order =>
+                    <OrderDetails key={order.id} order={order} />
+                )}
+            </div>
+            }
+        </main>
     )
 
 }
