@@ -95,26 +95,47 @@ export async function placeOrder(orderBody, authToken) {
 }
 
 export async function fetchAllOrders(authToken) {
-    console.log(authToken);
-    try {
-        const response = await axios.get(`${ROOT_ENDPOINT}/orders/`,
-            {
-                headers: { Authorization: `Bearer ${authToken}` }
-            });
-        console.log(response)
-        return response
+    // await sleep(2000);
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
     }
-    catch (err) {
-        if (err && err instanceof AxiosError) {
-            console.log(err.code, err.message)
-            throw new Error(`${err.code} - ${err.message}`);
-        }
-        else {
-            console.log("other error")
-            throw new Error(err.message);
-        }
+    try {
+        const response = await fetch(`${ROOT_ENDPOINT}/orders`, { headers });
+        if (!response.ok) {
+            throw new Error(`${response.statusText} - ${response.status}`);
+        }   // if ok
+        const json = await response.json();
+        return json;
+    } catch (error) {
+        // will catch errors from if (!response.ok) too 
+        throw new Error(error.message);
+    }
+};
+
+/*
+export async function fetchAllOrders(authToken) {
+console.log(authToken);
+try {
+    const response = await axios.get(`${ROOT_ENDPOINT}/orders/`,
+        {
+            headers: { Authorization: `Bearer ${authToken}` }
+        });
+    console.log(response)
+    return response
+}
+catch (err) {
+    if (err && err instanceof AxiosError) {
+        console.log(err.code, err.message)
+        throw new Error(`${err.code} - ${err.message}`);
+    }
+    else {
+        console.log("other error")
+        throw new Error(err.message);
     }
 }
+}
+*/
 
 
 

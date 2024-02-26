@@ -1,5 +1,5 @@
 const OrderDetails = (props) => {
-    const { id, albums_ordered, count_items, fulfilled_on, placed_on, total, user_id } = props;
+    const { id, albums_ordered, count_items, fulfilled_on, placed_on, total, user_id } = props.order;
 
     return (
         <div>

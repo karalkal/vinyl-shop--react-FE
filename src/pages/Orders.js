@@ -9,28 +9,36 @@ import OrderDetails from './OrderDetails';
 export const Orders = () => {
     const authCtx = useContext(AuthContext);
     const token = authCtx.loggedInUserData.auth_token
-    const [orders, setOrders] = useState({});
+    const [orders, setOrders] = useState([]);
+    console.log("parent function ran, token is:", token)
+
 
     useEffect(() => {
         async function getAllOrders() {
+            console.log("effect ran, token is:", token)
             const response = await fetchAllOrders(token);
+            console.log(response)
 
-            setOrders(response.data);
+            setOrders(response);
+            // setOrders(response.data);       // when using axios
         }
-
-        getAllOrders();
+        if (token) {
+            getAllOrders(); // <-- only fetch orders if truthy token
+        }
     }, [token]);
 
-    console.log(orders)
     return (
         <main>
-            {orders.length > 0 && { token } && <div>
-                {orders.map(order =>
-                    <OrderDetails key={order.id} order={order} />
-                )}
-            </div>
+            {orders.map(order => {
+                print()
+                return <OrderDetails key={order.id} order={order} />
             }
+            )}
         </main>
     )
+
+    function print() {
+        console.log("Rendering...")
+    }
 
 }
