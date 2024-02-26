@@ -13,6 +13,8 @@ export const Payment = () => {
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
   // TODO if not logged in display error or redirect to login/register
+  console.log(authCtx)
+
 
   function handleChange(event) {
     const { name, value } = event.target

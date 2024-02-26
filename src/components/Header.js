@@ -36,12 +36,12 @@ export default function Header() {
             <div className={classes.headerRight}>
                 {isLoggedIn
                     ?
-                    <div className={classes.userDiv}>
-                        <div id={classes.userHello}>
-                            <p>User: <span>{loggedInUserData.first_name}</span> </p>
-                        </div>
+                    <Link to="/orders" className={classes.userDiv}>
+                        <Button>
+                            <span>{loggedInUserData.first_name}'s</span> Orders
+                        </Button>
                         <Button onClick={handleLogOut}>Log Out</Button>
-                    </div>
+                    </Link>
                     :
                     <div className={classes.userDiv}>
                         <Button onClick={() => setLoginModalVisible(true)}>Log In</Button>

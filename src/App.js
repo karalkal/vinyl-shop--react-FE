@@ -3,7 +3,7 @@
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, defer } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary'
 
-import { fetchAllAlbums, fetchAlbumById } from './api/api';
+import { fetchAllAlbums, fetchAlbumById, fetchAllOrders } from './api/api';
 
 import RootLayout from './layouts/RootLayout';
 
@@ -13,6 +13,7 @@ import Error404 from './pages/Error404';
 import ErrorGeneric from './pages/ErrorGeneric';
 import { SuspenseSpinner } from './UI/SuspenseSpinner';
 import { Payment } from './pages/Payment';
+import { Orders } from './pages/Orders';
 
 
 
@@ -34,6 +35,14 @@ async function albumDetailsLoader(params) {
   });
 }
 
+async function allOrdersLoader() {
+  const ordersDataPromise = fetchAllOrders();
+
+  return defer({
+    allOrdersData: ordersDataPromise,
+  });
+}
+
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -51,6 +60,10 @@ const appRouter = createBrowserRouter(
         loader={({ params }) => albumDetailsLoader(params)}
       />
       <Route path="payment" element={<Payment />} />
+      <Route path="orders"
+        element={<Orders />}
+      // loader={({params}) => allOrdersLoader(params)}
+      />
       <Route path="test" element={<SuspenseSpinner />} />
       <Route path="*" element={<Error404 />} />
 

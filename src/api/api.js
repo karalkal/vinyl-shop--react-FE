@@ -74,11 +74,11 @@ export async function register(userInput) {
 export async function placeOrder(orderBody, authToken) {
     console.log(orderBody);
     try {
-        const response = await axios.post(`${ROOT_ENDPOINT}/orders/`, 
-        orderBody,
-        {
-            headers: { Authorization: `Bearer ${authToken}` }
-        });
+        const response = await axios.post(`${ROOT_ENDPOINT}/orders/`,
+            orderBody,
+            {
+                headers: { Authorization: `Bearer ${authToken}` }
+            });
         console.log(response)
         return response
     }
@@ -93,6 +93,29 @@ export async function placeOrder(orderBody, authToken) {
         }
     }
 }
+
+export async function fetchAllOrders(authToken) {
+    console.log(authToken);
+    try {
+        const response = await axios.get(`${ROOT_ENDPOINT}/orders/`,
+            {
+                headers: { Authorization: `Bearer ${authToken}` }
+            });
+        console.log(response)
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
+        else {
+            console.log("other error")
+            throw new Error(err.message);
+        }
+    }
+}
+
 
 
 

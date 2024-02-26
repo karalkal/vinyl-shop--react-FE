@@ -99,6 +99,7 @@
 }
 
 #userHello p {
+    color: var(--white);
     font-size: .6em;
     font-weight: 500;
     position: absolute;
