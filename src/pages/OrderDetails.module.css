@@ -1,0 +1,21 @@
+/* --space-cadet
+--cool-gray */
+.orderCard {
+    padding: .4em;
+    color: var(--space-cadet);
+    background-color: var(--cool-gray);
+}
+
+.orderCard p {
+    padding: .4em;
+}
+
+.orderCard p span {
+    font-size: 1.3em;
+    font-weight: 700;
+    /* background-color: ; */
+    padding: .1em .6em;
+    border: 1px solid var(--white);
+    border-radius: 4px;
+
+}

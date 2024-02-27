@@ -42,7 +42,7 @@ export const Orders = () => {
                             ? <h2> No orders found</h2>
                             : <>
                                 {orders.map(order =>
-                                    <OrderDetails key={order.id} order={order} />)
+                                    <OrderDetails key={order.purchase_id} order={order} />)
                                 }
                             </>
                         }
