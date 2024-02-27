@@ -1,0 +1,12 @@
+.ordersDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.ordersDiv h2 {
+    font-family: var(--font-display);
+    font-size: 1.3em;
+    color: var(--white);
+    text-align: center;
+}

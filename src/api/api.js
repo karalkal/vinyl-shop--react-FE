@@ -95,7 +95,6 @@ export async function placeOrder(orderBody, authToken) {
 }
 
 export async function fetchAllOrders(authToken) {
-    await sleep(20000);
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`
