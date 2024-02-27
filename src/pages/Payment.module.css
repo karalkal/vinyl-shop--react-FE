@@ -5,9 +5,9 @@
 }
 
 .paymentForm .formInputsHeading {
-    font-style: italic;
-    font-weight: 700;
-    color: var(--space-cadet);
+    font-family: var(--font-display);
+    font-size: 1.3em;
+    color: var(--white);
     text-align: center;
 }
 

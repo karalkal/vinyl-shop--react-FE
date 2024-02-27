@@ -95,7 +95,7 @@ export async function placeOrder(orderBody, authToken) {
 }
 
 export async function fetchAllOrders(authToken) {
-    // await sleep(2000);
+    await sleep(20000);
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`
@@ -113,29 +113,6 @@ export async function fetchAllOrders(authToken) {
     }
 };
 
-/*
-export async function fetchAllOrders(authToken) {
-console.log(authToken);
-try {
-    const response = await axios.get(`${ROOT_ENDPOINT}/orders/`,
-        {
-            headers: { Authorization: `Bearer ${authToken}` }
-        });
-    console.log(response)
-    return response
-}
-catch (err) {
-    if (err && err instanceof AxiosError) {
-        console.log(err.code, err.message)
-        throw new Error(`${err.code} - ${err.message}`);
-    }
-    else {
-        console.log("other error")
-        throw new Error(err.message);
-    }
-}
-}
-*/
 
 
 

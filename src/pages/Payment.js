@@ -68,11 +68,11 @@ export const Payment = () => {
 
   return (
     <form onSubmit={handleSubmit} className={classes.paymentForm}>
-      <p className={classes.formInputsHeading}>Required Data</p>
+      <p className={classes.formInputsHeading}>Pay by card</p>
       <input
         type="text"
         required
-        placeholder="Credit Card Number"
+        placeholder="Payment card number"
         onChange={handleChange}
         name="credit_card_no"
         value={formData.credit_card_no}
