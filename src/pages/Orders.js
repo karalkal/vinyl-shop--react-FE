@@ -36,19 +36,24 @@ export const Orders = () => {
     and send to details page
     */
     if (orders) {
-        console.log("ALL", orders)
         const aggregatedArray = []
         for (let originalObj of orders) {
-            // if not in aggregatedArray
-            const {album_info, ...rest} = originalObj
-            let newObj = { ...rest };
-            newObj.album_array = [];
-            (newObj.album_array).push(album_info);
+            console.log("AGG", aggregatedArray)
 
-            console.log("New Obj", newObj)
-            aggregatedArray.push(newObj)
-
+            const foundItem = aggregatedArray.find(item => item.purchase_id === originalObj.purchase_id);
+            if (!foundItem) {
+                // if not in aggregatedArray ->> process data
+                const { album_info, ...rest } = originalObj
+                let newObj = { ...rest };
+                newObj.album_array = [];
+                (newObj.album_array).push(album_info);
+                aggregatedArray.push(newObj);
+            }
+            else {
+                (foundItem.album_array).push(originalObj.album_info);
+            }
         }
+        console.log(aggregatedArray);
     }
 
 
