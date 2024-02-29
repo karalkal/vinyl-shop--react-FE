@@ -25,8 +25,33 @@ export const Orders = () => {
             getAllOrders(); // <-- only fetch orders if truthy token
         }
     }, [token]);
+    /*
+    BE will return array where each album ordered will be separate object,
+    and will have duplicate purchase_id when more than one item in order
+    On FE construct objects like:
+    {purchase_id,
+        user_id, f_name, l_name, user_email,
+        placed_on, fulfilled_on, total,
+    albums_array}
+    and send to details page
+    */
+    if (orders) {
+        console.log("ALL", orders)
+        const aggregatedArray = []
+        for (let originalObj of orders) {
+            // if not in aggregatedArray
+            const {album_info, ...rest} = originalObj
+            let newObj = { ...rest };
+            newObj.album_array = [];
+            (newObj.album_array).push(album_info);
 
-    console.log(token, orders);
+            console.log("New Obj", newObj)
+            aggregatedArray.push(newObj)
+
+        }
+    }
+
+
     // no token -> need to log in
     // token but:
     //     orders is still null -> spinner

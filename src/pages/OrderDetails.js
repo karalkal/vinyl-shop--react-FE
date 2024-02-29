@@ -2,16 +2,9 @@ import classes from './OrderDetails.module.css'
 
 
 const OrderDetails = (props) => {
-    console.log(props.order)
     const { purchase_id,
-        user_id,
-        f_name,
-        l_name,
-        user_email,
-        albums_ordered,
-        placed_on,
-        fulfilled_on,
-        total } = props.order;
+        user_id, f_name, l_name, user_email,
+        placed_on, fulfilled_on, total } = props.order;
 
     // date format ISO 8601
     // toLocaleDateString(), toLocaleTimeString(), and toLocaleString() 
@@ -20,6 +13,7 @@ const OrderDetails = (props) => {
         ? `fulfilled on ${new Date(fulfilled_on).toLocaleString()}`
         : 'processing'
 
+    
 
     return (
         <div className={classes.orderCard}>
@@ -33,6 +27,9 @@ const OrderDetails = (props) => {
             </p>
             <p>Order status: <span>{dateTimeFulfilled}</span></p>
             <p>Total value: <span>{total}</span></p>
+
+            {/* {albumsDiv} */}
+
         </div>
     )
 
