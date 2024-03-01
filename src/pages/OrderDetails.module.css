@@ -6,14 +6,41 @@
     background-color: var(--cool-gray);
 }
 
+.orderCard .firstRow {
+    display: grid;
+    grid-template-columns: 8% 20% 15% 6% 20% 16% 12%;
+    grid-gap: .5%;
+    margin-bottom: 20px;
+}
+
+.orderCard .firstRow p {
+    /* border: 1px solid red; */
+}
+
+.orderCard  .secondRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.orderCard .firstRow p:nth-child(1),
+.orderCard .firstRow p:nth-child(2),
+.orderCard .firstRow p:nth-child(3) {
+    text-align: left;
+}
+
+.orderCard .firstRow p:nth-child(4),
+.orderCard .firstRow p:nth-child(5) {
+    text-align: right;
+}
+
 .orderCard p {
-    padding: .4em;
+    font-size: .9em;
 }
 
 .orderCard p span {
     font-size: 1.3em;
     font-weight: 700;
-    /* background-color: ; */
     padding: .1em .6em;
     border: 1px solid var(--white);
     border-radius: 4px;

@@ -6,6 +6,8 @@ const OrderDetails = (props) => {
         user_id, f_name, l_name, user_email,
         placed_on, fulfilled_on, total } = props.order;
 
+        console.log(props)
+
     // date format ISO 8601
     // toLocaleDateString(), toLocaleTimeString(), and toLocaleString() 
     const dateTimePlaced = new Date(placed_on);
@@ -13,20 +15,21 @@ const OrderDetails = (props) => {
         ? `fulfilled on ${new Date(fulfilled_on).toLocaleString()}`
         : 'processing'
 
-    
+
 
     return (
         <div className={classes.orderCard}>
-            <p>User&nbsp;<span>{f_name}&nbsp;{l_name}</span>
-                &nbsp;with email&nbsp;<span>{user_email}</span>
-                &nbsp;and id&nbsp;<span>{user_id}</span></p>
-            <p>
-                Placed order No:&nbsp;<span>{purchase_id}</span>
-                &nbsp;on&nbsp;<span>{dateTimePlaced.toLocaleDateString()}</span>
-                &nbsp;at&nbsp;<span>{dateTimePlaced.toLocaleTimeString()}</span>
-            </p>
-            <p>Order status: <span>{dateTimeFulfilled}</span></p>
-            <p>Total value: <span>{total}</span></p>
+            <div className={classes.firstRow}>
+                <p>Order No:&nbsp;<span>{purchase_id}</span></p>
+                <p>by&nbsp;<span>{f_name}&nbsp;{l_name}</span></p>
+                <p>email&nbsp;<span>{user_email}</span></p>
+                <p>id&nbsp;<span>{user_id}</span></p>
+                <p>on&nbsp;<span>{dateTimePlaced.toLocaleDateString()}</span> at&nbsp;<span>{dateTimePlaced.toLocaleTimeString()}</span></p>
+                <p>status: <span>{dateTimeFulfilled}</span></p>
+                <p>total value: <span>{total}</span></p>
+            </div>
+            <div className={classes.secondRow}>
+            </div>
 
             {/* {albumsDiv} */}
 
