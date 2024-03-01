@@ -8,7 +8,7 @@
 
 .orderCard .firstRow {
     display: grid;
-    grid-template-columns: 8% 20% 15% 6% 20% 16% 12%;
+    grid-template-columns: 10% 33% 6% 33% 16%;
     grid-gap: .5%;
     margin-bottom: 20px;
 }
@@ -16,12 +16,6 @@
 .orderCard .firstRow p {
     /* border: 1px solid red; */
 }
-
-.orderCard  .secondRow {
-    display: flex;
-    justify-content: space-between;
-}
-
 
 .orderCard .firstRow p:nth-child(1),
 .orderCard .firstRow p:nth-child(2),
@@ -44,5 +38,27 @@
     padding: .1em .6em;
     border: 1px solid var(--white);
     border-radius: 4px;
+}
 
+.orderCard .secondRow {}
+
+.orderCard .secondRow .orderedAlbum {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 1em;
+    padding: .6em;
+    border: 1px solid var(--white);
+    border-radius: 4px;
+    margin-bottom: .4em;
+}
+
+.orderCard .secondRow .orderedAlbum img {
+    height: 3.5em;
+}
+
+.orderCard .secondRow .orderedAlbum h1 {
+    font-weight: 600;
+    font-size: 1.3em;
+    color: var(--black);
 }

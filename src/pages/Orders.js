@@ -35,11 +35,9 @@ export const Orders = () => {
     albums_array}
     and send to details page
     */
+   let aggregatedArray = []
     if (orders) {
-        const aggregatedArray = []
         for (let originalObj of orders) {
-            console.log("AGG", aggregatedArray)
-
             const foundItem = aggregatedArray.find(item => item.purchase_id === originalObj.purchase_id);
             if (!foundItem) {
                 // if not in aggregatedArray ->> process data
@@ -69,9 +67,9 @@ export const Orders = () => {
                     ? <SuspenseSpinner />
                     : <>
                         {orders.length === 0
-                            ? <h2> No orders found</h2>
+                            ? <h2 className={classes.noOrders}> No orders found</h2>
                             : <>
-                                {orders.map(order =>
+                                {aggregatedArray.map(order =>
                                     <OrderDetails key={order.purchase_id} order={order} />)
                                 }
                             </>

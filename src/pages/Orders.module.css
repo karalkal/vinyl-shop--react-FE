@@ -4,7 +4,7 @@
     gap: 22px;
 }
 
-.ordersDiv h2 {
+.ordersDiv .noOrders {
     font-family: var(--font-display);
     font-size: 1.3em;
     color: var(--white);
