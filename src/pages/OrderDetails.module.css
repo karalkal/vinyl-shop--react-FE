@@ -7,10 +7,12 @@
 }
 
 .orderCard .firstRow {
+    padding: .4em .6em;
     display: grid;
-    grid-template-columns: 10% 33% 6% 33% 16%;
+    grid-template-columns: 10% 33% 24% 16% 15%;
     grid-gap: .5%;
     margin-bottom: 20px;
+    border-bottom:1px double var(--white);
 }
 
 .orderCard .firstRow p {
@@ -35,22 +37,23 @@
 .orderCard p span {
     font-size: 1.3em;
     font-weight: 700;
-    padding: .1em .6em;
-    border: 1px solid var(--white);
-    border-radius: 4px;
+    color: var(--space-cadet);
 }
-
-.orderCard .secondRow {}
 
 .orderCard .secondRow .orderedAlbum {
     display: flex;
-    justify-content: left;
-    align-items: center;
-    gap: 1em;
-    padding: .6em;
+    justify-content: space-between;
     border: 1px solid var(--white);
     border-radius: 4px;
     margin-bottom: .4em;
+}
+
+.orderCard .secondRow .orderedAlbum div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    padding: .6em;
 }
 
 .orderCard .secondRow .orderedAlbum img {
@@ -58,7 +61,12 @@
 }
 
 .orderCard .secondRow .orderedAlbum h1 {
+    font-weight: 700;
+    font-size: 1.4em;
+}
+
+.orderCard .secondRow .orderedAlbum h2 {
     font-weight: 600;
     font-size: 1.3em;
-    color: var(--black);
 }
+

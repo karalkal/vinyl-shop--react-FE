@@ -72,7 +72,7 @@ const AlbumDetails = () => {
                                     </div>
                                     <div className={styles.genreSummary}>
                                         <p className={styles.genreSummaryLabel}>genre:&nbsp;</p>
-                                        <p>{(albumData.genre_array).join("; ") || 'unknown'}</p>
+                                        <p>{(albumData.genre_array).join(" / ") || 'unknown'}</p>
 
                                         <p className={styles.genreSummaryLabel}>summary:&nbsp;</p>
                                         <p>{albumData.summary || 'unknown'}</p>
