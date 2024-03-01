@@ -82,6 +82,10 @@ export function cartReducer(state, action) {
                 ...state.items.slice(foundIdx + 1)]
         }
 
+        if (action.type === 'EMPTY_CART') {
+            return defaultCartState
+        };
+
         const updatedTotalAmount = state.totalAmount - foundItem.price
 
         return {

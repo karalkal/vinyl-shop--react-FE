@@ -58,9 +58,13 @@ export const Payment = () => {
     requestBody.albumsOrdered = albumsOrdered;
     requestBody.totalFromFE = cartCtx.totalAmount;
     requestBody.userEmail = authCtx.loggedInUserData.email
+
     const response = await placeOrder(
       requestBody,
-      authCtx.loggedInUserData.auth_token);
+      authCtx.loggedInUserData.auth_token); // goes here -->> headers: { Authorization: `Bearer ${authToken}`
+
+    //empty cart, will also persist in localStorage
+    cartCtx.emptyCart()
     console.log(response.data)
   };
 

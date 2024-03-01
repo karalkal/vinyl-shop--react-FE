@@ -12,13 +12,12 @@
 .cartContainer h1 {
     font-family: var(--font-display);
     color: var(--space-cadet);
-    /* --cool-gray; */
     font-weight: 700;
     font-size: 1.34em;
 }
 
 /* first is empty div, so that total is centered, order btn on right */
-.cartContainer .total-orderBtn {
+.cartContainer .cart-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,12 +30,12 @@
     margin-bottom: .8em;
 }
 
-.cartContainer .total-orderBtn h2 {
+.cartContainer .cart-header h2 {
     width: 30%;
     font-weight: 600;
 }
 
-.cartContainer .total-orderBtn h2 span {
+.cartContainer .cart-header h2 span {
     font-weight: 700;
     font-size: 1.5em;
     color: var(--space-cadet);

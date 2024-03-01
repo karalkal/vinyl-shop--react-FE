@@ -1,9 +1,7 @@
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
 import classes from './CartModal.module.css';
-import AuthContext from '../context/AuthContextProvider'; 
-import CartContext from '../context/CartContextProvider';
 
 import { Backdrop } from './Modal';
 

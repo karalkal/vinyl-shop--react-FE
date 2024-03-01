@@ -28,7 +28,7 @@ export function CartContextProvider(props) {
 
     // Cart updated, persisting to local storage
     useEffect(() => {
-        // console.log("Cart updated, persisting to local storage", cartState);
+        console.log("Cart updated, persisting to local storage", cartState);
         localStorage.setItem("localCart", JSON.stringify(cartState));
     }, [cartState]);
 
@@ -55,12 +55,19 @@ export function CartContextProvider(props) {
         })
     };
 
+    function emptyCartHandler() {
+        dispatchCartAction({
+            type: 'EMPTY_CART',
+        })
+    };
+
     const cartContext = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler,
         decrementItem: decrementItemInCartHandler,
+        emptyCart: emptyCartHandler,
         cartModalVisible: cartModalVisible,
         setCartModalVisible: setCartModalVisible
     }

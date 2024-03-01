@@ -42,10 +42,12 @@ export const Cart = (props) => {
                     ? <h1>User {userCtx.loggedInUserData.first_name}'s cart</h1>
                     : <h1>Your cart</h1>}
                 {cartCtx.items.length > 0 &&
-                    <div className={classes['total-orderBtn']}>
-                        <div style={{ width: "30%" }}></div>
-                        <h2> Total: <span>£{(cartCtx.totalAmount).toFixed(2)}</span></h2>
-                        <Link to="payment" style={{ width: "30%" }} onClick={() => cartCtx.setCartModalVisible(false)}>
+                    <div className={classes['cart-header']}>
+                        <div style={{ width: "25%" }} onClick={() => cartCtx.emptyCart()}>
+                            <Button style={{ width: "100%" }}>Empty Cart</Button>
+                        </div>
+                        <h2 style={{ width: "40%" }}> Total: <span>£{(cartCtx.totalAmount).toFixed(2)}</span></h2>
+                        <Link to="payment" style={{ width: "25%" }} onClick={() => cartCtx.setCartModalVisible(false)}>
                             <Button style={{ width: "100%" }}>Proceed to Order</Button>
                         </Link>
                     </div>
