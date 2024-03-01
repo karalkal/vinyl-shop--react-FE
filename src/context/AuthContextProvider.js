@@ -45,13 +45,13 @@ export const AuthContextProvider = (props) => {
         localStorage.setItem("first_name", data.first_name);
         localStorage.setItem("last_name", data.last_name);
 
-        setLoggedInUserData({ token, email, first_name, last_name });
+        setLoggedInUserData({ auth_token: token, email, first_name, last_name });
         setIsLoggedIn(true);
         setLoginModalVisible(false);             // hide modals once user is logged in
         setRegisterModalVisible(false);
     }
 
-  
+
     return (
         <AuthContext.Provider value={{
             isLoggedIn: isLoggedIn,
@@ -60,7 +60,7 @@ export const AuthContextProvider = (props) => {
             loginHandler: loginHandler,
             loginModalVisible: loginModalVisible,
             setLoginModalVisible: setLoginModalVisible,
-            registerModalVisible: registerModalVisible, 
+            registerModalVisible: registerModalVisible,
             setRegisterModalVisible: setRegisterModalVisible
         }}>
             {props.children}

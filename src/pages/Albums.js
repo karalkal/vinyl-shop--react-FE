@@ -1,16 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Card from '../components/Card';
 import styles from "./Albums.module.css"
 import ErrorGeneric from './ErrorGeneric';
 import { Await, useLoaderData } from "react-router-dom";
 import { SuspenseSpinner } from '../UI/SuspenseSpinner';
-import AuthContext from '../context/AuthContextProvider';
 
 const Albums = () => {
     const data = useLoaderData();
-
-    const authCtx = useContext(AuthContext);
-    console.log(authCtx)
 
     return (
         <main>

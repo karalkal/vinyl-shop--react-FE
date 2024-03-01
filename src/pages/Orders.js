@@ -1,24 +1,24 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react';
 
 import AuthContext from '../context/AuthContextProvider';
 
 import { fetchAllOrders } from '../api/api';
 
-import classes from './Orders.module.css'
+import classes from './Orders.module.css';
 import OrderDetails from './OrderDetails';
 import { SuspenseSpinner } from '../UI/SuspenseSpinner';
+import ErrorGeneric from './ErrorGeneric';
 
 
 export const Orders = () => {
-    const authCtx = useContext(AuthContext);
-    const token = authCtx.loggedInUserData.auth_token
-    const [orders, setOrders] = useState(null);
+    const { loggedInUserData } = useContext(AuthContext);
+    const token = loggedInUserData.auth_token;
+    const [orders, setOrders] = useState([]);
 
 
     useEffect(() => {
         async function getAllOrders() {
             const response = await fetchAllOrders(token);
-
             setOrders(response);
         }
         if (token) {
@@ -28,14 +28,15 @@ export const Orders = () => {
     /*
     BE will return array where each album ordered will be separate object,
     and will have duplicate purchase_id when more than one item in order
-    On FE construct objects like:
+    On FE construct aggregated objects like:
     {purchase_id,
         user_id, f_name, l_name, user_email,
         placed_on, fulfilled_on, total,
     albums_array}
     and send to details page
     */
-   let aggregatedArray = []
+
+    let aggregatedArray = []
     if (orders) {
         for (let originalObj of orders) {
             const foundItem = aggregatedArray.find(item => item.purchase_id === originalObj.purchase_id);
@@ -51,9 +52,7 @@ export const Orders = () => {
                 (foundItem.album_array).push(originalObj.album_info);
             }
         }
-        console.log(aggregatedArray);
     }
-
 
     // no token -> need to log in
     // token but:
@@ -77,9 +76,8 @@ export const Orders = () => {
                     </>
                 }
             </div>
-            : <div className={classes.ordersDiv}>
-                <h2> You need to log in first</h2>
-            </div>
+            :
+            <ErrorGeneric errMessage="You need to log in first" />
         }
     </main>
     )
