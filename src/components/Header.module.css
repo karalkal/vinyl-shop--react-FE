@@ -86,7 +86,7 @@
 
 .headerRight .btnRight {
     background-color: var(--cool-gray);
-    padding: .4em ;
+    padding: .4em;
     border: 1px solid var(--white);
     border-radius: 44px;
     /* icons to be centered vertically and horizontally */
@@ -107,7 +107,15 @@
     cursor: pointer;
 }
 
+
+.headerRight .btnRight:hover .lblCartCount {
+    background-color: var(--space-cadet);
+    color: var(--aureolin);
+    cursor: pointer;
+}
+
 .reactIcons {
+    border-radius: 40%;
     fill: black;
     height: 2.4em;
     width: 2.1em;

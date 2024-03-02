@@ -41,7 +41,8 @@ export default function Header() {
                     ?
                     <Link to="/orders" className={classes.userDiv}>
                         <Button>
-                            <span>{loggedInUserData.first_name}'s</span> Orders
+                            {/* <span>{loggedInUserData.first_name}'s</span> Orders */}
+                            Orders
                         </Button>
                         <Button onClick={handleLogOut}>Log Out</Button>
                     </Link>
