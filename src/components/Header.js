@@ -14,13 +14,16 @@ import { Button } from './Button';
 
 export default function Header() {
     const { isLoggedIn, loggedInUserData, logoutHandler, setLoginModalVisible, setRegisterModalVisible } = useContext(AuthContext);
-    const { setCartModalVisible } = useContext(CartContext)
+    const { setCartModalVisible, items } = useContext(CartContext)
     const navigate = useNavigate()
     const handleLogOut = () => {
         // after re-setting state and localStorage navigate to "/"
         logoutHandler();
         navigate('/');
     }
+    // each item from items has amountRequested, we need count of items x amountRequested
+    const itemsCount = items.map(item => item.amountRequested)
+        .reduce((partialSum, a) => partialSum + a, 0);
 
 
     return (
@@ -51,7 +54,7 @@ export default function Header() {
                     <button className={classes.btnRight} onClick={() => setCartModalVisible(true)}>
                         <RiShoppingCartLine />
 
-                        <span className={classes.lblCartCount}> 5 </span>
+                        <span className={classes.lblCartCount}>{itemsCount}</span>
 
                     </button>
                 </IconContext.Provider>
