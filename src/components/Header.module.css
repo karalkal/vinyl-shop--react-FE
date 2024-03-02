@@ -12,16 +12,10 @@
 }
 
 .headerLeft,
-.headerCentre,
 .headerRight {
     display: flex;
     align-items: flex-end;
     flex: 0 0 1;
-}
-
-.headerLeft,
-.headerCentre,
-.headerRight {
     gap: 11px;
 }
 
@@ -34,21 +28,6 @@
 
 .headerLeft>img {
     height: 53px;
-}
-
-.headerCentre {
-    align-content: center;
-    min-width: 35%;
-}
-
-.headerCentre input {
-    width: 100%;
-    padding-left: 8px;
-    background-color: var(--cool-gray);
-    border: none;
-    height: 35px;
-    border: 1px solid var(--white);
-    border-radius: 8px;
 }
 
 .userDiv {
@@ -152,7 +131,6 @@
         width: 26px;
     }
 
-    .headerCentre>input,
     #userHello {
         height: 31px;
     }
@@ -174,7 +152,6 @@
         width: 22px;
     }
 
-    .headerCentre>input,
     #userHello {
         height: 29px;
     }
@@ -201,7 +178,6 @@
         width: 24px;
     }
 
-    .headerCentre>input,
     #userHello {
         height: 29px;
     }
@@ -232,7 +208,6 @@
         width: 22px;
     }
 
-    .headerCentre>input,
     #userHello {
         height: 29px;
     }

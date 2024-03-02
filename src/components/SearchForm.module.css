@@ -1,0 +1,40 @@
+.headerCentre {
+    align-content: center;
+    min-width: 35%;
+    display: flex;
+    align-items: flex-end;
+    flex: 0 0 1;
+    gap: 11px;
+}
+
+
+.headerCentre input {
+    width: 100%;
+    padding-left: 8px;
+    background-color: var(--cool-gray);
+    border: none;
+    height: 35px;
+    border: 1px solid var(--white);
+    border-radius: 8px;
+}
+
+/**** Media Queries ****/
+
+/* Large Desktop And Above */
+@media only screen and (min-width: 1441px) {}
+
+/* Standard Desktop and Laptop */
+@media only screen and (min-width: 1201px) and (max-width: 1440px) {
+    .headerCentre>input {
+        height: 31px;
+    }
+}
+
+/* Tablet Landscape */
+/* Tablet Portrait and Large Smartphone */
+/* Smartphone Portrait or Smaller */
+@media only screen and (max-width: 1200px) {
+    .headerCentre>input {
+        height: 29px;
+    }
+}

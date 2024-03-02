@@ -8,7 +8,8 @@ import { IconContext } from "react-icons";
 import { RiShoppingCartLine } from "react-icons/ri";
 
 import classes from './Header.module.css';
-import siteLogo from '../assets/vinyl-record-small.jpg'
+import siteLogo from '../assets/vinyl-record-small.jpg';
+import { SearchForm } from './SearchForm';
 import { Button } from './Button';
 
 
@@ -25,6 +26,8 @@ export default function Header() {
     const itemsCount = items.map(item => item.amountRequested)
         .reduce((partialSum, a) => partialSum + a, 0);
 
+    
+
 
     return (
         <header id={classes.header}>
@@ -32,10 +35,7 @@ export default function Header() {
                 <img src={siteLogo} alt="site logo" />
                 <h1>THE VINYLARIUM</h1>
             </Link>
-            <form className={classes.headerCentre}>
-                <input type="text" id="searchTerm" name="searchTerm" />
-                <Button>Search</Button>
-            </form>
+            <SearchForm className={classes.headerCentre}/>
             <div className={classes.headerRight}>
                 {isLoggedIn
                     ?
