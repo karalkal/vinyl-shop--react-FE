@@ -51,37 +51,6 @@
     border-radius: 8px;
 }
 
-
-.headerRight .btnRight {
-    background-color: var(--cool-gray);
-    padding: 8px;
-    border: 1px solid var(--white);
-    border-radius: 44px;
-    /* icons to be centered vertically and horizontally */
-    display: flex;
-    justify-content: center;
-    align-items: last baseline;
-}
-
-.headerRight .btnRight:hover {
-    border: 1px solid var(--aureolin);
-}
-
-.headerRight .btnRight:hover,
-.headerRight .btnRight:hover .reactIcons {
-    background-color: var(--black);
-    color: var(--aureolin);
-    /* border: 1px solid var(--aureolin); */
-    fill: var(--aureolin);
-    cursor: pointer;
-}
-
-.reactIcons {
-    fill: black;
-    height: 31px;
-    width: 31px;
-}
-
 .userDiv {
     display: flex;
     justify-content: space-between;
@@ -113,6 +82,48 @@
     font-size: 1.7em;
     font-weight: 600;
     overflow: hidden;
+}
+
+.headerRight .btnRight {
+    background-color: var(--cool-gray);
+    padding: .4em ;
+    border: 1px solid var(--white);
+    border-radius: 44px;
+    /* icons to be centered vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    /* align-items: top; */
+}
+
+.headerRight .btnRight:hover {
+    border: 1px solid var(--aureolin);
+}
+
+.headerRight .btnRight:hover,
+.headerRight .btnRight:hover .reactIcons {
+    background-color: var(--black);
+    color: var(--aureolin);
+    fill: var(--aureolin);
+    cursor: pointer;
+}
+
+.reactIcons {
+    fill: black;
+    height: 2.4em;
+    width: 2.1em;
+}
+
+.lblCartCount {
+    font-size: 1em;
+    padding: .05em;
+    height: 1.3em;
+    width: 1.3em;
+    background: var(--aureolin);
+    color: var(--black);
+    font-weight: 600;
+    margin-top: -.1em;
+    margin-left: -1em;
+    border-radius: 50%;
 }
 
 

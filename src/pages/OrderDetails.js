@@ -7,8 +7,6 @@ const OrderDetails = (props) => {
         placed_on, fulfilled_on, total,
         album_array } = props.order;
 
-    console.log(album_array)
-
     // date format ISO 8601
     // toLocaleDateString(), toLocaleTimeString(), and toLocaleString() 
     const dateTimePlaced = new Date(placed_on);

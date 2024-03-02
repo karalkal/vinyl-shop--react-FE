@@ -48,7 +48,12 @@ export default function Header() {
                         <Button onClick={() => setRegisterModalVisible(true)}>Register</Button>
                     </div>}
                 <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
-                    <button className={classes.btnRight} onClick={() => setCartModalVisible(true)}> <RiShoppingCartLine /></button>
+                    <button className={classes.btnRight} onClick={() => setCartModalVisible(true)}>
+                        <RiShoppingCartLine />
+
+                        <span className={classes.lblCartCount}> 5 </span>
+
+                    </button>
                 </IconContext.Provider>
             </div>
 
