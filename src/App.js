@@ -17,7 +17,6 @@ import { Orders } from './pages/Orders';
 import FoundAlbums from './pages/FoundAlbums';
 
 
-
 async function allAlbumsLoader() {
   const allAlbumsPromise = fetchAllAlbums();
 
@@ -42,14 +41,6 @@ async function albumDetailsLoader(params) {
 
   return defer({
     albumData: albumDataPromise,
-  });
-}
-
-async function allOrdersLoader() {
-  const ordersDataPromise = fetchAllOrders();
-
-  return defer({
-    allOrdersData: ordersDataPromise,
   });
 }
 

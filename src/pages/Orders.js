@@ -15,7 +15,6 @@ export const Orders = () => {
     const token = loggedInUserData.auth_token;
     const [orders, setOrders] = useState([]);
 
-
     useEffect(() => {
         async function getAllOrders() {
             const response = await fetchAllOrders(token);
