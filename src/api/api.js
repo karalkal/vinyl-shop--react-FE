@@ -21,6 +21,22 @@ export async function fetchAllAlbums() {
     }
 };
 
+export async function findAlbums() {
+    // await sleep(2000);
+    try {
+        const response = await fetch(`${ROOT_ENDPOINT}/albums/search`);
+        if (!response.ok) {
+            throw new Error(`${response.statusText} - ${response.status}`);
+        }   // if ok
+        const json = await response.json();
+        return json;
+    } catch (error) {
+        // will catch errors from if (!response.ok) too 
+        throw new Error(error.message);
+    }
+};
+
+
 export async function fetchAlbumById(albumId) {
     // await sleep(2000);
     try {

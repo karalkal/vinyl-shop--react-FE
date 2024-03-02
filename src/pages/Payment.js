@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../context/AuthContextProvider';
 import CartContext from '../context/CartContextProvider';
@@ -13,6 +14,7 @@ export const Payment = () => {
   const [formData, setFormData] = useState({ credit_card_no: '' });
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
+  const navigate = useNavigate()
   console.log(authCtx);
 
   function handleChange(event) {
@@ -47,6 +49,10 @@ export const Payment = () => {
       requestBody.paymentSuccessful = true
     }
 
+    if (cartCtx.items.length < 1) {
+      throw new Error("Cart is empty");
+    }
+
     const albumsOrdered = cartCtx.items.map(item => {
       return {
         id: item.id, amountRequested: item.amountRequested,
@@ -63,7 +69,8 @@ export const Payment = () => {
       authCtx.loggedInUserData.auth_token); // goes here -->> headers: { Authorization: `Bearer ${authToken}`
 
     //empty cart, will also persist in localStorage
-    cartCtx.emptyCart()
+    cartCtx.emptyCart();
+    navigate('/')
     console.log(response.data)
   };
 

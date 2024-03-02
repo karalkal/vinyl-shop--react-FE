@@ -3,7 +3,7 @@
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, defer } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary'
 
-import { fetchAllAlbums, fetchAlbumById, fetchAllOrders } from './api/api';
+import { fetchAllAlbums, fetchAlbumById, fetchAllOrders, findAlbums } from './api/api';
 
 import RootLayout from './layouts/RootLayout';
 
@@ -14,11 +14,20 @@ import ErrorGeneric from './pages/ErrorGeneric';
 import { SuspenseSpinner } from './UI/SuspenseSpinner';
 import { Payment } from './pages/Payment';
 import { Orders } from './pages/Orders';
+import FoundAlbums from './pages/FoundAlbums';
 
 
 
 async function allAlbumsLoader() {
   const allAlbumsPromise = fetchAllAlbums();
+
+  return defer({
+    albums: allAlbumsPromise,
+  });
+}
+
+async function findAlbumsLoader() {
+  const allAlbumsPromise = findAlbums();
 
   return defer({
     albums: allAlbumsPromise,
@@ -64,6 +73,12 @@ const appRouter = createBrowserRouter(
         element={<Orders />}
       // loader={({params}) => allOrdersLoader(params)}
       />
+
+      <Route path="search"
+        element={<FoundAlbums />}
+        loader={findAlbumsLoader}
+      />
+
       <Route path="test" element={<SuspenseSpinner />} />
       <Route path="*" element={<Error404 />} />
 

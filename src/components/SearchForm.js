@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from './Button';
 import classes from './SearchForm.module.css'
 
 export function SearchForm() {
     const [formData, setFormData] = useState({ search_term: '' });
+    const navigate = useNavigate()
 
     function handleChange(event) {
         const { name, value } = event.target
@@ -12,10 +15,17 @@ export function SearchForm() {
         })
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(formData)
+        navigate('search');
+
+    }
+
 
 
     return (
-        <form className={classes.headerCentre}>
+        <form onSubmit={handleSubmit} className={classes.headerCentre}>
             <input
                 type="text"
                 required
