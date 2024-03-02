@@ -1,5 +1,5 @@
 import { useContext, Suspense } from "react";
-import { Await, useLoaderData } from "react-router-dom";
+import { Await, useLoaderData, useNavigate } from "react-router-dom";
 
 import CartContext from "../context/CartContextProvider";
 import styles from "./AlbumDetails.module.css";
@@ -14,11 +14,16 @@ const AlbumDetails = () => {
     // name, band_name, label_name, cover, release_year, price      // => MUST HAVE
     // colour, summary, duration, format, quantity                  // => OPTIONAL
     const ctx = useContext(CartContext);
+    const navigate = useNavigate()
+
+    function addAlbumGotoMain(albumData) {
+        ctx.addItem(albumData);
+        navigate('/')
+    }
 
     // albumData.price = Number(albumData.price)       // cast string from json to Number
     return (
         <main>
-
             <Suspense
                 fallback={<SuspenseSpinner />}
             >
@@ -84,7 +89,7 @@ const AlbumDetails = () => {
                                 </div>
                                 <Button
                                     style={{ gridArea: 'addBtn', width: '100%', bottom: '0', position: 'absolute' }}
-                                    onClick={() => ctx.addItem(albumData)}
+                                    onClick={() => addAlbumGotoMain(albumData)}
                                 >Add to Cart
                                 </Button>
                             </div>
