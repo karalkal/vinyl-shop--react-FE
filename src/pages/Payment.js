@@ -6,15 +6,14 @@ import CartContext from '../context/CartContextProvider';
 import { Button } from '../components/Button';
 import classes from './Payment.module.css';
 import { placeOrder } from '../api/api';
+import ErrorGeneric from './ErrorGeneric';
 
 
 export const Payment = () => {
   const [formData, setFormData] = useState({ credit_card_no: '' });
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
-  // TODO if not logged in display error or redirect to login/register
-  console.log(authCtx)
-
+  console.log(authCtx);
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -69,20 +68,21 @@ export const Payment = () => {
   };
 
 
-
-  return (
-    <form onSubmit={handleSubmit} className={classes.paymentForm}>
-      <p className={classes.formInputsHeading}>Pay by card</p>
-      <input
-        type="text"
-        required
-        placeholder="Payment card number"
-        onChange={handleChange}
-        name="credit_card_no"
-        value={formData.credit_card_no}
-      />
-      <Button>Submit</Button>
-    </form>
-  )
-
+  return (<>
+    {authCtx.isLoggedIn
+      ? <form onSubmit={handleSubmit} className={classes.paymentForm}>
+        <p className={classes.formInputsHeading}>Pay by card</p>
+        <input
+          type="text"
+          required
+          placeholder="Payment card number"
+          onChange={handleChange}
+          name="credit_card_no"
+          value={formData.credit_card_no}
+        />
+        <Button>Submit</Button>
+      </form>
+      : <ErrorGeneric errMessage="Log in/register to continue" />
+    }
+  </>)
 }

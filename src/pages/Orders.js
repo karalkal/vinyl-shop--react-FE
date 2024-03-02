@@ -77,7 +77,7 @@ export const Orders = () => {
                 }
             </div>
             :
-            <ErrorGeneric errMessage="You need to log in first" />
+            <ErrorGeneric errMessage="Log in/register to continue" />
         }
     </main>
     )
