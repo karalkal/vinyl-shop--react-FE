@@ -38,20 +38,17 @@ export const Payment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setFormData({ credit_card_no: '' });
+    if (cartCtx.items.length < 1) { throw new Error("Cart is empty"); }
 
-    const requestBody = {}
+    setFormData({ credit_card_no: '' });    //reset form
 
-    if (!validCreditCardData()) {
-      throw new Error("Payment data invalid");
-    }
+    const requestBody = {}                  // construct object to send to BE
+
+    if (!validCreditCardData()) { throw new Error("Payment data invalid"); }
     else {
-      requestBody.paymentSuccessful = true
+      requestBody.paymentSuccessful = true    // atm BE is not utilizing this prop
     }
 
-    if (cartCtx.items.length < 1) {
-      throw new Error("Cart is empty");
-    }
 
     const albumsOrdered = cartCtx.items.map(item => {
       return {

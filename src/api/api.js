@@ -21,10 +21,10 @@ export async function fetchAllAlbums() {
     }
 };
 
-export async function findAlbums() {
+export async function findAlbums(queryString) {
     // await sleep(2000);
     try {
-        const response = await fetch(`${ROOT_ENDPOINT}/albums/search`);
+        const response = await fetch(`${ROOT_ENDPOINT}/albums/search?${queryString}`);
         if (!response.ok) {
             throw new Error(`${response.statusText} - ${response.status}`);
         }   // if ok
