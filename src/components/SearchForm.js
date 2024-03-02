@@ -17,7 +17,7 @@ export function SearchForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(formData)
+        setFormData({ search_term: '' });
         navigate({
             pathname: '/search',
             search: `?term=${formData.search_term}`,

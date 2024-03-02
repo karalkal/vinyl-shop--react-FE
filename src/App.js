@@ -27,13 +27,8 @@ async function allAlbumsLoader() {
 }
 
 async function findAlbumsLoader(request) {
-  // 2 methods to get the QS
-  const search = window.location.search;
-  const reqUrl = request.url
-  const queryString1 = search.slice(search.indexOf('?') + 1);
-  const queryString2 = reqUrl.slice(reqUrl.indexOf('?') + 1);
-  console.log(queryString1, queryString2)
-  const foundAlbumsPromise = findAlbums(queryString2);
+  const queryString = request.url.slice(request.url.indexOf('?') + 1);
+  const foundAlbumsPromise = findAlbums(queryString);
 
   return defer({
     albums: foundAlbumsPromise,
@@ -79,7 +74,6 @@ const appRouter = createBrowserRouter(
         element={<Orders />}
       // loader={({params}) => allOrdersLoader(params)}
       />
-
       <Route path="search"
         element={<FoundAlbums />}
         loader={({ request }) => findAlbumsLoader(request)}

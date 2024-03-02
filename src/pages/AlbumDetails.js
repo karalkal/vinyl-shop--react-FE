@@ -38,7 +38,6 @@ const AlbumDetails = () => {
                         return (
                             <div className={styles.detailsContainer}>
 
-
                                 {(albumData.cover).includes("http")
                                     ?
                                     <img
@@ -50,7 +49,6 @@ const AlbumDetails = () => {
                                     <div className={styles.square}><p className={styles.noImage}>No Image Available</p>
                                     </div>
                                 }
-
 
                                 <div className={styles.textPrimary}>
                                     <p className={styles.itemId}>item ID: {albumData.id}</p>

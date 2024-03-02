@@ -7,7 +7,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 
 export async function fetchAllAlbums() {
-    // await sleep(2000);
+    await sleep(2000);
     try {
         const response = await fetch(`${ROOT_ENDPOINT}/albums`);
         if (!response.ok) {
@@ -22,7 +22,7 @@ export async function fetchAllAlbums() {
 };
 
 export async function findAlbums(queryString) {
-    // await sleep(2000);
+    await sleep(2000);
     try {
         const response = await fetch(`${ROOT_ENDPOINT}/albums/search?${queryString}`);
         if (!response.ok) {

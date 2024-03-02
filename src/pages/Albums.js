@@ -7,6 +7,7 @@ import { SuspenseSpinner } from '../UI/SuspenseSpinner';
 
 const Albums = () => {
     const data = useLoaderData();
+    console.log(data);
 
     return (
         <main>
@@ -16,7 +17,7 @@ const Albums = () => {
                 <Await
                     resolve={data.albums}
                     errorElement={
-                        <ErrorGeneric errMessage="No results" />
+                        <ErrorGeneric errMessage="Query returned error" />
                     }
                 >
                     {(albumsArray) => (
