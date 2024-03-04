@@ -15,7 +15,6 @@ export const Payment = () => {
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate()
-  console.log(authCtx);
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -61,14 +60,13 @@ export const Payment = () => {
     requestBody.totalFromFE = cartCtx.totalAmount;
     requestBody.userEmail = authCtx.loggedInUserData.email
 
-    const response = await placeOrder(
+    await placeOrder(
       requestBody,
       authCtx.loggedInUserData.auth_token); // goes here -->> headers: { Authorization: `Bearer ${authToken}`
 
     //empty cart, will also persist in localStorage
     cartCtx.emptyCart();
-    navigate('/')
-    console.log(response.data)
+    navigate('/');
   };
 
 

@@ -14,7 +14,7 @@ export const Backdrop = (props) => {
 
   // TODO: not very intelligent solution
   function clearAllModals() {
-    console.log("clicked backdrop")
+    // console.log("clicked backdrop")
     setLoginModalVisible(false);
     setRegisterModalVisible(false)
     setCartModalVisible(false)

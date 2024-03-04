@@ -3,7 +3,6 @@ import styles from "./Errors.module.css"
 
 export default function ErrorGeneric(props) {
 
-    console.log("ErrorGeneric")
     return (
         <div className={styles.errorDiv}>
             {props.errMessage

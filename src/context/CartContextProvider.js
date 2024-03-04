@@ -28,7 +28,7 @@ export function CartContextProvider(props) {
 
     // Cart updated, persisting to local storage
     useEffect(() => {
-        console.log("Cart updated, persisting to local storage", cartState);
+        // console.log("Cart updated, persisting to local storage", cartState);
         localStorage.setItem("localCart", JSON.stringify(cartState));
     }, [cartState]);
 

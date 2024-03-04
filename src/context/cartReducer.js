@@ -11,7 +11,6 @@ export function cartReducer(state, action) {
     if (action.type === 'ADD_ITEM') {
         let updatedItems = []
         let newItem = state.items.find(item => item.id === action.item.id);
-        console.log(action)
 
         // IF FOUND: increment amountRequested of found item
         // NB - ERROR when incrementing in place itemAlreadyInCart.amountRequested += action.item.amountRequested, therefore create new obj instead...

@@ -1,8 +1,11 @@
 # vinyl-shop--react-FE
 
-Front end of mock vinyl shop app developed in React
+## Front end of mock vinyl shop app developed in React
+
+## N.B. The BE provides far more endpoints than the ones utilized here. This app can be developed further, mainly but not only by providing admin interface for manipulation the DB
 
 ### If cloned from previous project - Update dependencies  
+
 ***(see note below first)***
 
 `npm outdated` will identify packages that should be updated, and `npm update <package name>` can be used to update each package. But prior to npm@5.0.0, `npm update <package name>` will not update the versions in your package.json which is an issue.  
@@ -28,6 +31,47 @@ Check out npm-check-updates to help with this workflow.
 npx npm-check-updates -u  
 npm install
 ```
+
+## Deployment @ Surge
+
+```npm run build```
+
+To install Surge CLI globally:  
+```npm install -g surge```
+
+Run surge inside the build folder.
+
+```
+cd build
+surge
+```
+
+Follow the prompts. First, you’ll be asked for an email and password.
+
+Welcome to surge! (surge.sh)
+Login (or create surge account) by entering email & password.
+      email: admin@ashusingh.me
+      password:
+
+Before filling in any other prompts, it’s a good idea to confirm your Surge account.
+
+Verify your email to create your Surge account
+
+In the terminal, you’ll be asked to confirm your project directory. Hit Enter.
+
+You’ll see the domain of your project. Again, hit Enter.   
+
+**If OVERWRITING existing project, just overwrite suggested url with actual url of your project (obsolete-crime.surge.sh)**  
+
+**DON'T forget to direct to build folder**  
+
+    project: /home/kk/GitHub/vinyl-shop--react-FE/
+    obsolete-crime.surge.sh 
+
+This will publish your application.
+
+   Success! - Published to ahead-cannon.surge.sh
+   
 
 ## Implementation Notes
 

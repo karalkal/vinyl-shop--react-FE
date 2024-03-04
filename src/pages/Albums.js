@@ -7,7 +7,6 @@ import { SuspenseSpinner } from '../UI/SuspenseSpinner';
 
 const Albums = () => {
     const data = useLoaderData();
-    console.log(data);
 
     return (
         <main>
