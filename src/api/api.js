@@ -1,13 +1,13 @@
 import axios, { AxiosError } from "axios";
 
-const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1";
-// const ROOT_ENDPOINT = "http://localhost:3000/api/v1";
+// const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1";
+const ROOT_ENDPOINT = "http://localhost:3000/api/v1";
 // delay api calls for testing
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 
 export async function fetchAllAlbums() {
-    await sleep(2000);
+    // await sleep(2000);
     try {
         const response = await fetch(`${ROOT_ENDPOINT}/albums`);
         if (!response.ok) {
@@ -22,7 +22,7 @@ export async function fetchAllAlbums() {
 };
 
 export async function findAlbums(queryString) {
-    await sleep(2000);
+    // await sleep(2000);
     try {
         const response = await fetch(`${ROOT_ENDPOINT}/albums/search?${queryString}`);
         if (!response.ok) {
@@ -56,6 +56,25 @@ export async function fetchAlbumById(albumId) {
 export async function logIn(formData) {
     try {
         const response = await axios.post(`${ROOT_ENDPOINT}/auth/login/`, formData);
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
+        else {
+            console.log("other error", err.response)
+            throw new Error(err.message);
+        }
+    }
+}
+
+
+export async function logInWithGoogle(code) {
+    console.log("code", code)
+    try {
+        const response = await axios.post(`${ROOT_ENDPOINT}/auth/google/`, code);
         return response
     }
     catch (err) {

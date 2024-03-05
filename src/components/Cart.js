@@ -19,7 +19,7 @@ export const Cart = (props) => {
         totalCartValue += (i.price * i.amountRequested);
     }
     if (totalCartValue.toFixed(2) !== (cartCtx.totalAmount).toFixed(2)) {
-        throw new Error("Total")
+        throw new Error("Total does not match, check your code buddy!")
     }
 
     const cartItems = cartCtx.items.length === 0
