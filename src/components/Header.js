@@ -15,12 +15,14 @@ import { Button } from './Button';
 
 export default function Header() {
     const { isLoggedIn, loggedInUserData, logoutHandler, setLoginModalVisible, setRegisterModalVisible } = useContext(AuthContext);
-    const { setCartModalVisible, items } = useContext(CartContext)
+    const { setCartModalVisible, items } = useContext(CartContext);
+
     const navigate = useNavigate()
     const handleLogOut = () => {
-        // after re-setting state and localStorage navigate to "/"
         logoutHandler();
-        navigate('/');
+                // after re-setting state and localStorage navigate to "/"
+                navigate('/', { replace: true });
+                navigate(0);        // for a second it redirects to /orders, don't know why        
     }
     // each item from items has amountRequested, we need count of items x amountRequested
     const itemsCount = items.map(item => item.amountRequested)
