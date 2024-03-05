@@ -72,7 +72,6 @@ export async function logIn(formData) {
 
 
 export async function logInWithGoogle(code) {
-    console.log("code", code)
     try {
         const response = await axios.post(`${ROOT_ENDPOINT}/auth/google/`, code);
         return response

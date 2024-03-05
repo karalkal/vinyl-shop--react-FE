@@ -11,7 +11,7 @@ import classes from './LogInRegisterModal.module.css';
 
 export const LogInModal = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const ctx = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
 
 
   function handleChange(event) {
@@ -29,7 +29,7 @@ export const LogInModal = () => {
     // send request
     const response = await logIn(userInput);
     // trigger auth context handler
-    ctx.loginHandler(response.data);
+    authCtx.loginHandler(response.data);
   };
 
   // Implicit flow -> returns just access token
@@ -53,17 +53,16 @@ export const LogInModal = () => {
   // Authorization code flow
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
-      console.log(code);
-
-      const tokens = await logInWithGoogle({ code });
-      console.log(tokens);
+      const response = await logInWithGoogle({ code });
+      // trigger auth context handler with userData created at BE from google code
+      authCtx.loginHandler(response.data);
     },
     flow: 'auth-code',
   });
 
 
   // Modal is mounted in RootLayout and will mount conditionally
-  if (ctx.loginModalVisible) {
+  if (authCtx.loginModalVisible) {
     return (
       <Modal>
         <form onSubmit={handleSubmit} className={classes.logInForm}>
@@ -88,7 +87,6 @@ export const LogInModal = () => {
         <div className={classes.logInForm}>
           <p className={classes.formInputsHeading} style={{ marginTop: "2em" }}>OR</p>
           <Button onClick={googleLogin}>Login with Google</Button>
-
         </div>
 
 
