@@ -62,7 +62,7 @@ const AlbumDetails = () => {
                                         <p className={styles.albumDataDivValue}>{albumData.label_name}</p>
 
                                         <p className={styles.albumDataDivLabel}>colour:&nbsp;</p>
-                                        <p className={styles.albumDataDivValue}>{albumData.color || 'unknown/black'}</p>
+                                        <p className={styles.albumDataDivValue}>{albumData.colour || 'unknown/black'}</p>
                                         <p></p>
                                         <p className={styles.albumDataDivLabel}>duration:&nbsp;</p>
                                         <p className={styles.albumDataDivValue}>{albumData.duration || 'unknown'}</p>
