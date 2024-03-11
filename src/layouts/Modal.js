@@ -13,7 +13,7 @@ export const Backdrop = (props) => {
   const { setCartModalVisible} = useContext(CartContext)
 
   // TODO: not very intelligent solution
-  function clearAllModals() {
+  function clearAllmodals() {
     // console.log("clicked backdrop")
     setLoginModalVisible(false);
     setRegisterModalVisible(false)
@@ -21,7 +21,7 @@ export const Backdrop = (props) => {
   }
 
 
-  return <div className={classes.backdrop} onClick={clearAllModals} />;
+  return <div className={classes.backdrop} onClick={clearAllmodals} />;
 };
 
 const ModalOverlay = (props) => {

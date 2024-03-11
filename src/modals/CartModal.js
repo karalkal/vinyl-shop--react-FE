@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import classes from './CartModal.module.css';
 
-import { Backdrop } from './Modal';
+import { Backdrop } from '../layouts/Modal';
 
 
 const ModalOverlay = (props) => {

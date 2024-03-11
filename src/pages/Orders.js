@@ -6,7 +6,7 @@ import { fetchAllOrders } from '../api/api';
 
 import classes from './Orders.module.css';
 import OrderDetails from './OrderDetails';
-import { SuspenseSpinner } from '../UI/SuspenseSpinner';
+import { SuspenseSpinner } from '../modals/SuspenseSpinner';
 import ErrorGeneric from './ErrorGeneric';
 
 
@@ -51,6 +51,10 @@ export const Orders = () => {
                 (foundItem.album_array).push(originalObj.album_info);
             }
         }
+    }
+    if(!token) {
+        console.log("kur")
+        throw Error({data: null, status: 404, statusText: "KUR"})
     }
 
     // no token -> need to log in

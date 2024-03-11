@@ -4,8 +4,8 @@ import CartContext from '../context/CartContextProvider';
 import AuthContext from '../context/AuthContextProvider';
 
 import classes from './Cart.module.css';
-import CartModal from '../UI/CartModal';
-import { CartItem } from './CartItem';
+import CartModal from '../modals/CartModal';
+import { CartItem } from '../components/CartItem';
 import { Button } from '../components/Button'
 import { Link } from 'react-router-dom';
 

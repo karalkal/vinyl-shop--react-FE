@@ -6,7 +6,7 @@ import styles from "./AlbumDetails.module.css";
 
 import { Button } from "../components/Button";
 import ErrorGeneric from "./ErrorGeneric";
-import { SuspenseSpinner } from "../UI/SuspenseSpinner";
+import { SuspenseSpinner } from "../modals/SuspenseSpinner";
 
 
 const AlbumDetails = () => {

@@ -137,10 +137,14 @@ let aggregatedArray = []
     }
 ```
 
+- Error Handling:  
+`import { ErrorBoundary } from 'react-error-boundary'`  
+
+
 ## TODOS
 
-- Google log in
+- XXXX Google log in XXXX
 - async errors handling
 - fix `Suspense/Await` bug, see above
-- fix structure - What is UI, what is page, what is components? Probably separate modals folder  
+- XXXX fix structure - What is UI, what is page, what is components? Probably separate modals folder  XXXX
 - testing

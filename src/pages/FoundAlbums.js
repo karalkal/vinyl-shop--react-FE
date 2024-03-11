@@ -3,7 +3,7 @@ import Card from '../components/Card';
 import styles from "./Albums.module.css"
 import ErrorGeneric from './ErrorGeneric';
 import { Await, useLoaderData } from "react-router-dom";
-import { SuspenseSpinner } from '../UI/SuspenseSpinner';
+import { SuspenseSpinner } from '../modals/SuspenseSpinner';
 
 const FoundAlbums = () => {
     const data = useLoaderData();

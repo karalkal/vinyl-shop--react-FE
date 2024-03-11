@@ -4,7 +4,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { logIn, logInWithGoogle } from '../api/api';
 
 import AuthContext from '../context/AuthContextProvider';
-import Modal from './Modal';
+import Modal from '../layouts/Modal';
 import { Button } from '../components/Button';
 import classes from './LogInRegisterModal.module.css';
 

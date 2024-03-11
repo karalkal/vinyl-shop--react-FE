@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
-import styles from "./Errors.module.css"
+import { Link, useRouteError } from "react-router-dom";
+import styles from "./Errors.module.css";
+  
 
 export default function ErrorGeneric(props) {
+
+    const error = useRouteError();
+    console.log(error.data, error.status, error.statusText)
+
 
     return (
         <div className={styles.errorDiv}>
