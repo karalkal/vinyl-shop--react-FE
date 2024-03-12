@@ -52,10 +52,6 @@ export const Orders = () => {
             }
         }
     }
-    if(!token) {
-        console.log("kur")
-        throw Error({data: null, status: 404, statusText: "KUR"})
-    }
 
     // no token -> need to log in
     // token but:

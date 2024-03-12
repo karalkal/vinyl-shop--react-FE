@@ -33,6 +33,7 @@ async function findAlbumsLoader(request) {
   });
 }
 
+
 async function albumDetailsLoader(params) {
   const albumId = params.id
   const albumDataPromise = fetchAlbumById(albumId);
@@ -46,9 +47,9 @@ async function albumDetailsLoader(params) {
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     // Everything is nested in RootLayout comp
-    <Route
+    < Route
       element={< RootLayout />}
-      errorElement={<ErrorGeneric />}
+      errorElement={< ErrorGeneric />}
     >
       <Route index
         element={<Albums />}

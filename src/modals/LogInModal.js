@@ -4,14 +4,18 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { logIn, logInWithGoogle } from '../api/api';
 
 import AuthContext from '../context/AuthContextProvider';
+import ErrorContext from '../context/ErrorContextProvider';
+
 import Modal from '../layouts/Modal';
 import { Button } from '../components/Button';
 import classes from './LogInRegisterModal.module.css';
+import ErrorGeneric from '../pages/ErrorGeneric';
 
 
 export const LogInModal = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const authCtx = useContext(AuthContext);
+  const errCtx = useContext(ErrorContext)
 
 
   function handleChange(event) {
@@ -26,10 +30,14 @@ export const LogInModal = () => {
 
     const userInput = formData;  // reset form state before sending the request
     setFormData({ email: '', password: '' });
-    // send request
-    const response = await logIn(userInput);
-    // trigger auth context handler
-    authCtx.loginHandler(response.data);
+    try {
+      // send request
+      const response = await logIn(userInput);
+      // trigger auth context handler
+      authCtx.loginHandler(response.data);
+    } catch (error) {
+      errCtx.setHasError(error.message);
+    }
   };
 
   // Implicit flow -> returns just access token
@@ -88,8 +96,6 @@ export const LogInModal = () => {
           <p className={classes.formInputsHeading} style={{ marginTop: "2em" }}>OR</p>
           <Button onClick={googleLogin}>Login with Google</Button>
         </div>
-
-
       </Modal>
     )
   }

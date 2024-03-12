@@ -1,12 +1,11 @@
-import { Link, useRouteError } from "react-router-dom";
-import styles from "./Errors.module.css";
-  
+import { Link } from "react-router-dom";
+import styles from "./Errors.module.css"
+import { useContext } from "react";
+import ErrorContext from "../context/ErrorContextProvider";
 
 export default function ErrorGeneric(props) {
-
-    const error = useRouteError();
-    console.log(error.data, error.status, error.statusText)
-
+    const errCtx = useContext(ErrorContext)
+    console.log(props)
 
     return (
         <div className={styles.errorDiv}>
@@ -18,7 +17,8 @@ export default function ErrorGeneric(props) {
             }
             <h2 className={styles.errorSubtitle}>
                 <Link to="/"
-                    className={styles.errorSubtitle}>Return to Homepage</Link></h2>
+                    className={styles.errorSubtitle}
+                    onClick={() => errCtx.hasError("")}>Return to Homepage</Link></h2>
         </div>
     );
 }

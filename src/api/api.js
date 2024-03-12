@@ -60,8 +60,7 @@ export async function logIn(formData) {
     }
     catch (err) {
         if (err && err instanceof AxiosError) {
-            console.log(err.code, err.message)
-            throw new Error(`${err.code} - ${err.message}`);
+            throw new Error(err.message);
         }
         else {
             console.log("other error", err.response)
