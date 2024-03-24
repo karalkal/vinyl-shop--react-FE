@@ -2,6 +2,8 @@
 
 ## Front end of mock vinyl shop app developed in React
 
+## Deployed on: [surge](http://obsolete-crime.surge.sh/)
+
 ## N.B. The BE provides far more endpoints than the ones utilized here. This app can be developed further, mainly but not only by providing admin interface for manipulation the DB
 
 ### If cloned from previous project - Update dependencies  
@@ -137,14 +139,12 @@ let aggregatedArray = []
     }
 ```
 
-- Error Handling:  
-`import { ErrorBoundary } from 'react-error-boundary'`  
-
+# Backend is deployed at: [render](https://vinyl-shop.onrender.com/).
 
 ## TODOS
 
-- XXXX Google log in XXXX
+- DONE: Google log in
 - async errors handling
 - fix `Suspense/Await` bug, see above
-- XXXX fix structure - What is UI, what is page, what is components? Probably separate modals folder  XXXX
+- DONE fix structure - What is UI, what is page, what is components? Probably separate modals folder  XXXX
 - testing
