@@ -18,10 +18,10 @@ const PrivateRoutes = () => {
             const response = await checkIfIsAdminInToken(authToken);
             setUserIsIndeedAdmin(response.data);
         }
-        if (authToken && userSaysTheyAreAdmin && isLoggedIn) {      // a bit pointless to check all these probably?
+        if (authToken && userSaysTheyAreAdmin === "Y" && isLoggedIn) {      // a bit pointless to check all these probably?
             getAllOrders(); // <-- only fetch if truthy token
         }
-    }, [authToken]);
+    }, [authToken, isLoggedIn, userSaysTheyAreAdmin]);
 
     let isAdminAndHasToken = userIsIndeedAdmin === true;
 

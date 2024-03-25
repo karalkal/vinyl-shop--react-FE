@@ -27,8 +27,7 @@ export const AuthContextProvider = (props) => {
         if (auth_token && email && first_name && last_name) {
             setIsLoggedIn(true);
             setLoggedInUserData({
-                auth_token, email, first_name, last_name,
-                is_admin: is_admin === 'true'              // Will be string, anything not 'true' sets state to false
+                auth_token, email, first_name, last_name, is_admin        // is_admin will be string Y or N
             })
         }
     }, []);     // will run only at initial render
@@ -49,10 +48,10 @@ export const AuthContextProvider = (props) => {
         localStorage.setItem("email", email);
         localStorage.setItem("first_name", first_name);
         localStorage.setItem("last_name", last_name);
-        // We can only store strings as values in local storage.
-        localStorage.setItem("is_admin", is_admin);
+        // We can only store strings as values in local storage, true which we get from data or undefined if we get nothing does not work well, hence Y or N
+        localStorage.setItem("is_admin", is_admin === true ? "Y" : "N");
 
-        setLoggedInUserData({ auth_token: token, email, first_name, last_name, is_admin });
+        setLoggedInUserData({ auth_token: token, email, first_name, last_name, is_admin: is_admin === true ? "Y" : "N" });
         setIsLoggedIn(true);
         setLoginModalVisible(false);             // hide modals once user is logged in
         setRegisterModalVisible(false);
