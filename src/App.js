@@ -2,7 +2,7 @@
 
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, defer } from 'react-router-dom';
 
-import { fetchAllAlbums, fetchAlbumById, fetchAllOrders, findAlbums } from './api/api';
+import { fetchAllAlbums, fetchAlbumById, findAlbums } from './api/api';
 
 import RootLayout from './layouts/RootLayout';
 
@@ -14,6 +14,8 @@ import { SuspenseSpinner } from './modals/SuspenseSpinner';
 import { Payment } from './pages/Payment';
 import { Orders } from './pages/Orders';
 import FoundAlbums from './pages/FoundAlbums';
+import PrivateRoutes from './PrivateRoutes';
+import { AdminPanel } from './pages/AdminPanel';
 
 
 async function allAlbumsLoader() {
@@ -68,6 +70,11 @@ const appRouter = createBrowserRouter(
         element={<FoundAlbums />}
         loader={({ request }) => findAlbumsLoader(request)}
       />
+
+      <Route element={<PrivateRoutes />}>
+        <Route element={<AdminPanel />} path="/admin" exact />
+        <Route element={<AdminPanel />} path="/users" />
+      </Route>
 
       <Route path="test" element={<SuspenseSpinner />} />
       <Route path="*" element={<Error404 />} />

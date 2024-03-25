@@ -15,7 +15,6 @@
 .headerRight {
     display: flex;
     align-items: flex-end;
-    flex: 0 0 1;
     gap: 11px;
 }
 
@@ -105,7 +104,7 @@
     padding: .05em;
     height: 1.3em;
     width: 1.3em;
-    background: var(--aureolin);
+    background-color: var(--aureolin);
     color: var(--black);
     font-weight: 600;
     margin-top: -.1em;

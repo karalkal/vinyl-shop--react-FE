@@ -38,7 +38,8 @@ export const AuthContextProvider = (props) => {
 
     // Also when registering... log in and hide Modal(s)
     const loginHandler = (data) => {
-        const { token, email, first_name, last_name } = data
+        const { token, email, first_name, last_name } = data;
+        console.log(data)
         localStorage.clear();
         localStorage.setItem("auth_token", data.token);
         localStorage.setItem("email", data.email);
