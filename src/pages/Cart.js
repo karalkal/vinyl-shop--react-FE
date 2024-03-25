@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 export const Cart = (props) => {
     const cartCtx = React.useContext(CartContext);
-    const userCtx = React.useContext(AuthContext);
+    const authCtx = React.useContext(AuthContext);
 
     // just in case verify total
     let totalCartValue = 0;
@@ -38,8 +38,8 @@ export const Cart = (props) => {
     return (
         <CartModal>
             <div className={classes.cartContainer}>
-                {userCtx.loggedInUserData.first_name
-                    ? <h1>User {userCtx.loggedInUserData.first_name}'s cart</h1>
+                {authCtx.loggedInUserData.first_name
+                    ? <h1>User {authCtx.loggedInUserData.first_name}'s cart</h1>
                     : <h1>Your cart</h1>}
                 {cartCtx.items.length > 0 &&
                     <div className={classes['cart-header']}>

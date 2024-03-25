@@ -1,10 +1,16 @@
-import { Outlet } from 'react-router-dom'
-import ErrorGeneric from './pages/ErrorGeneric'
+import { Outlet } from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from './context/AuthContextProvider';
+import ErrorGeneric from './pages/ErrorGeneric';
+
 
 const PrivateRoutes = () => {
-    let auth = { 'token': false }
+    const authCtx = useContext(AuthContext);
+
+    let isAdminAndHasToken = authCtx.loggedInUserData.is_admin === true && authCtx.isLoggedIn === true;
+
     return (
-        auth.token ? <Outlet /> : <ErrorGeneric errMessage="Not authorized to access this route" />
+        isAdminAndHasToken ? <Outlet /> : <ErrorGeneric errMessage="Not authorized to access this route" />
 
     )
 }

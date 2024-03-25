@@ -23,9 +23,10 @@ export const AuthContextProvider = (props) => {
         const email = localStorage.getItem('email')
         const first_name = localStorage.getItem('first_name')
         const last_name = localStorage.getItem('last_name')
+        const is_admin = localStorage.getItem('is_admin')
         if (auth_token && email && first_name && last_name) {
             setIsLoggedIn(true);
-            setLoggedInUserData({ auth_token, email, first_name, last_name })
+            setLoggedInUserData({ auth_token, email, first_name, last_name, is_admin: JSON.parse(is_admin) })
         }
     }, []);     // will run only at initial render
 
@@ -38,15 +39,17 @@ export const AuthContextProvider = (props) => {
 
     // Also when registering... log in and hide Modal(s)
     const loginHandler = (data) => {
-        const { token, email, first_name, last_name } = data;
+        const { token, email, first_name, last_name, is_admin } = data;
         console.log(data)
         localStorage.clear();
-        localStorage.setItem("auth_token", data.token);
-        localStorage.setItem("email", data.email);
-        localStorage.setItem("first_name", data.first_name);
-        localStorage.setItem("last_name", data.last_name);
+        localStorage.setItem("auth_token", token);
+        localStorage.setItem("email", email);
+        localStorage.setItem("first_name", first_name);
+        localStorage.setItem("last_name", last_name);
+        // We can only store strings as values in local storage.
+        localStorage.setItem("is_admin", is_admin);
 
-        setLoggedInUserData({ auth_token: token, email, first_name, last_name });
+        setLoggedInUserData({ auth_token: token, email, first_name, last_name, is_admin });
         setIsLoggedIn(true);
         setLoginModalVisible(false);             // hide modals once user is logged in
         setRegisterModalVisible(false);
