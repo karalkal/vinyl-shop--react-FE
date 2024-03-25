@@ -26,7 +26,10 @@ export const AuthContextProvider = (props) => {
         const is_admin = localStorage.getItem('is_admin')
         if (auth_token && email && first_name && last_name) {
             setIsLoggedIn(true);
-            setLoggedInUserData({ auth_token, email, first_name, last_name, is_admin: JSON.parse(is_admin) })
+            setLoggedInUserData({
+                auth_token, email, first_name, last_name,
+                is_admin: is_admin === 'true'              // Will be string, anything not 'true' sets state to false
+            })
         }
     }, []);     // will run only at initial render
 

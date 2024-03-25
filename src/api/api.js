@@ -5,6 +5,27 @@ const ROOT_ENDPOINT = "http://localhost:3000/api/v1";
 // delay api calls for testing
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+export async function verifyUserIsAdmin(authToken) {
+    await sleep(2000);
+    console.log("sending req with:", authToken)
+    try {
+        const response = await axios.get(`${ROOT_ENDPOINT}/auth/admin/`,
+            {
+                headers: { Authorization: `Bearer ${authToken}` }
+            });
+        console.log(response)
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            throw new Error(err.message);
+        }
+        else {
+            console.log("other error", err.response)
+            throw new Error(err.message);
+        }
+    }
+};
 
 export async function fetchAllAlbums() {
     // await sleep(2000);

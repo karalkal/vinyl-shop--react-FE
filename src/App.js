@@ -2,7 +2,7 @@
 
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, defer } from 'react-router-dom';
 
-import { fetchAllAlbums, fetchAlbumById, findAlbums } from './api/api';
+import { fetchAllAlbums, fetchAlbumById, findAlbums, verifyUserIsAdmin } from './api/api';
 
 import RootLayout from './layouts/RootLayout';
 
@@ -21,18 +21,14 @@ import { AdminPanel } from './pages/AdminPanel';
 async function allAlbumsLoader() {
   const allAlbumsPromise = fetchAllAlbums();
 
-  return defer({
-    albums: allAlbumsPromise,
-  });
+  return defer({ albums: allAlbumsPromise });
 }
 
 async function findAlbumsLoader(request) {
   const queryString = request.url.slice(request.url.indexOf('?') + 1);
   const foundAlbumsPromise = findAlbums(queryString);
 
-  return defer({
-    albums: foundAlbumsPromise,
-  });
+  return defer({ albums: foundAlbumsPromise });
 }
 
 
@@ -40,11 +36,16 @@ async function albumDetailsLoader(params) {
   const albumId = params.id
   const albumDataPromise = fetchAlbumById(albumId);
 
-  return defer({
-    albumData: albumDataPromise,
-  });
+  return defer({ albumData: albumDataPromise });
 }
 
+/* // cannot get token with useContext as not functional comp
+async function verifyUserIsAdminLoader() {
+  const isAdminPromise = verifyUserIsAdmin();
+
+  return defer({ isAdmin: isAdminPromise });
+}
+*/
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -71,9 +72,11 @@ const appRouter = createBrowserRouter(
         loader={({ request }) => findAlbumsLoader(request)}
       />
 
-      <Route element={<PrivateRoutes />}>
+      <Route
+        element={<PrivateRoutes
+        // loader={() => verifyUserIsAdminLoader()}
+        />}>
         <Route element={<AdminPanel />} path="/admin" exact />
-        <Route element={<AdminPanel />} path="/users" />
       </Route>
 
       <Route path="test" element={<SuspenseSpinner />} />

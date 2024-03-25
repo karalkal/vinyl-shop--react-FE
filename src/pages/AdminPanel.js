@@ -73,7 +73,7 @@ export const AdminPanel = () => {
   return (<>
     {authCtx.isLoggedIn
       ? <form onSubmit={handleSubmit} className={classes.paymentForm}>
-        <p className={classes.formInputsHeading}>Pay by card</p>
+        <p className={classes.formInputsHeading}>WELCOME TO ADMIN INTERFACE</p>
         <input
           type="text"
           required
