@@ -14,12 +14,13 @@ const PrivateRoutes = () => {
     const [userIsIndeedAdmin, setUserIsIndeedAdmin] = useState(false);
 
     useEffect(() => {
-        async function getAllOrders() {
+        async function verifyTokenForAdminPrivileges() {
             const response = await checkIfIsAdminInToken(authToken);
+            //  BE respondes with req.user.is_admin from encrypted token -->> response.data will be true/false for is_admin 
             setUserIsIndeedAdmin(response.data);
         }
         if (authToken && userSaysTheyAreAdmin === "Y" && isLoggedIn) {      // a bit pointless to check all these probably?
-            getAllOrders(); // <-- only fetch if truthy token
+            verifyTokenForAdminPrivileges(); // <-- only fetch if truthy token
         }
     }, [authToken, isLoggedIn, userSaysTheyAreAdmin]);
 

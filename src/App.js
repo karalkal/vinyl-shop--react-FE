@@ -16,6 +16,7 @@ import { Orders } from './pages/Orders';
 import FoundAlbums from './pages/FoundAlbums';
 import PrivateRoutes from './PrivateRoutes';
 import { AdminPanel } from './pages/AdminPanel';
+import { Users } from './pages/Users';
 
 
 async function allAlbumsLoader() {
@@ -77,6 +78,7 @@ const appRouter = createBrowserRouter(
         // loader={() => verifyUserIsAdminLoader()}
         />}>
         <Route element={<AdminPanel />} path="/admin" exact />
+        <Route element={<Users />} path="/users" exact />
       </Route>
 
       <Route path="test" element={<SuspenseSpinner />} />
