@@ -1,12 +1,18 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect } from 'react';
 
-import { Button } from '../../components/Button';
-import classes from './Users.module.css';
 import { fetchAllUsers } from '../../api/api';
+
+import classes from './Users.module.css';
+import { PiFileMagnifyingGlassFill } from "react-icons/pi";
+import { PiPencilSimpleLineFill } from "react-icons/pi";
+import { IoTrashBinSharp } from "react-icons/io5";
+import { Button } from '../../components/Button';
+
 import AuthContext from '../../context/AuthContextProvider';
 import { AdminMenu } from './AdminMenu';
 import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 import ErrorGeneric from '../ErrorGeneric';
+import { IconContext } from 'react-icons';
 
 
 export const Users = () => {
@@ -42,7 +48,31 @@ export const Users = () => {
               ? <h2> No users found</h2>
               : <>
                 {users.map(user =>
-                  <p key={user.id} className={classes.p}>{user.id} {user.f_name} {user.l_name} {user.city} {user.country}</p>
+                  <li key={user.id} className={classes['single-item']}>
+                    <div className={classes['data']}>
+                      <p className={classes['data-primary']}><span>{user.id}</span> {user.f_name} {user.l_name} </p>
+                      {(user.city || user.country) && <p className={classes['data-secondary']}>{user.city}, {user.country}</p>
+                      }
+                    </div>
+                    <div className={classes['action-btns']}>
+                      <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
+                        <button title="View" className={classes.btnRight} onClick={() => console.log(true)}>
+                          <PiFileMagnifyingGlassFill />
+                        </button>
+                      </IconContext.Provider>
+                      <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
+                        <button title="Edit" className={classes.btnRight} onClick={() => console.log(true)}>
+                          <PiPencilSimpleLineFill />
+                        </button>
+                      </IconContext.Provider>
+                      <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
+                        <button title="Delete" className={classes.btnRight} onClick={() => console.log(true)}>
+                          <IoTrashBinSharp />
+                        </button>
+                      </IconContext.Provider>
+
+                    </div>
+                  </li>
                 )
                 }
               </>

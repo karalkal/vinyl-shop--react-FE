@@ -2,15 +2,15 @@
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 35px 35px;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 .adminBtn {
-  height: 2.3em;
+  height: 2.2em;
   padding-top: .5em;
   min-width: 110px;
   font-weight: 600;
-  font-size: 1.3em;
+  font-size: 1em;
   color: var(--black);
   background-color: var(--cool-gray);
   text-align: center;
@@ -32,8 +32,9 @@
 /* Standard Desktop and Laptop */
 @media only screen and (min-width: 1201px) and (max-width: 1440px) {
   .adminBtn {
-    height: 2.2em;
-    font-size: 1.2em;
+    height: 2em;
+    padding-top: .4em;
+    font-size: 1.1em;
   }
 }
 

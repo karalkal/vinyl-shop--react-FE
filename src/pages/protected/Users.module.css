@@ -1,6 +1,81 @@
-.p {
-  font-size: 2em;
+.single-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--white);
+  padding: 0 0 1rem 0;
+  margin: 1rem 0;
 }
+
+
+.single-item .data>.data-primary {
+  font-weight: 600;
+  margin-bottom: 0.2em;
+  color: var(--white);
+}
+
+.single-item .data>.data-primary>span {
+  display: inline-block;
+  /*to allow for width to be changed */
+  width: 4em;
+  border: 1px solid white;
+  padding: .1em;
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-right: 0.4em;
+  color: var(--white);
+}
+
+.single-item .data>.data-secondary {
+  color: var(--white);
+  padding-left: 5.1em;
+}
+
+.action-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.action-btns>button {
+  border: 1px solid black;
+  outline: 1px solid white;
+  width: 3em;
+  height: 3em;
+}
+
+.action-btns>button:hover,
+.action-btns>button:first-child:hover,
+.action-btns>button:last-child:hover {
+  border: 1px solid var(--aureolin);
+  outline: 1px solid var(--aureolin);
+  background-color: black;
+  width: 3em;
+  height: 3em;
+}
+
+
+.action-btns>button:first-child {
+  background-color: var(--cool-gray);
+}
+
+
+.action-btns>button:last-child {
+  background-color: var(--aureolin);
+}
+
+.reactIcons {
+  fill: black;
+  height: 2.4em;
+  width: 2.1em;
+}
+
+.action-btns>button:hover .reactIcons,
+.action-btns>button:first-child:hover .reactIcons,
+.action-btns>button:last-child:hover .reactIcons {
+  fill: var(--aureolin);
+}
+
 
 /**** Media Queries ****/
 
@@ -8,35 +83,13 @@
 @media only screen and (min-width: 1441px) {}
 
 /* Standard Desktop and Laptop */
-@media only screen and (min-width: 1201px) and (max-width: 1440px) {
-  .adminBtn {
-    height: 2.2em;
-    font-size: 1.2em;
-  }
-}
+@media only screen and (min-width: 1201px) and (max-width: 1440px) {}
 
 /* Tablet Landscape */
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-  .adminBtn {
-    height: 2.2em;
-    font-size: 1em;
-  }
-}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {}
 
 /* Tablet Portrait and Large Smartphone */
-@media only screen and (min-width: 854px) and (max-width: 991px) {
-  .adminHeader {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 11px 11px;
-  }
-}
+@media only screen and (min-width: 854px) and (max-width: 991px) {}
 
 /* Smartphone Portrait or Smaller */
-@media only screen and (max-width: 853px) {
-  .adminHeader {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 11px 11px;
-  }
-}
+@media only screen and (max-width: 853px) {}
