@@ -2,7 +2,7 @@
 
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, defer } from 'react-router-dom';
 
-import { fetchAllAlbums, fetchAlbumById, findAlbums, verifyUserIsAdmin } from './api/api';
+import { fetchAllAlbums, fetchAlbumById, findAlbums } from './api/api';
 
 import RootLayout from './layouts/RootLayout';
 
@@ -15,8 +15,8 @@ import { Payment } from './pages/Payment';
 import { Orders } from './pages/Orders';
 import FoundAlbums from './pages/FoundAlbums';
 import PrivateRoutes from './PrivateRoutes';
-import { AdminPanel } from './pages/AdminPanel';
-import { Users } from './pages/Users';
+import { AdminMenu } from './pages/protected/AdminMenu';
+import { Users } from './pages/protected/Users';
 
 
 async function allAlbumsLoader() {
@@ -77,7 +77,7 @@ const appRouter = createBrowserRouter(
         element={<PrivateRoutes
         // loader={() => verifyUserIsAdminLoader()}
         />}>
-        <Route element={<AdminPanel />} path="/admin" exact />
+        <Route element={<AdminMenu />} path="/admin" exact />
         <Route element={<Users />} path="/users" exact />
       </Route>
 

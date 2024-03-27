@@ -9,13 +9,12 @@ const PrivateRoutes = () => {
     const { loggedInUserData, isLoggedIn } = useContext(AuthContext);
     const userSaysTheyAreAdmin = loggedInUserData.is_admin;
     const authToken = loggedInUserData.auth_token;
-    console.log(userSaysTheyAreAdmin, isLoggedIn, authToken)
 
     const [userIsIndeedAdmin, setUserIsIndeedAdmin] = useState(false);
 
     useEffect(() => {
         async function verifyTokenForAdminPrivileges() {
-            const response = await checkIfIsAdminInToken(authToken);
+            const response = await verifyUserIsAdmin(authToken);
             //  BE respondes with req.user.is_admin from encrypted token -->> response.data will be true/false for is_admin 
             setUserIsIndeedAdmin(response.data);
         }
@@ -32,9 +31,5 @@ const PrivateRoutes = () => {
     )
 }
 
-async function checkIfIsAdminInToken(authToken) {
-    return await verifyUserIsAdmin(authToken)
-
-}
 
 export default PrivateRoutes

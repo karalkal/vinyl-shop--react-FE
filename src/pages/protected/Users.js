@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import AuthContext from '../context/AuthContextProvider';
-import CartContext from '../context/CartContextProvider';
+import AuthContext from '../../context/AuthContextProvider';
+import CartContext from '../../context/CartContextProvider';
 
-import { Button } from '../components/Button';
-import classes from './Payment.module.css';
-import { placeOrder } from '../api/api';
-import ErrorGeneric from './ErrorGeneric';
+import { Button } from '../../components/Button';
+import classes from '../Payment.module.css';
+import { placeOrder } from '../../api/api';
+import ErrorGeneric from '../ErrorGeneric';
 
 
 export const Users = () => {
