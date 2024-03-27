@@ -1,27 +1,5 @@
-.adminHeader {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 35px 35px;
-  margin-bottom: 1em;
-}
-
-.adminBtn {
-  height: 2.3em;
-  padding-top: .5em;
-  min-width: 110px;
-  font-weight: 600;
-  font-size: 1.3em;
-  color: var(--black);
-  background-color: var(--cool-gray);
-  text-align: center;
-  border: 1px solid var(--white);
-  border-radius: 8px;
-}
-
-.adminBtn:hover {
-  background-color: var(--black);
-  color: var(--aureolin);
-  border: 1px solid var(--aureolin);
+.p {
+  font-size: 2em;
 }
 
 /**** Media Queries ****/

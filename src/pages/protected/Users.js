@@ -1,90 +1,58 @@
-import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-
-import AuthContext from '../../context/AuthContextProvider';
-import CartContext from '../../context/CartContextProvider';
+import { useState, useContext, useEffect } from 'react'
 
 import { Button } from '../../components/Button';
-import classes from '../Payment.module.css';
-import { placeOrder } from '../../api/api';
+import classes from './Users.module.css';
+import { fetchAllUsers } from '../../api/api';
+import AuthContext from '../../context/AuthContextProvider';
+import { AdminMenu } from './AdminMenu';
+import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 import ErrorGeneric from '../ErrorGeneric';
 
 
 export const Users = () => {
-  const [formData, setFormData] = useState({ credit_card_no: '' });
-  const cartCtx = useContext(CartContext);
-  const authCtx = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { loggedInUserData } = useContext(AuthContext);
+  const token = loggedInUserData.auth_token;
+  const [users, setUsers] = useState([]);
 
-  function handleChange(event) {
-    const { name, value } = event.target
-    setFormData(prevFormData => {
-      // only digits
-      if (!isNaN(Number(value))) {
-        return { ...prevFormData, [name]: value }   // key is computed prop
-      }
-      else {
-        return prevFormData
-      }
-    })
-  }
-
-  // mock payment verification
-  function validCreditCardData() {
-    return true;
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (cartCtx.items.length < 1) { throw new Error("Cart is empty"); }
-
-    setFormData({ credit_card_no: '' });    //reset form
-
-    const requestBody = {}                  // construct object to send to BE
-
-    if (!validCreditCardData()) { throw new Error("Payment data invalid"); }
-    else {
-      requestBody.paymentSuccessful = true    // atm BE is not utilizing this prop
+  useEffect(() => {
+    async function getAllUsers() {
+      const response = await fetchAllUsers(token);
+      setUsers(response);
     }
-
-
-    const albumsOrdered = cartCtx.items.map(item => {
-      return {
-        id: item.id, amountRequested: item.amountRequested,
-        name: item.name, price: item.price
-      }
-    })
-
-    requestBody.albumsOrdered = albumsOrdered;
-    requestBody.totalFromFE = cartCtx.totalAmount;
-    requestBody.userEmail = authCtx.loggedInUserData.email
-
-    await placeOrder(
-      requestBody,
-      authCtx.loggedInUserData.auth_token); // goes here -->> headers: { Authorization: `Bearer ${authToken}`
-
-    //empty cart, will also persist in localStorage
-    cartCtx.emptyCart();
-    navigate('/');
-  };
-
-
-  return (<>
-    {authCtx.isLoggedIn
-      ? <form onSubmit={handleSubmit} className={classes.paymentForm}>
-        <p className={classes.formInputsHeading}>USERS</p>
-        <input
-          type="text"
-          required
-          placeholder="Payment card number"
-          onChange={handleChange}
-          name="credit_card_no"
-          value={formData.credit_card_no}
-        />
-        <Button>ADMIN PANEL</Button>
-      </form>
-      : <ErrorGeneric errMessage="Log in/register to continue" />
+    if (token) {
+      getAllUsers(); // <-- only fetch users if truthy token
     }
-  </>)
+  }, [token]);
+
+
+  // no token -> need to log in
+  // token but:
+  //     users is still null -> spinner
+  //          not null but users.length is 0 -> message 
+  //          users.length > 0 -> map results 
+  // id, f_name, l_name, city, country
+  return (<main>
+    <AdminMenu />
+    {token
+      ? <div className={classes.usersDiv}>
+        {!users
+          ? <SuspenseSpinner />
+          : <>
+            {users.length === 0
+              ? <h2> No users found</h2>
+              : <>
+                {users.map(user =>
+                  <p key={user.id} className={classes.p}>{user.id} {user.f_name} {user.l_name} {user.city} {user.country}</p>
+                )
+                }
+              </>
+            }
+          </>
+        }
+      </div>
+      :
+      <ErrorGeneric errMessage="Log in/register to continue" />
+    }
+  </main>
+  )
 }
