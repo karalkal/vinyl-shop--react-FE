@@ -184,6 +184,25 @@ export async function fetchAllUsers(authToken) {
     }
 };
 
+export async function fetchUserById(authToken, idOfUser) {
+    console.log(authToken)
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+    }
+    try {
+        const response = await fetch(`${ROOT_ENDPOINT}/users/${idOfUser}`, { headers });
+        if (!response.ok) {
+            throw new Error(`${response.statusText} - ${response.status}`);
+        }   // if ok
+        const json = await response.json();
+        return json;
+    } catch (error) {
+        // will catch errors from if (!response.ok) too 
+        throw new Error(error.message);
+    }
+};
+
 
 
 
