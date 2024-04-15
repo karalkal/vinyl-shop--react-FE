@@ -10,6 +10,7 @@ import { LogInModal } from '../modals/LogInModal';
 import AdminModal from '../modals/AdminModal';
 import { Cart } from '../pages/Cart';
 import ErrorGeneric from '../pages/ErrorGeneric';
+import { ProtectedItem } from '../pages/protected/ProtectedItem';
 
 const RootLayout = () => {
 
@@ -28,7 +29,7 @@ const RootLayout = () => {
                     {loginModalVisible && <LogInModal />}
                     {registerModalVisible && <RegisterModal />}
                     {cartModalVisible && <Cart />}
-                    {adminModalVisible && <AdminModal />}
+                    {adminModalVisible && <ProtectedItem />}
 
                     {/* Outlet will render a <main> component depending on the route selected */}
                     <Outlet />

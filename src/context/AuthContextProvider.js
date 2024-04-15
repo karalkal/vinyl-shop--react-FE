@@ -15,6 +15,7 @@ export const AuthContextProvider = (props) => {
     const [loginModalVisible, setLoginModalVisible] = useState(false);
     const [registerModalVisible, setRegisterModalVisible] = useState(false);
     const [adminModalVisible, setAdminModalVisible] = useState(false);
+    const [protectedData, setProtectedData] = useState({});
 
     // check localStorage for logged in user, if logged in - change state
     // if not logged in/logs out and logs in again, LogIn comp will set new values in localStorage,
@@ -72,6 +73,8 @@ export const AuthContextProvider = (props) => {
             setRegisterModalVisible: setRegisterModalVisible,
             adminModalVisible: adminModalVisible,
             setAdminModalVisible: setAdminModalVisible,
+            protectedData: protectedData,
+            setProtectedData: setProtectedData,
         }}>
             {props.children}
         </AuthContext.Provider>)
