@@ -3,7 +3,7 @@ import { register } from '../api/api';
 import AuthContext from '../context/AuthContextProvider';
 import Modal from '../layouts/Modal';
 import { Button } from '../components/Button';
-import classes from './LogInRegisterModal.module.css';
+import styles from './LogInRegisterModal.module.css';
 
 // f_name, l_name, email, password, house_number, street_name, city, country - FIRST FOUR REQUIRED
 // DB constraints - pass between 4 and 35, names between 3 and 44
@@ -42,9 +42,9 @@ export const RegisterModal = () => {
   if (ctx.registerModalVisible) {
     return (
       <Modal>
-        <form onSubmit={handleSubmit} className={classes.logInForm}>
+        <form onSubmit={handleSubmit} className={styles.logInForm}>
           {/* f_name, l_name, email, password, house_number, street_name, city, country */}
-          <p className={classes.formInputsHeading}>Required Data</p>
+          <p className={styles.formInputsHeading}>Required Data</p>
           <input
             type="text"
             required
@@ -85,7 +85,7 @@ export const RegisterModal = () => {
             name="rePass"
             value={formData.rePass}
           />
-          <p className={classes.formInputsHeading}>Address (optional)</p>
+          <p className={styles.formInputsHeading}>Address (optional)</p>
           <input
             type="text"
             placeholder="House No."

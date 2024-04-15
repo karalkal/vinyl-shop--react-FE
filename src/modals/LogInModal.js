@@ -8,8 +8,7 @@ import ErrorContext from '../context/ErrorContextProvider';
 
 import Modal from '../layouts/Modal';
 import { Button } from '../components/Button';
-import classes from './LogInRegisterModal.module.css';
-import ErrorGeneric from '../pages/ErrorGeneric';
+import styles from './LogInRegisterModal.module.css';
 
 
 export const LogInModal = () => {
@@ -73,8 +72,8 @@ export const LogInModal = () => {
   if (authCtx.loginModalVisible) {
     return (
       <Modal>
-        <form onSubmit={handleSubmit} className={classes.logInForm}>
-          <p className={classes.formInputsHeading}>Vinylarium Login</p>
+        <form onSubmit={handleSubmit} className={styles.logInForm}>
+          <p className={styles.formInputsHeading}>Vinylarium Login</p>
           <input
             type="email"
             placeholder="Email"
@@ -92,8 +91,8 @@ export const LogInModal = () => {
           <Button>Submit</Button>
         </form>
 
-        <div className={classes.logInForm}>
-          <p className={classes.formInputsHeading} style={{ marginTop: "2em" }}>OR</p>
+        <div className={styles.logInForm}>
+          <p className={styles.formInputsHeading} style={{ marginTop: "2em" }}>OR</p>
           <Button onClick={googleLogin}>Login with Google</Button>
         </div>
       </Modal>

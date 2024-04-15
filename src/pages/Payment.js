@@ -5,7 +5,7 @@ import AuthContext from '../context/AuthContextProvider';
 import CartContext from '../context/CartContextProvider';
 
 import { Button } from '../components/Button';
-import classes from './Payment.module.css';
+import styles from './Payment.module.css';
 import { placeOrder } from '../api/api';
 import ErrorGeneric from './ErrorGeneric';
 
@@ -72,8 +72,8 @@ export const Payment = () => {
 
   return (<>
     {authCtx.isLoggedIn
-      ? <form onSubmit={handleSubmit} className={classes.paymentForm}>
-        <p className={classes.formInputsHeading}>Pay by card</p>
+      ? <form onSubmit={handleSubmit} className={styles.paymentForm}>
+        <p className={styles.formInputsHeading}>Pay by card</p>
         <input
           type="text"
           required

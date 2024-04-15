@@ -4,7 +4,7 @@ import AuthContext from '../context/AuthContextProvider';
 
 import { fetchAllOrders } from '../api/api';
 
-import classes from './Orders.module.css';
+import styles from './Orders.module.css';
 import OrderDetails from './OrderDetails';
 import { SuspenseSpinner } from '../modals/SuspenseSpinner';
 import ErrorGeneric from './ErrorGeneric';
@@ -60,12 +60,12 @@ export const Orders = () => {
     //          orders.length > 0 -> map results 
     return (<main>
         {token
-            ? <div className={classes.ordersDiv}>
+            ? <div className={styles.ordersDiv}>
                 {!orders
                     ? <SuspenseSpinner />
                     : <>
                         {orders.length === 0
-                            ? <h2 className={classes.noOrders}> No orders found</h2>
+                            ? <h2 className={styles.noOrders}> No orders found</h2>
                             : <>
                                 {aggregatedArray.map(order =>
                                     <OrderDetails key={order.purchase_id} order={order} />)

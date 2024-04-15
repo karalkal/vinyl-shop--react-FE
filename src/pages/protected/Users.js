@@ -5,7 +5,7 @@ import { PiFileMagnifyingGlassFill } from "react-icons/pi";
 import { PiPencilSimpleLineFill } from "react-icons/pi";
 import { IoTrashBinSharp } from "react-icons/io5";
 
-import classes from './Users.module.css';
+import styles from './Users.module.css';
 
 import { fetchAllUsers, fetchUserById } from '../../api/api';
 
@@ -44,7 +44,7 @@ export const Users = () => {
   return (<main>
     <AdminMenu />
     {token
-      ? <div className={classes.usersDiv}>
+      ? <div className={styles.usersDiv}>
         {!allUsersData
           ? <SuspenseSpinner />
           : <>
@@ -52,25 +52,25 @@ export const Users = () => {
               ? <h2> No users found</h2>
               : <>
                 {allUsersData.map(user =>
-                  <li key={user.id} className={classes['single-item']}>
-                    <div className={classes['data']}>
-                      <p className={classes['data-primary']}><span>{user.id}</span> {user.f_name} {user.l_name} </p>
-                      {(user.city || user.country) && <p className={classes['data-secondary']}>{user.city}, {user.country}</p>
+                  <li key={user.id} className={styles['single-item']}>
+                    <div className={styles['data']}>
+                      <p className={styles['data-primary']}><span>{user.id}</span> {user.f_name} {user.l_name} </p>
+                      {(user.city || user.country) && <p className={styles['data-secondary']}>{user.city}, {user.country}</p>
                       }
                     </div>
-                    <div className={classes['action-btns']}>
-                      <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
-                        <button title="View" className={classes.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id)}>
+                    <div className={styles['action-btns']}>
+                      <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
+                        <button title="View" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id)}>
                           <PiFileMagnifyingGlassFill />
                         </button>
                       </IconContext.Provider>
-                      <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
-                        <button title="Edit" className={classes.btnRight} onClick={() => console.log(true)}>
+                      <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
+                        <button title="Edit" className={styles.btnRight} onClick={() => console.log(true)}>
                           <PiPencilSimpleLineFill />
                         </button>
                       </IconContext.Provider>
-                      <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
-                        <button title="Delete" className={classes.btnRight} onClick={() => console.log(true)}>
+                      <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
+                        <button title="Delete" className={styles.btnRight} onClick={() => console.log(true)}>
                           <IoTrashBinSharp />
                         </button>
                       </IconContext.Provider>

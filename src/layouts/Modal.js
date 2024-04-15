@@ -1,7 +1,7 @@
 import { Fragment, useContext } from 'react';
 import ReactDOM from 'react-dom';
 
-import classes from './Modal.module.css';
+import styles from './Modal.module.css';
 import AuthContext from '../context/AuthContextProvider'; 
 import CartContext from '../context/CartContextProvider';
 
@@ -22,12 +22,12 @@ export const Backdrop = (props) => {
   }
 
 
-  return <div className={classes.backdrop} onClick={clearAllModals} />;
+  return <div className={styles.backdrop} onClick={clearAllModals} />;
 };
 
 const ModalOverlay = (props) => {
   return (
-    <div className={classes.modal}>
+    <div className={styles.modal}>
       {props.children}
     </div>
   );

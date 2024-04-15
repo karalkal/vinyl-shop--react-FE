@@ -1,4 +1,4 @@
-import classes from './OrderDetails.module.css'
+import styles from './OrderDetails.module.css'
 
 
 const OrderDetails = (props) => {
@@ -16,8 +16,8 @@ const OrderDetails = (props) => {
 
 
     return (
-        <div className={classes.orderCard}>
-            <div className={classes.firstRow}>
+        <div className={styles.orderCard}>
+            <div className={styles.firstRow}>
                 <p>Order No:&nbsp;<span>{purchase_id}</span></p>
                 <p>by&nbsp;<span>{f_name}&nbsp;{l_name}</span>&nbsp;&nbsp;(email&nbsp;<span>{user_email}</span>)</p>
                 {/* <p>id&nbsp;<span>{user_id}</span></p> */}
@@ -25,9 +25,9 @@ const OrderDetails = (props) => {
                 <p>status: <span>{dateTimeFulfilled}</span></p>
                 <p>total value: <span>{total}</span></p>
             </div>
-            <div className={classes.secondRow}>
+            <div className={styles.secondRow}>
                 {album_array.map((albumOrdered, idx) =>
-                    <div className={classes.orderedAlbum} key={idx}>
+                    <div className={styles.orderedAlbum} key={idx}>
                         <div>
                             <img src={albumOrdered[1]} alt={albumOrdered[1]}></img>
                             <h1>{albumOrdered[2]}</h1>

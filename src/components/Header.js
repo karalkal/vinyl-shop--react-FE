@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import { RiShoppingCartLine } from "react-icons/ri";
 
-import classes from './Header.module.css';
+import styles from './Header.module.css';
 import siteLogo from '../assets/vinyl-record-small.jpg';
 import { SearchForm } from './SearchForm';
 import { Button } from './Button';
@@ -32,16 +32,16 @@ export default function Header() {
 
 
     return (
-        <header id={classes.header}>
-            <Link to="/" className={classes.headerLeft}>
+        <header id={styles.header}>
+            <Link to="/" className={styles.headerLeft}>
                 <img src={siteLogo} alt="site logo" />
                 <h1>THE VINYLARIUM</h1>
             </Link>
-            <SearchForm className={classes.headerCentre}/>
-            <div className={classes.headerRight}>
+            <SearchForm className={styles.headerCentre}/>
+            <div className={styles.headerRight}>
                 {isLoggedIn
                     ?
-                    <Link to="/orders" className={classes.userDiv}>
+                    <Link to="/orders" className={styles.userDiv}>
                         <Button>
                             {/* <span>{loggedInUserData.first_name}'s</span> Orders */}
                             Orders
@@ -49,15 +49,15 @@ export default function Header() {
                         <Button onClick={handleLogOut}>Log Out</Button>
                     </Link>
                     :
-                    <div className={classes.userDiv}>
+                    <div className={styles.userDiv}>
                         <Button onClick={() => setLoginModalVisible(true)}>Log In</Button>
                         <Button onClick={() => setRegisterModalVisible(true)}>Register</Button>
                     </div>}
-                <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
-                    <button className={classes.btnRight} onClick={() => setCartModalVisible(true)}>
+                <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
+                    <button className={styles.btnRight} onClick={() => setCartModalVisible(true)}>
                         <RiShoppingCartLine />
 
-                        <span className={classes.lblCartCount}>{itemsCount}</span>
+                        <span className={styles.lblCartCount}>{itemsCount}</span>
 
                     </button>
                 </IconContext.Provider>

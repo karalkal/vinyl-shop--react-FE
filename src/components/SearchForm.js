@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from './Button';
-import classes from './SearchForm.module.css'
+import styles from './SearchForm.module.css'
 
 export function SearchForm() {
     const [formData, setFormData] = useState({ search_term: '' });
@@ -28,7 +28,7 @@ export function SearchForm() {
 
 
     return (
-        <form onSubmit={handleSubmit} className={classes.headerCentre}>
+        <form onSubmit={handleSubmit} className={styles.headerCentre}>
             <input
                 type="text"
                 required

@@ -3,7 +3,7 @@ import React from 'react';
 import CartContext from '../context/CartContextProvider';
 import AuthContext from '../context/AuthContextProvider';
 
-import classes from './Cart.module.css';
+import styles from './Cart.module.css';
 import CartModal from '../modals/CartModal';
 import { CartItem } from '../components/CartItem';
 import { Button } from '../components/Button'
@@ -25,7 +25,7 @@ export const Cart = (props) => {
     const cartItems = cartCtx.items.length === 0
         ? <h1 style={{ marginTop: ".5em" }}> is empty</h1>
         : (
-            <ul className={classes['cart-items']}>
+            <ul className={styles['cart-items']}>
                 {cartCtx.items.map((item) => (
                     <CartItem
                         key={item.id}
@@ -37,12 +37,12 @@ export const Cart = (props) => {
 
     return (
         <CartModal>
-            <div className={classes.cartContainer}>
+            <div className={styles.cartContainer}>
                 {authCtx.loggedInUserData.first_name
                     ? <h1>User {authCtx.loggedInUserData.first_name}'s cart</h1>
                     : <h1>Your cart</h1>}
                 {cartCtx.items.length > 0 &&
-                    <div className={classes['cart-header']}>
+                    <div className={styles['cart-header']}>
                         <div style={{ width: "25%" }} onClick={() => cartCtx.emptyCart()}>
                             <Button style={{ width: "100%" }}>Empty Cart</Button>
                         </div>
