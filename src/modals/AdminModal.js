@@ -18,8 +18,8 @@ const ModalOverlay = (props) => {
 // where modal will be rendered
 const portalElement = document.getElementById('overlays');
 
-const UserModal = (props) => {
-  console.log("kkkk", props);
+const AdminModal = (props) => {
+
   return (
     <Fragment>
       {ReactDOM.createPortal(<Backdrop />, portalElement)}
@@ -31,4 +31,4 @@ const UserModal = (props) => {
   );
 };
 
-export default UserModal;
+export default AdminModal;

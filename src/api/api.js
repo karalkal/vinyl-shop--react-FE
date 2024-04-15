@@ -7,13 +7,13 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export async function verifyUserIsAdmin(authToken) {
     await sleep(2000);
-    console.log("sending req with:", authToken)
+    // console.log("sending req with:", authToken)
     try {
         const response = await axios.get(`${ROOT_ENDPOINT}/auth/admin/`,
             {
                 headers: { Authorization: `Bearer ${authToken}` }
             });
-        console.log(response)
+        // console.log(response)
         return response
     }
     catch (err) {

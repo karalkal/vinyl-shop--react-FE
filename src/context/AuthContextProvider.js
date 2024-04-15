@@ -14,6 +14,7 @@ export const AuthContextProvider = (props) => {
     const [loggedInUserData, setLoggedInUserData] = useState({})
     const [loginModalVisible, setLoginModalVisible] = useState(false);
     const [registerModalVisible, setRegisterModalVisible] = useState(false);
+    const [adminModalVisible, setAdminModalVisible] = useState(false);
 
     // check localStorage for logged in user, if logged in - change state
     // if not logged in/logs out and logs in again, LogIn comp will set new values in localStorage,
@@ -49,6 +50,7 @@ export const AuthContextProvider = (props) => {
         localStorage.setItem("first_name", first_name);
         localStorage.setItem("last_name", last_name);
         // We can only store strings as values in local storage, true which we get from data or undefined if we get nothing does not work well, hence Y or N
+        // Each request will check the token if indeed is admin to avoid tampering with localStorage Data
         localStorage.setItem("is_admin", is_admin === true ? "Y" : "N");
 
         setLoggedInUserData({ auth_token: token, email, first_name, last_name, is_admin: is_admin === true ? "Y" : "N" });
@@ -67,7 +69,9 @@ export const AuthContextProvider = (props) => {
             loginModalVisible: loginModalVisible,
             setLoginModalVisible: setLoginModalVisible,
             registerModalVisible: registerModalVisible,
-            setRegisterModalVisible: setRegisterModalVisible
+            setRegisterModalVisible: setRegisterModalVisible,
+            adminModalVisible: adminModalVisible,
+            setAdminModalVisible: setAdminModalVisible,
         }}>
             {props.children}
         </AuthContext.Provider>)

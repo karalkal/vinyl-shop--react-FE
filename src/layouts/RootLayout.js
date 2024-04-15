@@ -7,12 +7,13 @@ import CartContext from '../context/CartContextProvider';
 import ErrorContext from '../context/ErrorContextProvider';
 import { RegisterModal } from '../modals/RegisterModal';
 import { LogInModal } from '../modals/LogInModal';
+import AdminModal from '../modals/AdminModal';
 import { Cart } from '../pages/Cart';
 import ErrorGeneric from '../pages/ErrorGeneric';
 
 const RootLayout = () => {
 
-    const { loginModalVisible, registerModalVisible } = useContext(AuthContext);
+    const { loginModalVisible, registerModalVisible, adminModalVisible } = useContext(AuthContext);
     const { cartModalVisible } = useContext(CartContext);
     const { hasError } = useContext(ErrorContext);
 
@@ -27,6 +28,8 @@ const RootLayout = () => {
                     {loginModalVisible && <LogInModal />}
                     {registerModalVisible && <RegisterModal />}
                     {cartModalVisible && <Cart />}
+                    {adminModalVisible && <AdminModal />}
+
                     {/* Outlet will render a <main> component depending on the route selected */}
                     <Outlet />
                 </>

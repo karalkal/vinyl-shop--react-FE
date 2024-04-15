@@ -52,7 +52,7 @@ const appRouter = createBrowserRouter(
   createRoutesFromElements(
     // Everything is nested in RootLayout comp
     < Route
-      element={< RootLayout />}
+      element={<RootLayout />}
       errorElement={< ErrorGeneric />}
     >
       <Route index

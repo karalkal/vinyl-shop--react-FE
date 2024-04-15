@@ -14,7 +14,7 @@ import { Button } from './Button';
 
 
 export default function Header() {
-    const { isLoggedIn, loggedInUserData, logoutHandler, setLoginModalVisible, setRegisterModalVisible } = useContext(AuthContext);
+    const { isLoggedIn, logoutHandler, setLoginModalVisible, setRegisterModalVisible } = useContext(AuthContext);
     const { setCartModalVisible, items } = useContext(CartContext);
 
     const navigate = useNavigate()

@@ -9,19 +9,20 @@ import CartContext from '../context/CartContextProvider';
 // darken content below the modal, if clicked outside of modal, hide it
 // will reuse this in CartModal
 export const Backdrop = (props) => {
-  const { setLoginModalVisible, setRegisterModalVisible } = useContext(AuthContext);
+  const { setLoginModalVisible, setRegisterModalVisible, setAdminModalVisible } = useContext(AuthContext);
   const { setCartModalVisible} = useContext(CartContext)
 
   // TODO: not very intelligent solution
-  function clearAllmodals() {
+  function clearAllModals() {
     // console.log("clicked backdrop")
     setLoginModalVisible(false);
-    setRegisterModalVisible(false)
-    setCartModalVisible(false)
+    setRegisterModalVisible(false);
+    setCartModalVisible(false);
+    setAdminModalVisible(false);
   }
 
 
-  return <div className={classes.backdrop} onClick={clearAllmodals} />;
+  return <div className={classes.backdrop} onClick={clearAllModals} />;
 };
 
 const ModalOverlay = (props) => {

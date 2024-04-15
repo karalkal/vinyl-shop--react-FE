@@ -1,25 +1,26 @@
 import { useState, useContext, useEffect } from 'react';
 
-import { fetchAllUsers, fetchUserById } from '../../api/api';
-
-import classes from './Users.module.css';
+import { IconContext } from 'react-icons';
 import { PiFileMagnifyingGlassFill } from "react-icons/pi";
 import { PiPencilSimpleLineFill } from "react-icons/pi";
 import { IoTrashBinSharp } from "react-icons/io5";
+import classes from './Users.module.css';
+
+import { fetchAllUsers, fetchUserById } from '../../api/api';
 
 import AuthContext from '../../context/AuthContextProvider';
 import { AdminMenu } from './AdminMenu';
 import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 import ErrorGeneric from '../ErrorGeneric';
-import { IconContext } from 'react-icons';
-import UserModal from '../../modals/UserModal';
+import AdminModal from '../../modals/AdminModal';
 
 
 export const Users = () => {
-  const { loggedInUserData } = useContext(AuthContext);
+  const { loggedInUserData, setAdminModalVisible } = useContext(AuthContext);
   const token = loggedInUserData.auth_token;
+  const isAdminAccordingToLocalStorage = loggedInUserData.is_admin === "Y";
+
   const [allUsersData, setAllUsersData] = useState([]);
-  const [userModalVisible, setUserModalVisible] = useState(false);
   const [singleUserData, setSingleUser] = useState({});
 
   useEffect(() => {
@@ -34,12 +35,27 @@ export const Users = () => {
 
 
 
-  async function getUserdata(token, idOfUser) {
+  async function displayUserData(token, idOfUser) {
     const response = await fetchUserById(token, idOfUser);
     console.log("data", response);
-    setSingleUser(response)
-    setUserModalVisible(true);
+    setSingleUser(response);
+    setAdminModalVisible(true);
+
+    return (
+      <AdminModal>
+        <p>id: {singleUserData.id}</p>
+        <p>{singleUserData.f_name}</p>
+        <p>{singleUserData.l_name}</p>
+        <p>{singleUserData.email}</p>
+        <p>{singleUserData.street_name}</p>
+        <p>{singleUserData.house_number}</p>
+        <p>{singleUserData.is_admin}</p>
+        <p>{singleUserData.is_contributor}</p>
+        <p>{singleUserData.city}</p>
+        <p>{singleUserData.country}</p>
+      </AdminModal>)
   }
+
 
 
   return (<main>
@@ -61,7 +77,7 @@ export const Users = () => {
                     </div>
                     <div className={classes['action-btns']}>
                       <IconContext.Provider value={{ className: `${classes.reactIcons}` }}>
-                        <button title="View" className={classes.btnRight} onClick={() => getUserdata(token, user.id)}>
+                        <button title="View" className={classes.btnRight} onClick={() => displayUserData(token, user.id)}>
                           <PiFileMagnifyingGlassFill />
                         </button>
                       </IconContext.Provider>
@@ -83,19 +99,7 @@ export const Users = () => {
             }
           </>
         }
-        {userModalVisible && <UserModal onHideModal={setUserModalVisible}>
-          <p>id: {singleUserData.id}</p>
-          <p>{singleUserData.f_name}</p>
-          <p>{singleUserData.l_name}</p>
-          <p>{singleUserData.email}</p>
-          <p>{singleUserData.street_name}</p>
-          <p>{singleUserData.house_number}</p>
-          <p>{singleUserData.is_admin}</p>
-          <p>{singleUserData.is_contributor}</p>
-          <p>{singleUserData.city}</p>
-          <p>{singleUserData.country}</p>
-        </UserModal>
-        }
+
       </div>
       :
       <ErrorGeneric errMessage="Log in/register to continue" />
