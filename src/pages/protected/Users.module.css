@@ -44,21 +44,13 @@
   height: 3em;
 }
 
-.action-btns>button:hover,
-.action-btns>button:first-child:hover,
-.action-btns>button:last-child:hover {
-  border: 1px solid var(--aureolin);
-  outline: 1px solid var(--aureolin);
-  background-color: black;
-  width: 3em;
-  height: 3em;
-}
-
-
 .action-btns>button:first-child {
   background-color: var(--cool-gray);
 }
 
+.action-btns>button:nth-child(2) {
+  background-color: var(--white);
+}
 
 .action-btns>button:last-child {
   background-color: var(--aureolin);
@@ -70,8 +62,20 @@
   width: 2.1em;
 }
 
+.action-btns>button:hover,
+.action-btns>button:first-child:hover,
+.action-btns>button:nth-child(2):hover,
+.action-btns>button:last-child:hover {
+  border: 1px solid var(--aureolin);
+  outline: 1px solid var(--aureolin);
+  background-color: black;
+  width: 3em;
+  height: 3em;
+}
+
 .action-btns>button:hover .reactIcons,
 .action-btns>button:first-child:hover .reactIcons,
+.action-btns>button:nth-child(2):hover .reactIcons,
 .action-btns>button:last-child:hover .reactIcons {
   fill: var(--aureolin);
 }

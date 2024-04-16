@@ -36,11 +36,16 @@ export const Users = () => {
     }
   }, [token]);
 
-
-  async function setUserDataAndEnableAdminModal(token, idOfUser) {
+  // AQpart from getting data to be rendered in the admin modal this function will set the 
+  // item type to be viewed or edited e.g. user, album etc... and the type of action e.g. view, edit, 
+  async function setUserDataAndEnableAdminModal(token, idOfUser, actionType) {
     const response = await fetchUserById(token, idOfUser);
     console.log(response);
-    setProtectedData({ dataType: "singleUser", ...response })
+    setProtectedData({
+      dataType: "singleUser",
+      actionType,
+      ...response
+    })
     setAdminModalVisible(true);
   }
 
@@ -64,12 +69,12 @@ export const Users = () => {
                     </div>
                     <div className={styles['action-btns']}>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="View" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id)}>
+                        <button title="View" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id, "VIEW")}>
                           <PiFileMagnifyingGlassFill />
                         </button>
                       </IconContext.Provider>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="Edit" className={styles.btnRight} onClick={() => console.log(true)}>
+                        <button title="Edit" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id, "EDIT")}>
                           <PiPencilSimpleLineFill />
                         </button>
                       </IconContext.Provider>
