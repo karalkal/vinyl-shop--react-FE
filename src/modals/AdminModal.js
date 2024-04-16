@@ -1,14 +1,14 @@
 import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
-import styles from './CartModal.module.css';
+import styles from './AdminModal.module.css';
 
 import { Backdrop } from '../layouts/Modal';
 
 
 const ModalOverlay = (props) => {
   return (
-    <div className={styles.cartModal}>
+    <div className={styles.adminModal}>
       {props.children}
     </div>
   );

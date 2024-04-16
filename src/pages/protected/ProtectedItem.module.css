@@ -1,8 +1,9 @@
 .protectedItem {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr 5fr);
+    text-align: left;
+    gap: 3%;
     padding: 1em;
-    margin: 1em 0;
-    background-color: var(--cool-gray);
     border-radius: 14px;
 }
 
@@ -12,60 +13,16 @@
     text-overflow: ellipsis;
 }
 
-.protectedItem .details {
-    grid-area: details;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.protectedItem .title {
 }
 
 
-.protectedItem .album-name {
-    border-top: 1px solid var(--space-cadet);
-    padding-top: .5em;
-    padding-bottom: .2em;
-    font-size: 1.4em;
+.protectedItem .data {
+    font-size: 1.1em;
     font-weight: 700;
     color: var(--space-cadet);
 }
 
-.protectedItem .band-name {
-    padding-bottom: .5em;
-}
-
-.protectedItem .band-name>span {
-    font-size: 1.3em;
-    font-weight: 600;
-}
-
-.protectedItem .year-color {
-    font-size: 1.1em;
-    font-weight: 600;
-}
-
-.price {
-    font-weight: 700;
-    border-bottom: 1px solid var(--space-cadet);
-    padding-bottom: .5em;
-    font-size: 1.2em;
-    font-weight: 700;
-
-}
-
-.amountRequested {
-    font-weight: bold;
-    border: 1px solid #ccc;
-    padding: 0.25rem 0.75rem;
-    border-radius: 6px;
-}
-
-.protectedItem .actions {
-    grid-area: buttons;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-}
 
 /* A bit unusual maybe but icon is actually wrapper of the button */
 .protectedItem .actions .reactIcons {

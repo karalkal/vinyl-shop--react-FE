@@ -24,8 +24,12 @@ export const Users = () => {
 
   useEffect(() => {
     async function getAllUsers() {
-      const response = await fetchAllUsers(token);
-      setAllUsersData(response);
+      try {
+        const response = await fetchAllUsers(token);
+        setAllUsersData(response);
+      } catch (error) {
+        throw new Error()
+      }
     }
     if (token) {
       getAllUsers(); // <-- only fetch users if truthy token

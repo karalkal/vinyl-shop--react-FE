@@ -1,0 +1,33 @@
+/* N.B. on smaller screen */
+.adminModal {
+  overflow-y: scroll;
+  position: absolute;
+  top: 4%;
+  padding-bottom: 4%;
+  left: 5%;
+  width: 90%;
+  background-color: white;
+  border-radius: 14px;
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+}
+
+
+/* N.B. on larger screen */
+@media (min-width: 768px) {
+  .adminModal {
+    width: 70%;
+    left: 15%;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
