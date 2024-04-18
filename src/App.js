@@ -14,7 +14,6 @@ import { SuspenseSpinner } from './modals/SuspenseSpinner';
 import { Payment } from './pages/Payment';
 import { Orders } from './pages/Orders';
 import FoundAlbums from './pages/FoundAlbums';
-import PrivateRoutes from './PrivateRoutes';
 import { AdminMenu } from './pages/protected/AdminMenu';
 import { Users } from './pages/protected/Users';
 
@@ -73,10 +72,9 @@ const appRouter = createBrowserRouter(
         loader={({ request }) => findAlbumsLoader(request)}
       />
 
-      
-        <Route element={<AdminMenu />} path="admin" exact >
-          <Route element={<Users />} path="users" exact />
-        </Route>
+      <Route element={<AdminMenu />} path="admin" exact >
+        <Route element={<Users />} path="users" exact />
+      </Route>
 
       <Route path="test" element={<SuspenseSpinner />} />
       <Route path="*" element={<Error404 />} />

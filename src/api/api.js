@@ -18,7 +18,7 @@ export async function verifyUserIsAdmin(authToken) {
     }
     catch (err) {
         if (err && err instanceof AxiosError) {
-            throw new Error(err.message);
+            throw new Error("Admin authentication failed");
         }
         else {
             console.log("other error", err.response)

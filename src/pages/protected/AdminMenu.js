@@ -6,8 +6,7 @@ import styles from './AdminMenu.module.css';
 
 import AuthContext from '../../context/AuthContextProvider';
 import ErrorContext from '../../context/ErrorContextProvider';
-import ErrorGeneric from '../../pages/ErrorGeneric';
-
+import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 
 export const AdminMenu = () => {
   const { loggedInUserData, isLoggedIn } = useContext(AuthContext);
@@ -26,7 +25,7 @@ export const AdminMenu = () => {
         console.log("response", response);
         setUserIsIndeedAdmin(response.data);
       } catch (error) {
-        console.log(error.message)
+        console.log("Error", error.message)
         errCtx.setHasError(error.message);
       }
       //  BE respondes with req.user.is_admin from encrypted token -->> response.data will be true/false for is_admin 
