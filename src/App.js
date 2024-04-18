@@ -50,7 +50,7 @@ async function verifyUserIsAdminLoader() {
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     // Everything is nested in RootLayout comp
-    < Route
+    <Route
       element={<RootLayout />}
       errorElement={<ErrorGeneric />}
     >
@@ -72,14 +72,14 @@ const appRouter = createBrowserRouter(
         loader={({ request }) => findAlbumsLoader(request)}
       />
 
-      <Route element={<AdminMenu />} path="admin" exact >
-        <Route element={<Users />} path="users" exact />
+      <Route path="admin" element={<AdminMenu />} exact >
+        <Route path="users" element={<Users />} exact />
       </Route>
 
       <Route path="test" element={<SuspenseSpinner />} />
       <Route path="*" element={<Error404 />} />
 
-    </Route >)
+    </Route>)
 )
 
 

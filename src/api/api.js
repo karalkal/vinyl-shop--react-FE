@@ -13,15 +13,14 @@ export async function verifyUserIsAdmin(authToken) {
             {
                 headers: { Authorization: `Bearer ${authToken}` }
             });
-        // console.log(response)
         return response
     }
     catch (err) {
         if (err && err instanceof AxiosError) {
-            throw new Error("Admin authentication failed");
+            throw new Error("Admin auth failed");
         }
         else {
-            console.log("other error", err.response)
+            console.log("Something went wrong", err.response)
             throw new Error(err.message);
         }
     }
