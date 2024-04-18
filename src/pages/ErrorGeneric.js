@@ -5,7 +5,7 @@ import ErrorContext from "../context/ErrorContextProvider";
 
 export default function ErrorGeneric(props) {
     const errCtx = useContext(ErrorContext)
-    console.log(props)
+    console.log("GENERIC ERROR", props)
 
     return (
         <div className={styles.errorDiv}>

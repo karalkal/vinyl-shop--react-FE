@@ -28,6 +28,7 @@ export const Users = () => {
         const response = await fetchAllUsers(token);
         setAllUsersData(response);
       } catch (error) {
+        console.log("Error", error)
         throw new Error()
       }
     }

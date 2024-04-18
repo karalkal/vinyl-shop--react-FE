@@ -3,10 +3,13 @@ import { useContext, useEffect, useState } from 'react';
 import AuthContext from './context/AuthContextProvider';
 import ErrorGeneric from './pages/ErrorGeneric';
 import { verifyUserIsAdmin } from './api/api';
+import ErrorContext from './context/ErrorContextProvider';
 
 
 const PrivateRoutes = () => {
     const { loggedInUserData, isLoggedIn } = useContext(AuthContext);
+    const errCtx = useContext(ErrorContext)
+
     const userSaysTheyAreAdmin = loggedInUserData.is_admin;
     const authToken = loggedInUserData.auth_token;
 
@@ -15,6 +18,7 @@ const PrivateRoutes = () => {
     useEffect(() => {
         async function verifyTokenForAdminPrivileges() {
             const response = await verifyUserIsAdmin(authToken);
+            console.log(response);
             //  BE respondes with req.user.is_admin from encrypted token -->> response.data will be true/false for is_admin 
             setUserIsIndeedAdmin(response.data);
         }
@@ -27,7 +31,6 @@ const PrivateRoutes = () => {
 
     return (
         isAdminAndHasToken ? <Outlet /> : <ErrorGeneric errMessage="Not authorized to access this route" />
-
     )
 }
 

@@ -53,7 +53,7 @@ const appRouter = createBrowserRouter(
     // Everything is nested in RootLayout comp
     < Route
       element={<RootLayout />}
-      errorElement={< ErrorGeneric />}
+      errorElement={<ErrorGeneric />}
     >
       <Route index
         element={<Albums />}
@@ -73,13 +73,10 @@ const appRouter = createBrowserRouter(
         loader={({ request }) => findAlbumsLoader(request)}
       />
 
-      <Route
-        element={<PrivateRoutes
-        // loader={() => verifyUserIsAdminLoader()}
-        />}>
-        <Route element={<AdminMenu />} path="/admin" exact />
-        <Route element={<Users />} path="/users" exact />
-      </Route>
+      
+        <Route element={<AdminMenu />} path="admin" exact >
+          <Route element={<Users />} path="users" exact />
+        </Route>
 
       <Route path="test" element={<SuspenseSpinner />} />
       <Route path="*" element={<Error404 />} />
