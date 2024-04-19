@@ -79,7 +79,7 @@ export const Users = () => {
                         </button>
                       </IconContext.Provider>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="Delete" className={styles.btnRight} onClick={() => console.log(true)}>
+                        <button title="Delete" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id, "DELETE")}>
                           <IoTrashBinSharp />
                         </button>
                       </IconContext.Provider>

@@ -204,7 +204,6 @@ export async function fetchUserById(authToken, idOfUser) {
 
 // at BE -> usersRouter.put("/:userId", userAuthentication, updateUser);
 export async function updateUser(authToken, idOfUser, newData) {
-    console.log(newData);
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`
@@ -214,7 +213,29 @@ export async function updateUser(authToken, idOfUser, newData) {
         const response = await axios.put(`${ROOT_ENDPOINT}/users/${idOfUser}`,
             newData,
             { headers: headers });
-        console.log(response)
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
+        else {
+            console.log("other error")
+            throw new Error(err.message);
+        }
+    }
+}
+
+export async function deleteUser(authToken, idOfUser) {
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+    }
+
+    try {
+        const response = await axios.delete(`${ROOT_ENDPOINT}/users/${idOfUser}`,
+            { headers: headers });
         return response
     }
     catch (err) {
