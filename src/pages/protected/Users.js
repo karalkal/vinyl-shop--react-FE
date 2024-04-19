@@ -18,7 +18,6 @@ import ErrorGeneric from '../ErrorGeneric';
 export const Users = () => {
   const { loggedInUserData, setAdminModalVisible, setProtectedData } = useContext(AuthContext);
   const token = loggedInUserData.auth_token;
-  const isAdminAccordingToLocalStorage = loggedInUserData.is_admin === "Y";
 
   const [allUsersData, setAllUsersData] = useState([]);
 

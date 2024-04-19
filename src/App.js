@@ -1,6 +1,6 @@
 "use client";
 
-import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, defer } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, defer, Outlet } from 'react-router-dom';
 
 import { fetchAllAlbums, fetchAlbumById, findAlbums } from './api/api';
 
@@ -16,6 +16,7 @@ import { Orders } from './pages/Orders';
 import FoundAlbums from './pages/FoundAlbums';
 import { AdminMenu } from './pages/protected/AdminMenu';
 import { Users } from './pages/protected/Users';
+import UnderConstruction from './pages/UnderConstruction';
 
 
 async function allAlbumsLoader() {
@@ -72,8 +73,10 @@ const appRouter = createBrowserRouter(
         loader={({ request }) => findAlbumsLoader(request)}
       />
 
-      <Route path="admin" element={<AdminMenu />} exact >
-        <Route path="users" element={<Users />} exact />
+      <Route path="admin" element={<Outlet />} >
+        <Route index element={<AdminMenu />} />
+        <Route path="users" element={<Users />} />
+        <Route path="*" element={<UnderConstruction />} />
       </Route>
 
       <Route path="test" element={<SuspenseSpinner />} />

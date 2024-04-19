@@ -51,12 +51,12 @@ export const AdminMenu = () => {
         {isLoading
           ? <SuspenseSpinner />
           : {userIsIndeedAdmin} && <div className={styles.adminHeader}>
-            <Link to="/users" className={styles.adminBtn}>Users</Link>
-            <Link to="/orders" className={styles.adminBtn}>Orders</Link>
-            <Link to="/bands" className={styles.adminBtn}>Bands</Link>
-            <Link to="/genres" className={styles.adminBtn}>Genres</Link>
-            <Link to="/labels" className={styles.adminBtn}>Labels</Link>
-            <Link to="/albums" className={styles.adminBtn}>Albums</Link>
+            <Link to="/admin/users" className={styles.adminBtn}>Users</Link>
+            <Link to="/admin/orders" className={styles.adminBtn}>Orders</Link>
+            <Link to="/admin/bands" className={styles.adminBtn}>Bands</Link>
+            <Link to="/admin/genres" className={styles.adminBtn}>Genres</Link>
+            <Link to="/admin/labels" className={styles.adminBtn}>Labels</Link>
+            <Link to="/admin/albums" className={styles.adminBtn}>Albums</Link>
           </div>
         }
       </>
