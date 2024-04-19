@@ -16,6 +16,9 @@ export const ProtectedItem = () => {
 
     const [formData, setFormData] = React.useState(protectedData);
 
+    const [itemHasUpdated, setItemHasUpdated] = React.useState(false)
+    const [itemWasDeleted, setItemWasDeleted] = React.useState(false)
+
     // updating functions
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -30,11 +33,23 @@ export const ProtectedItem = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         const response = await updateUser(loggedInUserData.auth_token, formData.id, formData);
+        if (response.status === 200) {
+            console.log("all is good");
+            setItemHasUpdated(true);
+        }
         console.log(response);
     };
 
 
-    console.log(protectedData)
+    if (itemHasUpdated) {
+        return (
+            <AdminModal>
+                <div className={styles.messageDiv}>
+                    <h1 className={styles.messageTitle}>Item updated successfully</h1>
+                    <h1 className={styles.messageTitle}>Refresh screen or click view to verify</h1>
+                </div>
+            </AdminModal>)
+    }
 
     if (dataType === "singleUser") {
         return (
@@ -55,7 +70,7 @@ export const ProtectedItem = () => {
                         <Button style={{ marginBottom: "3em", marginTop: "1em", }}>Edit</Button>
                     </form>)}
 
-                {actionType === "VIEW" && (
+                {(actionType === "VIEW" || actionType === "DELETE") && (
                     <div className={styles.protectedItem}>
                         <span className={styles.title}>id: </span><span className={styles.data}>{protectedData.id}</span>
                         <span className={styles.title}>First name: </span><span className={styles.data}>{protectedData.f_name}</span>
@@ -69,6 +84,10 @@ export const ProtectedItem = () => {
                         <span className={styles.title}>Contributor: </span><span className={styles.data}>{protectedData.is_contributor ? "YES" : "NO"}</span>
                     </div>)
                 }
+
+                {/* only if delete display btn */}
+                {actionType === "DELETE" && <Button style={{ marginBottom: "3em", marginTop: "1em", }}>Delete</Button>}
+
             </AdminModal>)
     }
 
