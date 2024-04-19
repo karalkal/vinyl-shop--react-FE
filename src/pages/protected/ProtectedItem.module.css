@@ -12,12 +12,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-button{
-    background-color: red;
-}
 
-.protectedItem .title {
-}
+.protectedItem .title {}
 
 
 .protectedItem .data {
