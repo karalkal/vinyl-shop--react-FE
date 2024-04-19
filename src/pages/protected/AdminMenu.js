@@ -20,15 +20,16 @@ export const AdminMenu = () => {
 
   useEffect(() => {
     async function verifyTokenForAdminPrivileges() {
-
-      const response = await verifyUserIsAdmin(loggedInUserData.auth_token);
-      console.log(response.data);
       //  BE responds with req.user.is_admin from encrypted token -->> response.data will be true/false for is_admin 
       try {
+        const response = await verifyUserIsAdmin(loggedInUserData.auth_token);
+        console.log(response.data);  
         setUserIsIndeedAdmin(response.data);
       }
       catch (error) {
+        console.log(error)
         setHasError("Expired token (or are you messing about?)");
+        return
       }
       finally {
         setIsLoading(false);
@@ -36,24 +37,20 @@ export const AdminMenu = () => {
     }
     // only fetch if Auth context data shows user is logged in, is admin and has token 
     // this is just preliminary check - data will be verified at BE afterwards
-    if (isLoggedIn && loggedInUserData.is_admin === "Y" && loggedInUserData.auth_token) {
+    if (isLoggedIn && loggedInUserData.auth_token) {
       verifyTokenForAdminPrivileges();
-    } 
-    else {
-      setHasError("You don't have the correct privileges to access this route");
-      return;
     }
 
   }, [loggedInUserData, isLoggedIn, setHasError]);
 
 
   return <>
-    {loggedInUserData.auth_token    // if token -->> either spinner or menu
+    {isLoggedIn    // if user is logged in -> either spinner or menu
       ?
       <>
         {isLoading
           ? <SuspenseSpinner />
-          : <div className={styles.adminHeader}>
+          : {userIsIndeedAdmin} && <div className={styles.adminHeader}>
             <Link to="/users" className={styles.adminBtn}>Users</Link>
             <Link to="/orders" className={styles.adminBtn}>Orders</Link>
             <Link to="/bands" className={styles.adminBtn}>Bands</Link>
