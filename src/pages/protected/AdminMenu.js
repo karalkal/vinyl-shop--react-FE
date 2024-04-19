@@ -16,18 +16,14 @@ export const AdminMenu = () => {
   const [userIsIndeedAdmin, setUserIsIndeedAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(loggedInUserData)
-
   useEffect(() => {
     async function verifyTokenForAdminPrivileges() {
       //  BE responds with req.user.is_admin from encrypted token -->> response.data will be true/false for is_admin 
       try {
         const response = await verifyUserIsAdmin(loggedInUserData.auth_token);
-        console.log(response.data);  
         setUserIsIndeedAdmin(response.data);
       }
       catch (error) {
-        console.log(error)
         setHasError("Expired token (or are you messing about?)");
         return
       }
@@ -50,7 +46,7 @@ export const AdminMenu = () => {
       <>
         {isLoading
           ? <SuspenseSpinner />
-          : {userIsIndeedAdmin} && <div className={styles.adminHeader}>
+          : { userIsIndeedAdmin } && <div className={styles.adminHeader}>
             <Link to="/admin/users" className={styles.adminBtn}>Users</Link>
             <Link to="/admin/orders" className={styles.adminBtn}>Orders</Link>
             <Link to="/admin/bands" className={styles.adminBtn}>Bands</Link>

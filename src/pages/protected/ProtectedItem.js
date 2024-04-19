@@ -4,11 +4,14 @@ import AuthContext from '../../context/AuthContextProvider';
 
 import styles from "./ProtectedItem.module.css";
 import { Button } from '../../components/Button';
+import { updateUser } from '../../api/api';
 
 
 export const ProtectedItem = () => {
-    const { protectedData } = useContext(AuthContext);
-
+    const { protectedData, loggedInUserData } = useContext(AuthContext);
+    console.log(protectedData)
+    // Properties dataType: "singleUser", actionType: "VIEW" are attached to AuthContext
+    // Depending on this we will render relevant modal, i.e. user, album etc.
     if (protectedData.dataType === "singleUser") {
         if (protectedData.actionType === "VIEW") {
             return (
@@ -30,7 +33,7 @@ export const ProtectedItem = () => {
         if (protectedData.actionType === "EDIT") {
             return (
                 <AdminModal>
-                    <UserEditForm protectedData={protectedData} />
+                    <UserEditForm protectedData={protectedData} loggedInUserData={loggedInUserData}/>
                 </AdminModal>)
         }
     }
@@ -43,10 +46,10 @@ export const ProtectedItem = () => {
 
 
 function UserEditForm(props) {
-    const { protectedData } = props;
+    const { protectedData, loggedInUserData } = props;
     delete protectedData.dataType;
     delete protectedData.actionType;
-    const [formData, setFormData] = React.useState(protectedData)
+    const [formData, setFormData] = React.useState(protectedData);
 
 
     function handleChange(event) {
@@ -62,11 +65,13 @@ function UserEditForm(props) {
     console.log("form data", formData)
 
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log("SUBMITTED!!!!")
-    }
+    async function handleSubmit(e) {
+        e.preventDefault();
+        console.log(formData)
 
+        const response = await updateUser(loggedInUserData.auth_token, formData.id, formData);
+        console.log(response);
+    };
 
     return (
         <form className={styles.protectedItem} onSubmit={handleSubmit}>

@@ -6,7 +6,7 @@ const ROOT_ENDPOINT = "http://localhost:3000/api/v1";
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export async function verifyUserIsAdmin(authToken) {
-    await sleep(2000);
+    // await sleep(2000);
     // console.log("sending req with:", authToken)
     try {
         const response = await axios.get(`${ROOT_ENDPOINT}/auth/admin/`,
@@ -201,6 +201,35 @@ export async function fetchUserById(authToken, idOfUser) {
         throw new Error(error.message);
     }
 };
+
+// at BE -> usersRouter.put("/:userId", userAuthentication, updateUser);
+export async function updateUser(authToken, idOfUser, newData) {
+    console.log(newData);
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+    }
+
+    try {
+        const response = await axios.put(`${ROOT_ENDPOINT}/users/${idOfUser}`,
+            newData,
+            { headers: headers });
+        console.log(response)
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
+        else {
+            console.log("other error")
+            throw new Error(err.message);
+        }
+    }
+}
+
+
 
 
 
