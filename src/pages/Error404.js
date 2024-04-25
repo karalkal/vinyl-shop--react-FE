@@ -1,17 +1,14 @@
 import { Link } from "react-router-dom";
-import styles from "./Errors.module.css";
 import ErrorModal from "../modals/ErrorModal";
+import { Button } from "../components/Button";
 
 
 export default function PageNotFound() {
     return (
         <ErrorModal>
-            <h1 className={styles.errorTitle}>Page not found.</h1>
-            <h2 className={styles.errorSubtitle}>
-                <Link to="/"
-                    className={styles.errorSubtitle}>Return to Homepage</Link></h2>
+            <h1>Page not found.</h1>
+            <Link to="/"><Button>Return to Homepage</Button></Link>
         </ErrorModal>
-
     );
 };
 

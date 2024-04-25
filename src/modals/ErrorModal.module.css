@@ -1,7 +1,100 @@
 .errorModal {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    background-color: yellow;
+    line-height: 1.25;
+    text-align: center;
+    background-color: var(--cool-gray);
+    position: fixed;
+    top: 20vh;
+    left: 19%;
+    width: 62%;
+    padding: 1rem;
+    border-radius: 14px;
+    z-index: 30;
+    animation: slide-down 300ms ease-out forwards;
 }
 
+.errorModal button {
+    width: 100%;
+}
+
+.errorModal button a {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.errorModal button a:hover {
+    color: var(--aureolin);
+}
+
+.errorModal h1 {
+    margin: 11px auto 22px;
+    font-size: 1.9rem;
+    font-family: var(--font-display);
+    color: var(--space-cadet);
+    font-weight: 400;
+}
+
+.errorModal h2 {
+    font-family: var(--font-main);
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+/* mediaqueries */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 853px) {
+    .errorTitle {
+        margin: 0 0 8px 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+
+    .errorSubtitle {
+        margin-bottom: 8px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 601px and up) */
+@media only screen and (min-width: 854px) and (max-width: 821px) {
+    .errorTitle {
+        margin: 0 0 8px 0;
+        font-size: 1.7rem;
+        font-weight: 300;
+    }
+
+    .errorSubtitle {
+        margin-bottom: 8px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 822px and up) */
+@media only screen and (min-width: 822px) and (max-width: 991px) {
+    .errorTitle {
+        margin: 0 0 8px 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+
+    .errorSubtitle {
+        margin-bottom: 17px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .errorTitle {
+        font-size: 1.7rem;
+        font-weight: 300;
+    }
+
+    .errorSubtitle {
+        margin-bottom: 17px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

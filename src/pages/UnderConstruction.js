@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
-import styles from "./Errors.module.css"
+import ErrorModal from "../modals/ErrorModal";
+import { Button } from "../components/Button";
 
 
 export default function UnderConstruction() {
     return (
-        <div className={styles.errorDiv}>
-            <h1 className={styles.errorTitle}>Under Construction</h1>
-            <h2 className={styles.errorSubtitle}>
-                <Link to="/admin"
-                    className={styles.errorSubtitle}>Return to Admin Interface</Link></h2>
-        </div>
+        <ErrorModal>
+            <h1>Under Construction.</h1>
+            <Link to="/admin"><Button>Return to Admin Interface</Button></Link>
+        </ErrorModal >
     );
 };
+
+
 
