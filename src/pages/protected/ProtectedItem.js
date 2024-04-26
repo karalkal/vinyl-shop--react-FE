@@ -1,18 +1,21 @@
 import React, { useContext } from 'react'
 import AdminModal from '../../modals/AdminModal'
 import AuthContext from '../../context/AuthContextProvider';
+import ErrorContext from '../../context/ErrorContextProvider';
 
 import styles from "./ProtectedItem.module.css";
 import { Button } from '../../components/Button';
-import { deleteUser, updateUser } from '../../api/api';
+import { deleteBand, deleteUser, updateBand, updateUser } from '../../api/api';
 
 
 export const ProtectedItem = () => {
+    const { hasError, setHasError } = useContext(ErrorContext)
     const { protectedData, loggedInUserData } = useContext(AuthContext);
+
     // Properties dataType: "singleUser", actionType: "VIEW" are attached to AuthContext
     // Depending on this we will render relevant modal, i.e. user, album etc.
     const { dataType, actionType } = protectedData;
-    console.log("dataType, actionType", dataType, actionType);
+    console.log("dataType:", dataType, "actionType:", actionType);
 
     const [formData, setFormData] = React.useState(protectedData);
 
@@ -32,19 +35,45 @@ export const ProtectedItem = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const response = await updateUser(loggedInUserData.auth_token, formData.id, formData);
-        if (response.status === 200) {
-            setItemHasUpdated(true);
+        let response = null
+        try {
+            if (dataType === "singleUser") {
+                response = await updateUser(loggedInUserData.auth_token, formData.id, formData);
+            }
+            else if (dataType === "bands") {
+                response = await updateBand(loggedInUserData.auth_token, formData.id, formData);
+            }
+
+            if (response.status === 200) {
+                setItemHasUpdated(true);
+            }
+        } catch (error) {
+            console.log("Error", error)
+            setHasError(error.message);
+            return
         }
     };
 
     async function handleDelete(e) {
         e.preventDefault();
-        const response = await deleteUser(loggedInUserData.auth_token, protectedData.id);
-        if (response.status === 204) {
-            setItemWasDeleted(true);
+        let response = null
+        try {
+            if (dataType === "singleUser") {
+                response = await deleteUser(loggedInUserData.auth_token, protectedData.id);
+            }
+            else if (dataType === "bands") {
+                response = await deleteBand(loggedInUserData.auth_token, protectedData.id);
+            }
+
+            if (response.status === 204) {
+                setItemWasDeleted(true);
+            }
+        } catch (error) {
+            console.log("Error", error)
+            setHasError(error.message);
+            return
         }
-    }
+    };
 
 
     if (itemHasUpdated) {
@@ -123,7 +152,7 @@ export const ProtectedItem = () => {
             </AdminModal>)
     }
 
-    else if (dataType === "band") {
+    else if (dataType === "bands") {
         return (
             <AdminModal>
 

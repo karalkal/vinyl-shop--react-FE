@@ -10,6 +10,7 @@ import styles from './Users.module.css';
 import { fetchAllUsers, fetchUserById } from '../../api/api';
 
 import AuthContext from '../../context/AuthContextProvider';
+import ErrorContext from '../../context/ErrorContextProvider';
 import { AdminMenu } from './AdminMenu';
 import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 import ErrorGeneric from '../ErrorGeneric';
@@ -17,6 +18,8 @@ import ErrorGeneric from '../ErrorGeneric';
 
 export const Users = () => {
   const { loggedInUserData, setAdminModalVisible, setProtectedData } = useContext(AuthContext);
+  const { hasError, setHasError } = useContext(ErrorContext);
+
   const token = loggedInUserData.auth_token;
 
   const [allUsersData, setAllUsersData] = useState([]);
@@ -28,8 +31,8 @@ export const Users = () => {
         setAllUsersData(response);
       } catch (error) {
         console.log("Error", error)
-        throw new Error()
-      }
+        setHasError(error.message);
+        return      }
     }
     if (token) {
       getAllUsers(); // <-- only fetch users if truthy token

@@ -10,6 +10,7 @@ import styles from './Users.module.css';
 import { fetchAllBands, fetchBandById } from '../../api/api';
 
 import AuthContext from '../../context/AuthContextProvider';
+import ErrorContext from '../../context/ErrorContextProvider';
 import { AdminMenu } from './AdminMenu';
 import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 import ErrorGeneric from '../ErrorGeneric';
@@ -17,6 +18,7 @@ import ErrorGeneric from '../ErrorGeneric';
 
 export const Bands = () => {
   const { loggedInUserData, setAdminModalVisible, setProtectedData } = useContext(AuthContext);
+  const { hasError, setHasError } = useContext(ErrorContext)
   const token = loggedInUserData.auth_token;
 
   const [allBandsData, setAllBandsData] = useState([]);
@@ -28,7 +30,8 @@ export const Bands = () => {
         setAllBandsData(response);
       } catch (error) {
         console.log("Error", error)
-        throw new Error()
+        setHasError(error.message);
+        return
       }
     }
     if (token) {
