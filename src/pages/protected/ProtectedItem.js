@@ -6,6 +6,7 @@ import ErrorContext from '../../context/ErrorContextProvider';
 import styles from "./ProtectedItem.module.css";
 import { Button } from '../../components/Button';
 import { deleteBand, deleteUser, updateBand, updateUser } from '../../api/api';
+import ErrorInfoModal from '../../modals/ErrorInfoModal';
 
 
 export const ProtectedItem = () => {
@@ -76,12 +77,12 @@ export const ProtectedItem = () => {
 
     if (itemHasUpdated) {
         return (
-            <AdminModal>
+            <ErrorInfoModal>
                 <div className={styles.messageDiv}>
                     <h1 className={styles.messageTitle}>Item updated successfully</h1>
                     <h1 className={styles.messageTitle}>Refresh screen or click view to verify</h1>
                 </div>
-            </AdminModal>)
+            </ErrorInfoModal>)
     }
 
     if (itemWasDeleted) {

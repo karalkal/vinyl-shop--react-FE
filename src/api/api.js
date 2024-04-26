@@ -289,6 +289,32 @@ export async function fetchBandById(authToken, idOfBand) {
 };
 
 
+export async function createBand(authToken, bandData) {
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+    }
+
+    try {
+        const response = await axios.post(`${ROOT_ENDPOINT}/bands`,
+            bandData,
+            { headers: headers });
+            console.log(response)
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
+        else {
+            console.log("other error")
+            throw new Error(err.message);
+        }
+    }
+}
+
+
 export async function updateBand(authToken, idOfBand, newData) {
     const headers = {
         'Content-Type': 'application/json',

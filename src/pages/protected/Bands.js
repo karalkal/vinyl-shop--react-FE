@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { IconContext } from 'react-icons';
 import { PiFileMagnifyingGlassFill } from "react-icons/pi";
@@ -8,14 +9,13 @@ import { RiSave3Fill } from "react-icons/ri";
 
 import styles from './AdminPages.module.css';
 
-import { fetchAllBands, fetchBandById } from '../../api/api';
+import { fetchAllBands, fetchBandById, createBand } from '../../api/api';
 
 import AuthContext from '../../context/AuthContextProvider';
 import ErrorContext from '../../context/ErrorContextProvider';
 import { AdminMenu } from './AdminMenu';
 import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 import ErrorGeneric from '../ErrorGeneric';
-import { Link } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import ErrorInfoModal from '../../modals/ErrorInfoModal';
 
@@ -27,6 +27,7 @@ export const Bands = () => {
 
   const [allBandsData, setAllBandsData] = useState(null);
   const [formData, setFormData] = useState({ name: '', country: '' });
+  const [newBandWasCreated, setNewBandWasCreated] = useState(false);
 
 
   useEffect(() => {
@@ -65,6 +66,31 @@ export const Bands = () => {
     })
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let response = null
+    try {
+      response = await createBand(loggedInUserData.auth_token, formData);
+      if (response.status === 201) {
+        setNewBandWasCreated(true);
+      }
+    }
+    catch (error) {
+      setHasError(error.message);
+      return
+    }
+  };
+
+  if (newBandWasCreated) {
+    return (
+      <ErrorInfoModal>
+        <div className={styles.messageDiv}>
+          <h1 className={styles.messageTitle}>Item created successfully</h1>
+          <h1 className={styles.messageTitle}>Refresh screen or click view to verify</h1>
+        </div>
+      </ErrorInfoModal>)
+  }
+
 
   return (<main>
     <AdminMenu />
@@ -74,39 +100,30 @@ export const Bands = () => {
           ? <SuspenseSpinner />
           : <>
             {allBandsData.length === 0
-              ? <ErrorInfoModal><h1>No bands found</h1><Link to="/admin"><Button>Return to Admin Interface</Button></Link>
+
+              ? <ErrorInfoModal>
+                <h1>No bands found</h1><Link to="/admin"><Button>Return to Admin Interface</Button></Link>
               </ErrorInfoModal>
+
               : <>
-                <form className={styles['create-item-form']}>
+                <form className={styles['create-item-form']} onSubmit={handleSubmit}>
                   <div>
                     <p>Create</p>
                     <p>new entry:</p>
                   </div>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Name"
-                    onChange={handleChange}
-                    name="name"
-                    value={formData.name}
-                  />
-
-                  <input
-                    type="text"
-                    required
-                    placeholder="Country"
-                    onChange={handleChange}
-                    name="country"
-                    value={formData.country}
-                  />
+                  <input type="text" required placeholder="Name"
+                    onChange={handleChange} name="name" value={formData.name} />
+                  <input type="text" required placeholder="Country"
+                    onChange={handleChange} name="country" value={formData.country} />
                   <div className={styles['action-btns']}>
                     <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                      <button title="Save">
+                      <button title="Save" type="submit">
                         <RiSave3Fill />
                       </button>
                     </IconContext.Provider>
                   </div>
                 </form>
+                {/* ... and after the Create form map over all items and display them */}
                 {allBandsData.map(band =>
                   <li key={band.id} className={styles['single-item']}>
                     <div className={styles['data']}>
