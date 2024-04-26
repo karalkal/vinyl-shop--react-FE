@@ -48,21 +48,22 @@ export const Payment = () => {
       requestBody.paymentSuccessful = true    // atm BE is not utilizing this prop
     }
 
-
+    // for each item in cart create object with album data AND AMOUNT REQUESTED
     const albumsOrdered = cartCtx.items.map(item => {
       return {
-        id: item.id, amountRequested: item.amountRequested,
-        name: item.name, price: item.price
+        id: item.id, name: item.name, price: item.price,
+        amountRequested: item.amountRequested,
       }
     })
 
     requestBody.albumsOrdered = albumsOrdered;
     requestBody.totalFromFE = cartCtx.totalAmount;
-    requestBody.userEmail = authCtx.loggedInUserData.email
+    requestBody.userEmail = authCtx.loggedInUserData.email;
 
-    await placeOrder(
+    const response = await placeOrder(
       requestBody,
-      authCtx.loggedInUserData.auth_token); // goes here -->> headers: { Authorization: `Bearer ${authToken}`
+      authCtx.loggedInUserData.auth_token);       // goes here -->> headers: { Authorization: `Bearer ${authToken}`
+    console.log(response);
 
     //empty cart, will also persist in localStorage
     cartCtx.emptyCart();

@@ -77,10 +77,10 @@ export const ProtectedItem = () => {
                         <span>First name: </span><span className={styles.data}>{protectedData.f_name}</span>
                         <span>Last name: </span><span className={styles.data}>{protectedData.l_name}</span>
                         <span>Email: </span><span className={styles.data}>{protectedData.email}</span>
-                        <span>Country: </span><span className={styles.data}>{protectedData.country || "not supplied"}</span>
-                        <span>City: </span><span className={styles.data}>{protectedData.city || "not supplied"}</span>
                         <span>House Number </span><span className={styles.data}>{protectedData.house_number || "not supplied"}</span>
                         <span>Street: </span><span className={styles.data}>{protectedData.street_name || "not supplied"}</span>
+                        <span>City: </span><span className={styles.data}>{protectedData.city || "not supplied"}</span>
+                        <span>Country: </span><span className={styles.data}>{protectedData.country || "not supplied"}</span>
                         <span>Admin: </span><span className={styles.data}>{protectedData.is_admin ? "YES" : "NO"}</span>
                         <span>Contributor: </span><span className={styles.data}>{protectedData.is_contributor ? "YES" : "NO"}</span>
                     </div>)
@@ -92,10 +92,10 @@ export const ProtectedItem = () => {
                         <span>First name: </span><input className={styles.data} type="text" onChange={handleChange} name="f_name" value={formData.f_name} />
                         <span>Last name: </span><input className={styles.data} type="text" onChange={handleChange} name="l_name" value={formData.l_name} />
                         <span>Email: </span><input className={styles.data} type="email" onChange={handleChange} name="email" value={formData.email} />
-                        <span>Country: </span><input className={styles.data} type="text" onChange={handleChange} name="country" value={formData.country} />
-                        <span>City: </span><input className={styles.data} type="text" onChange={handleChange} name="city" value={formData.city} />
                         <span>House Number: </span><input className={styles.data} type="text" onChange={handleChange} name="house_number" value={formData.house_number} />
                         <span>Street: </span><input className={styles.data} type="text" onChange={handleChange} name="street_name" value={formData.street_name} />
+                        <span>City: </span><input className={styles.data} type="text" onChange={handleChange} name="city" value={formData.city} />
+                        <span>Country: </span><input className={styles.data} type="text" onChange={handleChange} name="country" value={formData.country} />
                         <span>Admin: </span><input className={styles.data} type="text" onChange={handleChange} name="is_admin" value={formData.is_admin} />
                         <span>Contributor: </span><input className={styles.data} type="text" onChange={handleChange} name="is_contributor" value={formData.is_contributor} />
 
@@ -108,10 +108,10 @@ export const ProtectedItem = () => {
                         <span>First name: </span><input className={styles.data} type="text" value={formData.f_name} readOnly={true} />
                         <span>Last name: </span><input className={styles.data} type="text" value={formData.l_name} readOnly={true} />
                         <span>Email: </span><input className={styles.data} type="email" value={formData.email} readOnly={true} />
-                        <span>Country: </span><input className={styles.data} type="text" value={formData.country} readOnly={true} />
-                        <span>City: </span><input className={styles.data} type="text" value={formData.city} readOnly={true} />
                         <span>House Number: </span><input className={styles.data} type="text" value={formData.house_number} readOnly={true} />
                         <span>Street: </span><input className={styles.data} type="text" value={formData.street_name} readOnly={true} />
+                        <span>City: </span><input className={styles.data} type="text" value={formData.city} readOnly={true} />
+                        <span>Country: </span><input className={styles.data} type="text" value={formData.country} readOnly={true} />
                         <span>Admin: </span><input className={styles.data} type="text" value={formData.is_admin} readOnly={true} />
                         <span>Contributor: </span><input className={styles.data} type="text" value={formData.is_contributor} readOnly={true} />
 

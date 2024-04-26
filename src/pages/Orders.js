@@ -19,6 +19,7 @@ export const Orders = () => {
         async function getAllOrders() {
             const response = await fetchAllOrders(token);
             setOrders(response);
+            console.log(response);
         }
         if (token) {
             getAllOrders(); // <-- only fetch orders if truthy token
