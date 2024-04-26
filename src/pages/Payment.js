@@ -8,12 +8,14 @@ import { Button } from '../components/Button';
 import styles from './Payment.module.css';
 import { placeOrder } from '../api/api';
 import ErrorGeneric from './ErrorGeneric';
+import ErrorContext from '../context/ErrorContextProvider';
 
 
 export const Payment = () => {
   const [formData, setFormData] = useState({ credit_card_no: '' });
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
+  const errCtx = useContext(ErrorContext);
   const navigate = useNavigate()
 
   function handleChange(event) {
@@ -60,14 +62,18 @@ export const Payment = () => {
     requestBody.totalFromFE = cartCtx.totalAmount;
     requestBody.userEmail = authCtx.loggedInUserData.email;
 
-    const response = await placeOrder(
-      requestBody,
-      authCtx.loggedInUserData.auth_token);       // goes here -->> headers: { Authorization: `Bearer ${authToken}`
-    console.log(response);
+    try {
+      const response = await placeOrder(
+        requestBody,
+        authCtx.loggedInUserData.auth_token);       // goes here -->> headers: { Authorization: `Bearer ${authToken}`
+      console.log(response.data);
 
-    //empty cart, will also persist in localStorage
-    cartCtx.emptyCart();
-    navigate('/');
+      //empty cart, will also persist in localStorage
+      cartCtx.emptyCart();
+      navigate('/');
+    } catch (error) {
+      errCtx.setHasError(error.message);
+    }
   };
 
 

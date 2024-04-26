@@ -8,18 +8,25 @@ import styles from './Orders.module.css';
 import OrderDetails from './OrderDetails';
 import { SuspenseSpinner } from '../modals/SuspenseSpinner';
 import ErrorGeneric from './ErrorGeneric';
+import ErrorContext from '../context/ErrorContextProvider';
 
 
 export const Orders = () => {
     const { loggedInUserData } = useContext(AuthContext);
+    const errCtx = useContext(ErrorContext);
     const token = loggedInUserData.auth_token;
     const [orders, setOrders] = useState([]);
 
+
     useEffect(() => {
         async function getAllOrders() {
-            const response = await fetchAllOrders(token);
-            setOrders(response);
-            console.log(response);
+            try {
+                const response = await fetchAllOrders(token);
+                setOrders(response);
+                console.log(response);
+            } catch (error) {
+                errCtx.setHasError(error.message);
+            }
         }
         if (token) {
             getAllOrders(); // <-- only fetch orders if truthy token
