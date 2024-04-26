@@ -48,7 +48,6 @@ export const ProtectedItem = () => {
                 setItemHasUpdated(true);
             }
         } catch (error) {
-            console.log("Error", error)
             setHasError(error.message);
             return
         }
@@ -69,7 +68,6 @@ export const ProtectedItem = () => {
                 setItemWasDeleted(true);
             }
         } catch (error) {
-            console.log("Error", error)
             setHasError(error.message);
             return
         }
