@@ -14,6 +14,9 @@ import ErrorContext from '../../context/ErrorContextProvider';
 import { AdminMenu } from './AdminMenu';
 import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 import ErrorGeneric from '../ErrorGeneric';
+import { Link } from 'react-router-dom';
+import { Button } from '../../components/Button';
+import ErrorInfoModal from '../../modals/ErrorInfoModal';
 
 
 export const Bands = () => {
@@ -21,7 +24,7 @@ export const Bands = () => {
   const { hasError, setHasError } = useContext(ErrorContext)
   const token = loggedInUserData.auth_token;
 
-  const [allBandsData, setAllBandsData] = useState([]);
+  const [allBandsData, setAllBandsData] = useState(null);
 
   useEffect(() => {
     async function getAllBands() {
@@ -61,7 +64,8 @@ export const Bands = () => {
           ? <SuspenseSpinner />
           : <>
             {allBandsData.length === 0
-              ? <h2> No bands found</h2>
+              ? <ErrorInfoModal><h1>No bands found</h1><Link to="/admin"><Button>Return to Admin Interface</Button></Link>
+              </ErrorInfoModal>
               : <>
                 {allBandsData.map(band =>
                   <li key={band.id} className={styles['single-item']}>

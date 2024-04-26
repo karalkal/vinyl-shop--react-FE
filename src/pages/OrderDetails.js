@@ -6,7 +6,7 @@ const OrderDetails = (props) => {
         user_id, f_name, l_name, user_email,
         placed_on, fulfilled_on, total,
         album_array } = props.order;
-        console.log(album_array)
+        // console.log(album_array)
 
     // date format ISO 8601
     // toLocaleDateString(), toLocaleTimeString(), and toLocaleString() 

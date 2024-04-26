@@ -23,7 +23,7 @@ export const Orders = () => {
             try {
                 const response = await fetchAllOrders(token);
                 setOrders(response);
-                console.log(response);
+                // console.log(response);
             } catch (error) {
                 errCtx.setHasError(error.message);
             }

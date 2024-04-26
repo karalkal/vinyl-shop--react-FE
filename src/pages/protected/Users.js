@@ -14,6 +14,9 @@ import ErrorContext from '../../context/ErrorContextProvider';
 import { AdminMenu } from './AdminMenu';
 import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 import ErrorGeneric from '../ErrorGeneric';
+import ErrorInfoModal from '../../modals/ErrorInfoModal';
+import { Link } from 'react-router-dom';
+import { Button } from '../../components/Button';
 
 
 export const Users = () => {
@@ -22,7 +25,7 @@ export const Users = () => {
 
   const token = loggedInUserData.auth_token;
 
-  const [allUsersData, setAllUsersData] = useState([]);
+  const [allUsersData, setAllUsersData] = useState(null);
 
   useEffect(() => {
     async function getAllUsers() {
@@ -32,7 +35,8 @@ export const Users = () => {
       } catch (error) {
         console.log("Error", error)
         setHasError(error.message);
-        return      }
+        return
+      }
     }
     if (token) {
       getAllUsers(); // <-- only fetch users if truthy token
@@ -61,7 +65,8 @@ export const Users = () => {
           ? <SuspenseSpinner />
           : <>
             {allUsersData.length === 0
-              ? <h2> No users found</h2>
+              ? <ErrorInfoModal><h1>No users found</h1><Link to="/admin"><Button>Return to Admin Interface</Button></Link>
+              </ErrorInfoModal>
               : <>
                 {allUsersData.map(user =>
                   <li key={user.id} className={styles['single-item']}>
