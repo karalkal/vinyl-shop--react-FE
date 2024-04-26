@@ -17,6 +17,7 @@ import FoundAlbums from './pages/FoundAlbums';
 import { AdminMenu } from './pages/protected/AdminMenu';
 import { Users } from './pages/protected/Users';
 import UnderConstruction from './pages/UnderConstruction';
+import { Bands } from './pages/protected/Bands';
 
 
 async function allAlbumsLoader() {
@@ -76,6 +77,7 @@ const appRouter = createBrowserRouter(
       <Route path="admin" element={<Outlet />} >
         <Route index element={<AdminMenu />} />
         <Route path="users" element={<Users />} />
+        <Route path="bands" element={<Bands />} />
         <Route path="*" element={<UnderConstruction />} />
       </Route>
 

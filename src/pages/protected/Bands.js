@@ -7,7 +7,7 @@ import { IoTrashBinSharp } from "react-icons/io5";
 
 import styles from './Users.module.css';
 
-import { fetchAllUsers, fetchUserById } from '../../api/api';
+import { fetchAllBands, fetchBandById } from '../../api/api';
 
 import AuthContext from '../../context/AuthContextProvider';
 import { AdminMenu } from './AdminMenu';
@@ -15,34 +15,34 @@ import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
 import ErrorGeneric from '../ErrorGeneric';
 
 
-export const Users = () => {
+export const Bands = () => {
   const { loggedInUserData, setAdminModalVisible, setProtectedData } = useContext(AuthContext);
   const token = loggedInUserData.auth_token;
 
-  const [allUsersData, setAllUsersData] = useState([]);
+  const [allBandsData, setAllBandsData] = useState([]);
 
   useEffect(() => {
-    async function getAllUsers() {
+    async function getAllBands() {
       try {
-        const response = await fetchAllUsers(token);
-        setAllUsersData(response);
+        const response = await fetchAllBands(token);
+        setAllBandsData(response);
       } catch (error) {
         console.log("Error", error)
         throw new Error()
       }
     }
     if (token) {
-      getAllUsers(); // <-- only fetch users if truthy token
+      getAllBands(); // <-- only fetch users if truthy token
     }
   }, [token]);
 
-  // AQpart from getting data to be rendered in the admin modal this function will set the 
+  // Apart from getting data to be rendered in the admin modal this function will set the 
   // item type to be viewed or edited e.g. user, album etc... and the type of action e.g. view, edit, 
-  async function setUserDataAndEnableAdminModal(token, idOfUser, actionType) {
-    const response = await fetchUserById(token, idOfUser);
+  async function setBandsDataAndEnableAdminModal(token, idOfUser, actionType) {
+    const response = await fetchBandById(token, idOfUser);
     console.log(response);
     setProtectedData({
-      dataType: "singleUser",
+      dataType: "bands",
       actionType,
       ...response
     })
@@ -54,32 +54,31 @@ export const Users = () => {
     <AdminMenu />
     {token
       ? <div className={styles.usersDiv}>
-        {!allUsersData
+        {!allBandsData
           ? <SuspenseSpinner />
           : <>
-            {allUsersData.length === 0
-              ? <h2> No users found</h2>
+            {allBandsData.length === 0
+              ? <h2> No bands found</h2>
               : <>
-                {allUsersData.map(user =>
-                  <li key={user.id} className={styles['single-item']}>
+                {allBandsData.map(band =>
+                  <li key={band.id} className={styles['single-item']}>
                     <div className={styles['data']}>
-                      <p className={styles['data-primary']}><span>{user.id}</span> {user.f_name} {user.l_name} </p>
-                      {(user.city || user.country) && <p className={styles['data-secondary']}>{user.city}, {user.country}</p>
-                      }
+                      <p className={styles['data-primary']}><span>{band.id}</span> {band.name} </p>
+                      <p className={styles['data-secondary']}>{band.country} </p>
                     </div>
                     <div className={styles['action-btns']}>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="View" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id, "VIEW")}>
+                        <button title="View" className={styles.btnRight} onClick={() => setBandsDataAndEnableAdminModal(token, band.id, "VIEW")}>
                           <PiFileMagnifyingGlassFill />
                         </button>
                       </IconContext.Provider>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="Edit" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id, "EDIT")}>
+                        <button title="Edit" className={styles.btnRight} onClick={() => setBandsDataAndEnableAdminModal(token, band.id, "EDIT")}>
                           <PiPencilSimpleLineFill />
                         </button>
                       </IconContext.Provider>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="Delete" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id, "DELETE")}>
+                        <button title="Delete" className={styles.btnRight} onClick={() => setBandsDataAndEnableAdminModal(token, band.id, "DELETE")}>
                           <IoTrashBinSharp />
                         </button>
                       </IconContext.Provider>

@@ -36,7 +36,7 @@ export const Users = () => {
     }
   }, [token]);
 
-  // AQpart from getting data to be rendered in the admin modal this function will set the 
+  // Apart from getting data to be rendered in the admin modal this function will set the 
   // item type to be viewed or edited e.g. user, album etc... and the type of action e.g. view, edit, 
   async function setUserDataAndEnableAdminModal(token, idOfUser, actionType) {
     const response = await fetchUserById(token, idOfUser);
