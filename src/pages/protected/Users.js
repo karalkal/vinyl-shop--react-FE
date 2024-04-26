@@ -49,7 +49,7 @@ export const Users = () => {
     const response = await fetchUserById(token, idOfUser);
     console.log(response);
     setProtectedData({
-      dataType: "singleUser",
+      dataType: "users",
       actionType,
       ...response
     })

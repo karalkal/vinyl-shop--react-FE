@@ -15,14 +15,14 @@ import AuthContext from '../../context/AuthContextProvider';
 import ErrorContext from '../../context/ErrorContextProvider';
 import { AdminMenu } from './AdminMenu';
 import { SuspenseSpinner } from '../../modals/SuspenseSpinner';
+import ErrorInfoModal from '../../modals/ErrorInfoModal';
 import ErrorGeneric from '../ErrorGeneric';
 import { Button } from '../../components/Button';
-import ErrorInfoModal from '../../modals/ErrorInfoModal';
 
 
 export const Bands = () => {
   const { loggedInUserData, setAdminModalVisible, setProtectedData } = useContext(AuthContext);
-  const { hasError, setHasError } = useContext(ErrorContext)
+  const { hasError, setHasError } = useContext(ErrorContext);
   const token = loggedInUserData.auth_token;
 
   const [allBandsData, setAllBandsData] = useState(null);
@@ -66,7 +66,7 @@ export const Bands = () => {
     })
   }
 
-  async function handleSubmit(e) {
+  async function handleCreate(e) {
     e.preventDefault();
     let response = null
     try {
@@ -86,9 +86,9 @@ export const Bands = () => {
       <ErrorInfoModal>
         <div className={styles.messageDiv}>
           <h1 className={styles.messageTitle}>Item created successfully</h1>
-          <h1 className={styles.messageTitle}>Refresh screen or click view to verify</h1>
+          <Button onClick={() => window.location.reload()}>Refresh</Button>
         </div>
-      </ErrorInfoModal>)
+      </ErrorInfoModal >)
   }
 
 
@@ -106,7 +106,7 @@ export const Bands = () => {
               </ErrorInfoModal>
 
               : <>
-                <form className={styles['create-item-form']} onSubmit={handleSubmit}>
+                <form className={styles['create-item-form']} onSubmit={handleCreate}>
                   <div>
                     <p>Create</p>
                     <p>new entry:</p>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import AdminModal from '../../modals/AdminModal'
 import AuthContext from '../../context/AuthContextProvider';
 import ErrorContext from '../../context/ErrorContextProvider';
@@ -10,21 +10,21 @@ import ErrorInfoModal from '../../modals/ErrorInfoModal';
 
 
 export const ProtectedItem = () => {
-    const { hasError, setHasError } = useContext(ErrorContext)
-    const { protectedData, loggedInUserData } = useContext(AuthContext);
+    const { hasError, setHasError } = useContext(ErrorContext);
 
-    // Properties dataType: "singleUser", actionType: "VIEW" are attached to AuthContext
-    // Depending on this we will render relevant modal, i.e. user, album etc.
-    const { dataType, actionType } = protectedData;
-    console.log("dataType:", dataType, "actionType:", actionType);
+    const { protectedData, loggedInUserData, setProtectedData } = useContext(AuthContext);
+    // Properties dataType: "users", actionType: "VIEW" are attached to AuthContext
+    // Depending on this render relevant modal, i.e. user, album etc.
+    let { dataType, actionType } = protectedData;
 
-    const [formData, setFormData] = React.useState(protectedData);
+    const [formData, setFormData] = useState(protectedData);
 
-    const [itemHasUpdated, setItemHasUpdated] = React.useState(false)
-    const [itemWasDeleted, setItemWasDeleted] = React.useState(false)
+    const [itemHasUpdated, setItemHasUpdated] = useState(false);
+    const [itemWasDeleted, setItemWasDeleted] = useState(false);
+
 
     // updating functions
-    function handleChange(event) {
+    function handleFormChange(event) {
         const { name, value, type, checked } = event.target
         setFormData(prevFormData => {
             return {
@@ -34,11 +34,11 @@ export const ProtectedItem = () => {
         })
     }
 
-    async function handleSubmit(e) {
+    async function handleUpdate(e) {
         e.preventDefault();
         let response = null
         try {
-            if (dataType === "singleUser") {
+            if (dataType === "users") {
                 response = await updateUser(loggedInUserData.auth_token, formData.id, formData);
             }
             else if (dataType === "bands") {
@@ -58,7 +58,7 @@ export const ProtectedItem = () => {
         e.preventDefault();
         let response = null
         try {
-            if (dataType === "singleUser") {
+            if (dataType === "users") {
                 response = await deleteUser(loggedInUserData.auth_token, protectedData.id);
             }
             else if (dataType === "bands") {
@@ -74,15 +74,22 @@ export const ProtectedItem = () => {
         }
     };
 
+    function resetPageWithoutModals() {
+        setItemHasUpdated(false);
+        setItemWasDeleted(false);
+        setProtectedData({});
+        window.location.reload();
+    }
 
     if (itemHasUpdated) {
         return (
             <ErrorInfoModal>
                 <div className={styles.messageDiv}>
                     <h1 className={styles.messageTitle}>Item updated successfully</h1>
-                    <h1 className={styles.messageTitle}>Refresh screen or click view to verify</h1>
+                    {/* <h1 className={styles.messageTitle}>Refresh screen or click view to verify</h1> */}
+                    <Button onClick={resetPageWithoutModals}>Refresh</Button>
                 </div>
-            </ErrorInfoModal>)
+            </ErrorInfoModal >)
     }
 
     if (itemWasDeleted) {
@@ -90,12 +97,12 @@ export const ProtectedItem = () => {
             <AdminModal>
                 <div className={styles.messageDiv}>
                     <h1 className={styles.messageTitle}>Item deleted successfully</h1>
-                    <h1 className={styles.messageTitle}>Refresh screen to verify</h1>
+                    <Button onClick={resetPageWithoutModals}>Refresh</Button>
                 </div>
             </AdminModal>)
     }
 
-    if (dataType === "singleUser") {
+    if (dataType === "users") {
         return (
             <AdminModal>
 
@@ -115,17 +122,17 @@ export const ProtectedItem = () => {
                 }
 
                 {actionType === "EDIT" && (
-                    <form className={styles.protectedItem} onSubmit={handleSubmit}>
-                        <span>id: </span><input className={styles.data} type="text" onChange={handleChange} name="id" value={formData.id} />
-                        <span>First name: </span><input className={styles.data} type="text" onChange={handleChange} name="f_name" value={formData.f_name} />
-                        <span>Last name: </span><input className={styles.data} type="text" onChange={handleChange} name="l_name" value={formData.l_name} />
-                        <span>Email: </span><input className={styles.data} type="email" onChange={handleChange} name="email" value={formData.email} />
-                        <span>House Number: </span><input className={styles.data} type="text" onChange={handleChange} name="house_number" value={formData.house_number} />
-                        <span>Street: </span><input className={styles.data} type="text" onChange={handleChange} name="street_name" value={formData.street_name} />
-                        <span>City: </span><input className={styles.data} type="text" onChange={handleChange} name="city" value={formData.city} />
-                        <span>Country: </span><input className={styles.data} type="text" onChange={handleChange} name="country" value={formData.country} />
-                        <span>Admin: </span><input className={styles.data} type="text" onChange={handleChange} name="is_admin" value={formData.is_admin} />
-                        <span>Contributor: </span><input className={styles.data} type="text" onChange={handleChange} name="is_contributor" value={formData.is_contributor} />
+                    <form className={styles.protectedItem} onSubmit={handleUpdate}>
+                        <span>id: </span><input className={styles.data} type="text" onChange={handleFormChange} name="id" value={formData.id} />
+                        <span>First name: </span><input className={styles.data} type="text" onChange={handleFormChange} name="f_name" value={formData.f_name} />
+                        <span>Last name: </span><input className={styles.data} type="text" onChange={handleFormChange} name="l_name" value={formData.l_name} />
+                        <span>Email: </span><input className={styles.data} type="email" onChange={handleFormChange} name="email" value={formData.email} />
+                        <span>House Number: </span><input className={styles.data} type="text" onChange={handleFormChange} name="house_number" value={formData.house_number} />
+                        <span>Street: </span><input className={styles.data} type="text" onChange={handleFormChange} name="street_name" value={formData.street_name} />
+                        <span>City: </span><input className={styles.data} type="text" onChange={handleFormChange} name="city" value={formData.city} />
+                        <span>Country: </span><input className={styles.data} type="text" onChange={handleFormChange} name="country" value={formData.country} />
+                        <span>Admin: </span><input className={styles.data} type="text" onChange={handleFormChange} name="is_admin" value={formData.is_admin} />
+                        <span>Contributor: </span><input className={styles.data} type="text" onChange={handleFormChange} name="is_contributor" value={formData.is_contributor} />
 
                         <Button style={{ marginBottom: "3em", marginTop: "1em", }}>Edit</Button>
                     </form>)}
@@ -164,10 +171,10 @@ export const ProtectedItem = () => {
                 }
 
                 {actionType === "EDIT" && (
-                    <form className={styles.protectedItem} onSubmit={handleSubmit}>
-                        <span>id: </span><input className={styles.data} type="text" onChange={handleChange} name="id" value={formData.id} />
-                        <span>Name: </span><input className={styles.data} type="text" onChange={handleChange} name="name" value={formData.name} />
-                        <span>Country of origin: </span><input className={styles.data} type="text" onChange={handleChange} name="country" value={formData.country} />
+                    <form className={styles.protectedItem} onSubmit={handleUpdate}>
+                        <span>id: </span><input className={styles.data} type="text" onChange={handleFormChange} name="id" value={formData.id} />
+                        <span>Name: </span><input className={styles.data} type="text" onChange={handleFormChange} name="name" value={formData.name} />
+                        <span>Country of origin: </span><input className={styles.data} type="text" onChange={handleFormChange} name="country" value={formData.country} />
 
                         <Button style={{ marginBottom: "3em", marginTop: "1em", }}>Edit</Button>
                     </form>)}
@@ -185,34 +192,6 @@ export const ProtectedItem = () => {
             </AdminModal>)
     }
 
-    else {
-        return (
-            <AdminModal>
-                <h1>Not implemented yet </h1>
-            </AdminModal>)
-    }
+
 }
 
-
-// function UserEditForm(props) {
-//     delete protectedData.dataType;
-//     delete protectedData.actionType;
-
-//     return (
-//         <form className={styles.protectedItem} onSubmit={handleSubmit}>
-//             <span className={styles.title}>id: </span><input className={styles.data} type="text" onChange={handleChange} name="id" value={formData.id} />
-//             <span className={styles.title}>First name: </span><input className={styles.data} type="text" onChange={handleChange} name="f_name" value={formData.f_name} />
-//             <span className={styles.title}>Last name: </span><input className={styles.data} type="text" onChange={handleChange} name="l_name" value={formData.l_name} />
-//             <span className={styles.title}>Email: </span><input className={styles.data} type="email" onChange={handleChange} name="email" value={formData.email} />
-//             <span className={styles.title}>Country: </span><input className={styles.data} type="text" onChange={handleChange} name="country" value={formData.country} />
-//             <span className={styles.title}>City: </span><input className={styles.data} type="text" onChange={handleChange} name="city" value={formData.city} />
-//             <span className={styles.title}>House Number: </span><input className={styles.data} type="text" onChange={handleChange} name="house_number" value={formData.house_number} />
-//             <span className={styles.title}>Street: </span><input className={styles.data} type="text" onChange={handleChange} name="street_name" value={formData.street_name} />
-//             <span className={styles.title}>Admin: </span><input className={styles.data} type="text" onChange={handleChange} name="is_admin" value={formData.is_admin} />
-//             <span className={styles.title}>Contributor: </span><input className={styles.data} type="text" onChange={handleChange} name="is_contributor" value={formData.is_contributor} />
-
-//             <Button style={{ marginBottom: "3em", marginTop: "1em", }}>Edit</Button>
-//         </form>
-//     )
-
-// }
