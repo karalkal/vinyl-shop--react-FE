@@ -1,10 +1,36 @@
-.single-item {
+.single-item,
+.create-item-form {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--white);
-  padding: 0 0 1rem 0;
   margin: 1rem 0;
+}
+
+.single-item {
+  padding: 0 .1rem 1rem 0;
+}
+
+.create-item-form {
+  padding: .8rem .1rem;
+  background-color: var(--cool-gray);
+  align-content: center;
+}
+
+.create-item-form p {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--space-cadet);
+}
+
+.create-item-form>input {
+  width: 35%;
+  padding-left: 8px;
+  background-color: var(--white);
+  border: none;
+  height: 35px;
+  border: 1px solid var(--white);
+  border-radius: 8px;
 }
 
 

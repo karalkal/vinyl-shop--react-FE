@@ -4,8 +4,9 @@ import { IconContext } from 'react-icons';
 import { PiFileMagnifyingGlassFill } from "react-icons/pi";
 import { PiPencilSimpleLineFill } from "react-icons/pi";
 import { IoTrashBinSharp } from "react-icons/io5";
+import { RiSave3Fill } from "react-icons/ri";
 
-import styles from './Users.module.css';
+import styles from './AdminPages.module.css';
 
 import { fetchAllBands, fetchBandById } from '../../api/api';
 
@@ -25,6 +26,8 @@ export const Bands = () => {
   const token = loggedInUserData.auth_token;
 
   const [allBandsData, setAllBandsData] = useState(null);
+  const [formData, setFormData] = useState({ name: '', country: '' });
+
 
   useEffect(() => {
     async function getAllBands() {
@@ -55,6 +58,13 @@ export const Bands = () => {
     setAdminModalVisible(true);
   }
 
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData(prevFormData => {
+      return { ...prevFormData, [name]: value }   // key is computed prop
+    })
+  }
+
 
   return (<main>
     <AdminMenu />
@@ -67,6 +77,36 @@ export const Bands = () => {
               ? <ErrorInfoModal><h1>No bands found</h1><Link to="/admin"><Button>Return to Admin Interface</Button></Link>
               </ErrorInfoModal>
               : <>
+                <form className={styles['create-item-form']}>
+                  <div>
+                    <p>Create</p>
+                    <p>new entry:</p>
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Name"
+                    onChange={handleChange}
+                    name="name"
+                    value={formData.name}
+                  />
+
+                  <input
+                    type="text"
+                    required
+                    placeholder="Country"
+                    onChange={handleChange}
+                    name="country"
+                    value={formData.country}
+                  />
+                  <div className={styles['action-btns']}>
+                    <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
+                      <button title="Save">
+                        <RiSave3Fill />
+                      </button>
+                    </IconContext.Provider>
+                  </div>
+                </form>
                 {allBandsData.map(band =>
                   <li key={band.id} className={styles['single-item']}>
                     <div className={styles['data']}>
@@ -75,17 +115,17 @@ export const Bands = () => {
                     </div>
                     <div className={styles['action-btns']}>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="View" className={styles.btnRight} onClick={() => setBandsDataAndEnableAdminModal(token, band.id, "VIEW")}>
+                        <button title="View" onClick={() => setBandsDataAndEnableAdminModal(token, band.id, "VIEW")}>
                           <PiFileMagnifyingGlassFill />
                         </button>
                       </IconContext.Provider>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="Edit" className={styles.btnRight} onClick={() => setBandsDataAndEnableAdminModal(token, band.id, "EDIT")}>
+                        <button title="Edit" onClick={() => setBandsDataAndEnableAdminModal(token, band.id, "EDIT")}>
                           <PiPencilSimpleLineFill />
                         </button>
                       </IconContext.Provider>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="Delete" className={styles.btnRight} onClick={() => setBandsDataAndEnableAdminModal(token, band.id, "DELETE")}>
+                        <button title="Delete" onClick={() => setBandsDataAndEnableAdminModal(token, band.id, "DELETE")}>
                           <IoTrashBinSharp />
                         </button>
                       </IconContext.Provider>

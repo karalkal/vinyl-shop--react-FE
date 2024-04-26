@@ -5,7 +5,7 @@ import { PiFileMagnifyingGlassFill } from "react-icons/pi";
 import { PiPencilSimpleLineFill } from "react-icons/pi";
 import { IoTrashBinSharp } from "react-icons/io5";
 
-import styles from './Users.module.css';
+import styles from './AdminPages.module.css';
 
 import { fetchAllUsers, fetchUserById } from '../../api/api';
 
@@ -77,17 +77,17 @@ export const Users = () => {
                     </div>
                     <div className={styles['action-btns']}>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="View" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id, "VIEW")}>
+                        <button title="View" onClick={() => setUserDataAndEnableAdminModal(token, user.id, "VIEW")}>
                           <PiFileMagnifyingGlassFill />
                         </button>
                       </IconContext.Provider>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="Edit" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id, "EDIT")}>
+                        <button title="Edit" onClick={() => setUserDataAndEnableAdminModal(token, user.id, "EDIT")}>
                           <PiPencilSimpleLineFill />
                         </button>
                       </IconContext.Provider>
                       <IconContext.Provider value={{ className: `${styles.reactIcons}` }}>
-                        <button title="Delete" className={styles.btnRight} onClick={() => setUserDataAndEnableAdminModal(token, user.id, "DELETE")}>
+                        <button title="Delete" onClick={() => setUserDataAndEnableAdminModal(token, user.id, "DELETE")}>
                           <IoTrashBinSharp />
                         </button>
                       </IconContext.Provider>
