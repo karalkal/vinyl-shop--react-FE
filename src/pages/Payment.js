@@ -5,14 +5,17 @@ import AuthContext from '../context/AuthContextProvider';
 import CartContext from '../context/CartContextProvider';
 
 import { Button } from '../components/Button';
+
 import styles from './Payment.module.css';
 import { placeOrder } from '../api/api';
 import ErrorGeneric from './ErrorGeneric';
 import ErrorContext from '../context/ErrorContextProvider';
+import InfoModal from '../modals/InfoModal';
 
 
 export const Payment = () => {
   const [formData, setFormData] = useState({ credit_card_no: '' });
+  const [infoModalVisible, setInfoModalVisible] = useState(false);
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
   const errCtx = useContext(ErrorContext);
@@ -39,13 +42,17 @@ export const Payment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (cartCtx.items.length < 1) { throw new Error("Cart is empty"); }
+    if (cartCtx.items.length < 1) {
+      errCtx.setHasError("Cart is empty");
+    }
 
     setFormData({ credit_card_no: '' });    //reset form
 
     const requestBody = {}                  // construct object to send to BE
 
-    if (!validCreditCardData()) { throw new Error("Payment data invalid"); }
+    if (!validCreditCardData()) {
+      errCtx.setHasError("Payment data invalid");
+    }
     else {
       requestBody.paymentSuccessful = true    // atm BE is not utilizing this prop
     }
@@ -67,17 +74,23 @@ export const Payment = () => {
         requestBody,
         authCtx.loggedInUserData.auth_token);       // goes here -->> headers: { Authorization: `Bearer ${authToken}`
       console.log(response.data);
-
-      //empty cart, will also persist in localStorage
-      cartCtx.emptyCart();
+      setInfoModalVisible(true);
+      cartCtx.emptyCart();        //empty cart, will also persist in localStorage
       navigate('/');
     } catch (error) {
       errCtx.setHasError(error.message);
     }
   };
 
+  console.log("Modal?", infoModalVisible)
+
 
   return (<>
+    {infoModalVisible && (<InfoModal>
+      <h1>Order created.</h1>
+    </InfoModal>)
+    }
+
     {authCtx.isLoggedIn
       ? <form onSubmit={handleSubmit} className={styles.paymentForm}>
         <p className={styles.formInputsHeading}>Pay by card</p>
