@@ -21,7 +21,6 @@ export const Backdrop = (props) => {
     setAdminModalVisible(false);
   }
 
-
   return <div className={styles.backdrop} onClick={clearAllModals} />;
 };
 

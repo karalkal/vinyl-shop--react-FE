@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import ErrorContext from "../context/ErrorContextProvider";
-import ErrorModal from "../modals/ErrorModal";
+import ErrorInfoModal from "../modals/ErrorInfoModal";
 import { Button } from "../components/Button";
 
 
@@ -9,7 +9,7 @@ export default function ErrorGeneric(props) {
     const errCtx = useContext(ErrorContext)
 
     return (
-        <ErrorModal>
+        <ErrorInfoModal>
             {props.errMessage
                 ? <h1>
                     {props.errMessage}</h1>
@@ -20,6 +20,6 @@ export default function ErrorGeneric(props) {
                 onClick={() => errCtx.hasError("")}>
                 <Button>Return to Homepage</Button>
             </Link>
-        </ErrorModal>
+        </ErrorInfoModal>
     );
 }

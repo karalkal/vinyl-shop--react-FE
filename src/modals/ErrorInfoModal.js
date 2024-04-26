@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
-import styles from './ErrorModal.module.css';
+import styles from './ErrorInfoModal.module.css';
 
 import { Backdrop } from '../layouts/Modal';
 
@@ -18,7 +18,7 @@ const ModalOverlay = (props) => {
 // where modal will be rendered
 const portalElement = document.getElementById('overlays');
 
-const ErrorModal = (props) => {
+const ErrorInfoModal = (props) => {
 
   return (
     <Fragment>
@@ -31,4 +31,4 @@ const ErrorModal = (props) => {
   );
 };
 
-export default ErrorModal;
+export default ErrorInfoModal;

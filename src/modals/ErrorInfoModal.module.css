@@ -16,15 +16,6 @@
     width: 100%;
 }
 
-.errorModal button a {
-    color: var(--white);
-    font-weight: 600;
-}
-
-.errorModal button a:hover {
-    color: var(--aureolin);
-}
-
 .errorModal h1 {
     margin: 11px auto 22px;
     font-size: 1.9rem;

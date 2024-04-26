@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import AuthContext from '../context/AuthContextProvider';
 import CartContext from '../context/CartContextProvider';
@@ -10,7 +10,8 @@ import styles from './Payment.module.css';
 import { placeOrder } from '../api/api';
 import ErrorGeneric from './ErrorGeneric';
 import ErrorContext from '../context/ErrorContextProvider';
-import InfoModal from '../modals/InfoModal';
+import Modal from '../layouts/Modal';
+import ErrorInfoModal from '../modals/ErrorInfoModal';
 
 
 export const Payment = () => {
@@ -74,21 +75,23 @@ export const Payment = () => {
         requestBody,
         authCtx.loggedInUserData.auth_token);       // goes here -->> headers: { Authorization: `Bearer ${authToken}`
       console.log(response.data);
-      setInfoModalVisible(true);
       cartCtx.emptyCart();        //empty cart, will also persist in localStorage
-      navigate('/');
+      setInfoModalVisible(true);
     } catch (error) {
       errCtx.setHasError(error.message);
     }
   };
 
-  console.log("Modal?", infoModalVisible)
-
+  function hideModalNavigateToHome() {
+    setInfoModalVisible(false);
+    navigate('/');
+  }
 
   return (<>
-    {infoModalVisible && (<InfoModal>
+    {infoModalVisible && (<ErrorInfoModal>
       <h1>Order created.</h1>
-    </InfoModal>)
+      <Button onClick={hideModalNavigateToHome}>Return to Homepage</Button>
+    </ErrorInfoModal>)
     }
 
     {authCtx.isLoggedIn
