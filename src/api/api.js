@@ -165,6 +165,7 @@ export async function fetchAllOrders(authToken) {
     }
 };
 
+/*              ==== USERS ====                 */
 export async function fetchAllUsers(authToken) {
     const headers = {
         'Content-Type': 'application/json',
@@ -235,6 +236,91 @@ export async function deleteUser(authToken, idOfUser) {
 
     try {
         const response = await axios.delete(`${ROOT_ENDPOINT}/users/${idOfUser}`,
+            { headers: headers });
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
+        else {
+            console.log("other error")
+            throw new Error(err.message);
+        }
+    }
+}
+
+/*              ==== BANDS ====                 */
+export async function fetchAllBands(authToken) {
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+    }
+    try {
+        const response = await fetch(`${ROOT_ENDPOINT}/bands`, { headers });
+        if (!response.ok) {
+            throw new Error(`${response.statusText} - ${response.status}`);
+        }   // if ok
+        const json = await response.json();
+        return json;
+    } catch (error) {
+        // will catch errors from if (!response.ok) too 
+        throw new Error(error.message);
+    }
+};
+
+export async function fetchBandById(authToken, idOfBand) {
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+    }
+    try {
+        const response = await fetch(`${ROOT_ENDPOINT}/bands/${idOfBand}`, { headers });
+        if (!response.ok) {
+            throw new Error(`${response.statusText} - ${response.status}`);
+        }   // if ok
+        const json = await response.json();
+        return json;
+    } catch (error) {
+        // will catch errors from if (!response.ok) too 
+        throw new Error(error.message);
+    }
+};
+
+
+export async function updateBand(authToken, idOfBand, newData) {
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+    }
+
+    try {
+        const response = await axios.put(`${ROOT_ENDPOINT}/bands/${idOfBand}`,
+            newData,
+            { headers: headers });
+        return response
+    }
+    catch (err) {
+        if (err && err instanceof AxiosError) {
+            console.log(err.code, err.message)
+            throw new Error(`${err.code} - ${err.message}`);
+        }
+        else {
+            console.log("other error")
+            throw new Error(err.message);
+        }
+    }
+}
+
+export async function deleteBand(authToken, idOfBand) {
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+    }
+
+    try {
+        const response = await axios.delete(`${ROOT_ENDPOINT}/bands/${idOfBand}`,
             { headers: headers });
         return response
     }

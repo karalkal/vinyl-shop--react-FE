@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { verifyUserIsAdmin } from '../../api/api';
 import styles from './AdminMenu.module.css';

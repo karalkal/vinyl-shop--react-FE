@@ -123,6 +123,40 @@ export const ProtectedItem = () => {
             </AdminModal>)
     }
 
+    else if (dataType === "band") {
+        return (
+            <AdminModal>
+
+                {actionType === "VIEW" && (
+                    <div className={styles.protectedItem}>
+                        <span>id: </span><span className={styles.data}>{protectedData.id}</span>
+                        <span>Name: </span><span className={styles.data}>{protectedData.name}</span>
+                        <span>Country of origin: </span><span className={styles.data}>{protectedData.country}</span>
+                    </div>)
+                }
+
+                {actionType === "EDIT" && (
+                    <form className={styles.protectedItem} onSubmit={handleSubmit}>
+                        <span>id: </span><input className={styles.data} type="text" onChange={handleChange} name="id" value={formData.id} />
+                        <span>Name: </span><input className={styles.data} type="text" onChange={handleChange} name="name" value={formData.name} />
+                        <span>Country of origin: </span><input className={styles.data} type="text" onChange={handleChange} name="country" value={formData.country} />
+
+                        <Button style={{ marginBottom: "3em", marginTop: "1em", }}>Edit</Button>
+                    </form>)}
+
+                {actionType === "DELETE" && (
+                    <form className={styles.protectedItem} onSubmit={handleDelete}>
+                        <span>id: </span><input className={styles.data} type="text" value={formData.id} readOnly={true} />
+                        <span>Name: </span><input className={styles.data} type="text" value={formData.name} readOnly={true} />
+                        <span>Country of origin: </span><input className={styles.data} type="text" value={formData.country} readOnly={true} />
+
+                        <Button style={{ marginBottom: "3em", marginTop: "1em", }}>Delete</Button>
+                    </form>)}
+
+
+            </AdminModal>)
+    }
+
     else {
         return (
             <AdminModal>
