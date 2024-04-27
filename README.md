@@ -2,6 +2,10 @@
 
 ## Front end of mock vinyl shop app developed in React
 
+***active as of 27 April 2024:***
+## Deployed on: [render](https://vinylarium.onrender.com/)
+
+***no longer maintained:***
 ## Deployed on: [surge](http://obsolete-crime.surge.sh/)
 
 ## N.B. The BE provides far more endpoints than the ones utilized here. This app can be developed further, mainly but not only by expanding the admin interface for manipulation of the DB
@@ -33,6 +37,9 @@ Check out npm-check-updates to help with this workflow.
 npx npm-check-updates -u  
 npm install
 ```
+
+## Deployment @ render
+### The active deployment as of 27 April 2024 is at https://vinylarium.onrender.com
 
 ## Deployment @ Surge
 
