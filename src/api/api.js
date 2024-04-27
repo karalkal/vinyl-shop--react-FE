@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 
-// const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1";
-const ROOT_ENDPOINT = "http://localhost:3000/api/v1";
+const ROOT_ENDPOINT = "https://vinyl-shop.onrender.com/api/v1";
+// const ROOT_ENDPOINT = "http://localhost:3000/api/v1";
 // delay api calls for testing
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
