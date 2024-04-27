@@ -4,7 +4,7 @@
 
 ## Deployed on: [surge](http://obsolete-crime.surge.sh/)
 
-## N.B. The BE provides far more endpoints than the ones utilized here. This app can be developed further, mainly but not only by providing admin interface for manipulation the DB
+## N.B. The BE provides far more endpoints than the ones utilized here. This app can be developed further, mainly but not only by expanding the admin interface for manipulation of the DB
 
 ### If cloned from previous project - Update dependencies  
 
@@ -139,12 +139,14 @@ let aggregatedArray = []
     }
 ```
 
+- As of 27 April the admin interface/protected routes includes user and band manipulation. These can be accessed via the admin menu by admins only - the BE will verify the user credentials.  
+
 # Backend is deployed at: [render](https://vinyl-shop.onrender.com/).
 
 ## TODOS
 
 - DONE: Google log in
-- async errors handling
+- comprehensive and centralized errors handling with ErrorBoundary
 - fix `Suspense/Await` bug, see above
 - DONE fix structure - What is UI, what is page, what is components? Probably separate modals folder  XXXX
 - testing
