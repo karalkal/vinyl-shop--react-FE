@@ -24,7 +24,7 @@ const OrderDetails = (props) => {
                 {/* <p>id&nbsp;<span>{user_id}</span></p> */}
                 <p>on&nbsp;<span>{dateTimePlaced.toLocaleDateString()}</span>&nbsp;&nbsp;at&nbsp;<span>{dateTimePlaced.toLocaleTimeString()}</span></p>
                 <p>status: <span>{dateTimeFulfilled}</span></p>
-                <p>total value: <span>{total}</span></p>
+                <p>total value: £<span>{total}</span></p>
             </div>
             <div className={styles.secondRow}>
                 {album_array.map((albumOrdered, idx) =>

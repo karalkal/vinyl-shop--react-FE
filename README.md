@@ -152,7 +152,7 @@ let aggregatedArray = []
 
 ## TODOS
 
-- DONE: Google log in
+- DONE: Google log in - use kurcho1944 for google dev login at https://console.cloud.google.com/welcome/new?authuser=2&project=regal-station-416021
 - comprehensive and centralized errors handling with ErrorBoundary
 - fix `Suspense/Await` bug, see above
 - DONE fix structure - What is UI, what is page, what is components? Probably separate modals folder  XXXX
